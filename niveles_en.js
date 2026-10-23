@@ -3,7 +3,7 @@
 (function (global) {
   'use strict';
   var EN = {
-    regiones: { 1: 'Sugar-Snap Bakery', 2: 'The Crystal Cotton Forest', 3: 'The Ice Cream Ruins', 4: 'The Floating City' },
+    regiones: { 1: 'Sugar-Snap Bakery', 2: 'The Crystal Cotton Forest', 3: 'The Ice Cream Ruins', 4: 'The Floating City', 5: 'The Flavor Fair' },
     1: {
       titulo: 'The first pour',
       ensena: 'Drag one jar onto another to pour. Tap the pink tap to empty a jar through its pipe.',
@@ -50,7 +50,8 @@
       guia: ["The scale's capsule already weighs 3: that's why its bridge is open (green check).",
         'If you empty the capsule, it loses weight and the bridge closes again. Think about the order.',
         'Capsules have no mouth: they can only be filled and emptied through pipes.',
-        'From now on your moves are counted: check the counter at the top. If they run out before the sweets wake up, you lose the round.'],
+        'From now on your moves are counted: check the counter at the top. If they run out before the sweets wake up, you lose the round.',
+        'Every lost round costs one life: check the hearts on the map. And every win gives points: they raise your rank and earn you prizes.'],
       fin: 'First cross the bridge, then empty the counterweight!',
       ingenio: 'Leave the first jar empty',
       nombres: { T2: 'The Mint Donut', T1: 'The Caramel Donut' }
@@ -136,152 +137,145 @@
       ingenio: 'Solve it without hints',
       nombres: { TU: 'The Root of Gravity', T2: 'The Root of Flow', TG: 'The Root of Life' }
     },
-    // ── GENERADOS: INICIO (herramientas/incorporar_niveles.js) ──
+    // ── GENERADOS: INICIO (herramientas/incorporar_niveles2.js) ──
     13: {
-      "titulo": "Three Frozen Taps",
-      "ensena": "Each jar empties from the bottom into its sweet. The middle valve can also refill the jar next to it.",
+      "titulo": "The Thaw Begins",
+      "ensena": "The scale opens its bridge at the marked weight. One pipe sends matter back up to another jar: use it to reorder the layers.",
       "intro": [
         "Beyond the castle, the kingdom froze. Welcome to the Ice Cream Ruins.",
         "Brrr! Then let's thaw it, one sweet at a time."
       ],
       "guia": [],
-      "fin": "All three taps work! The ice is starting to crack.",
-      "ingenio": "Solve it without hints",
+      "fin": "Crack! The first block of ice just broke.",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Matcha Cake",
-        "T2": "The Caramel Cake",
-        "T3": "The Caramel Cake"
+        "T1": "The Caramel Cake"
       }
     },
     14: {
-      "titulo": "Clear the Way",
-      "ensena": "Move what is in the way into the reserve, so the bottom holds what the sweet wants.",
+      "titulo": "Two-Flavor Sorbet",
+      "ensena": "Use the Reserve to set aside what gets in the way. There is a mixed order: the colors of the little circles show how much of each flavor.",
       "intro": [],
-      "guia": [],
-      "fin": "Stepping aside is also moving forward.",
-      "ingenio": "Solve it without hints",
+      "guia": [
+        "A mixed order! This sweet wants a mix: each color of its little circles is a different flavor.",
+        "Once a flavor is complete, it takes no more of it. Give it what it is missing!"
+      ],
+      "fin": "Two flavors in one sweet. Now we are talking!",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T1": "The Mint Cake",
+        "T2": "The Matcha Tiramisu",
+        "T1": "The Matcha Cake",
         "D": "Reserve"
       }
     },
     15: {
-      "titulo": "Exact Weight",
-      "ensena": "The scale opens its bridge at the marked weight. Work out what to drop first.",
+      "titulo": "Sprouts in the Frost",
+      "ensena": "Feed the Matcha Seed and the licorice bridge will sprout. The capsule is only filled and emptied through pipes.",
       "intro": [],
       "guia": [],
-      "fin": "Exact weight, open bridge. Nothing wasted.",
+      "fin": "The licorice broke through the frost!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Caramel Cake"
+        "T2": "The Matcha Seed",
+        "T1": "The Matcha Cake"
       }
     },
     16: {
-      "titulo": "Drop by Drop",
-      "ensena": "The flask measures one at a time. In the still, Caramel + Mint turn into steam: don't waste any.",
+      "titulo": "The Frozen Scale",
+      "ensena": "The scale opens its bridge at the marked weight. Grape weighs 2 and sinks to the bottom.",
       "intro": [],
       "guia": [],
-      "fin": "Not a drop too much. That's how you measure.",
-      "ingenio": "Solve it without hints",
+      "fin": "Exact weight. Even ice respects a good scale.",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "TV": "The Meringue Pinwheel",
-        "T2": "The Mint Cake"
+        "T1": "The Mint Cake"
       }
     },
     17: {
-      "titulo": "Frozen Gravity",
-      "ensena": "Grape weighs 2 and sinks. Use it as a counterweight before offering it.",
+      "titulo": "Crystal and Frost",
+      "ensena": "The crystal pipe only lets Mint through. The scale opens its bridge at the marked weight.",
       "intro": [],
       "guia": [],
-      "fin": "The grape weighed just right!",
-      "ingenio": "Solve it without hints",
+      "fin": "Clean crystal, open path.",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "TU": "The Caramel Cake",
-        "T2": "The Galactic Cake"
+        "T1": "The Mint Cake"
       }
     },
     18: {
-      "titulo": "Four Jars, Two Valves",
-      "ensena": "Two valves share the matter among three sweets. Set up each jar so the right matter sits at the bottom.",
-      "intro": [
-        "Four jars. Look carefully before you move: your moves are counted."
-      ],
+      "titulo": "Capsule in the Glacier",
+      "ensena": "The scale opens its bridge at the marked weight. The capsule is only filled and emptied through pipes.",
+      "intro": [],
       "guia": [],
-      "fin": "Four jars and no mess at all!",
+      "fin": "The capsule weighed just right!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Matcha Cake",
-        "T2": "The Mint Cake",
-        "T3": "The Caramel Cake"
+        "T1": "The Mint Cake"
       }
     },
     19: {
-      "titulo": "Licorice Under the Snow",
-      "ensena": "The licorice sprouts when its sweet is complete. Which one must wake first?",
+      "titulo": "Sweet Avalanche",
+      "ensena": "The scale opens its bridge at the marked weight. There is a mixed order: the colors of the little circles show how much of each flavor.",
       "intro": [],
       "guia": [],
-      "fin": "The licorice broke the ice.",
-      "ingenio": "Solve it without hints",
+      "fin": "Not even an avalanche can stop us!",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "TG": "The Mint Cake",
-        "T2": "The Matcha Cake",
-        "D": "Reserve"
+        "T1": "The Mint Matcha Macaron"
       }
     },
     20: {
       "titulo": "The Frosted Oven",
-      "ensena": "Chocolate seal, scale and pinwheel: each mechanism opens the next. Plan the whole order.",
+      "ensena": "Grape weighs 2 and sinks to the bottom. The capsule is only filled and emptied through pipes.",
       "intro": [],
       "guia": [],
       "fin": "The frosted oven warms up again.",
-      "ingenio": "Solve it without hints",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "TV": "The Meringue Pinwheel",
-        "T1": "The Caramel Cake"
+        "T2": "The Galactic Cake",
+        "T1": "The Mint Cake"
       }
     },
     21: {
-      "titulo": "Ice Crystal",
-      "ensena": "The crystal pipe only lets Mint through. Separate before you send.",
+      "titulo": "Chocolate Among the Floes",
+      "ensena": "The scale opens its bridge at the marked weight. A chocolate block plugs a pipe: only Caramel melts it.",
       "intro": [],
       "guia": [],
-      "fin": "Clean crystal, open path.",
-      "ingenio": "Solve it without hints",
-      "nombres": {
-        "TG": "The Matcha Cake",
-        "T2": "The Mint Cake",
-        "D": "Reserve"
-      }
-    },
-    22: {
-      "titulo": "Order in the Freezer",
-      "ensena": "Each jar empties from the bottom into its sweet. The middle valve can also refill the jar next to it.",
-      "intro": [],
-      "guia": [],
-      "fin": "Everything sorted in the freezer!",
+      "fin": "The chocolate melted, and so did the ice.",
       "ingenio": "Solve it without hints",
       "nombres": {
         "T1": "The Caramel Cake",
+        "T2": "The Caramel Cake"
+      }
+    },
+    22: {
+      "titulo": "Three-Scoop Ice Cream",
+      "ensena": "There is a mixed order: the colors of the little circles show how much of each flavor. The flask takes and gives one measure at a time.",
+      "intro": [],
+      "guia": [],
+      "fin": "Three scoops and none of them fell!",
+      "ingenio": "Leave the second container on top empty",
+      "nombres": {
+        "T3": "The Mint Caramel Cake",
         "T2": "The Mint Cake",
-        "T3": "The Matcha Cake"
+        "T1": "The Mint Cake"
       }
     },
     23: {
-      "titulo": "Sink the Ice",
-      "ensena": "Whatever sinks comes out of the tap first. Use the grape to slip underneath.",
+      "titulo": "Order in the Freezer",
+      "ensena": "A chocolate seal blocks a jar: melt it by pouring Caramel. Grape weighs 2 and sinks to the bottom.",
       "intro": [],
       "guia": [],
-      "fin": "Underneath, and nobody noticed!",
-      "ingenio": "Solve it without hints",
+      "fin": "Everything sorted in the freezer!",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "TG": "The Matcha Cake",
-        "TU": "The Galactic Cake",
-        "T2": "The Mint Cake"
+        "T1": "The Caramel Cake",
+        "T2": "The Caramel Cake"
       }
     },
     24: {
       "titulo": "The Ice Heart",
-      "ensena": "Chocolate seal, scale and pinwheel: each mechanism opens the next. Plan the whole order.",
+      "ensena": "The capsule is only filled and emptied through pipes.",
       "intro": [
         "The third fragment beats inside this ice. Think through the whole plan before you start."
       ],
@@ -289,14 +283,13 @@
       "fin": "The Ice Heart is melting! Third fragment recovered.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "TV": "The Meringue Pinwheel",
-        "T1": "The Ice Heart",
-        "K": "Spark"
+        "T1": "The Mint Cake",
+        "T2": "The Ice Heart"
       }
     },
     25: {
       "titulo": "City Without Ground",
-      "ensena": "Grape weighs 2 and sinks. Use it as a counterweight before offering it.",
+      "ensena": "The valve picks which pipe the tap uses: think where each measure goes. One pipe sends matter back up to another jar: use it to reorder the layers.",
       "intro": [
         "Look up! The Floating City hovers above the clouds.",
         "Gravity rules here. Count your weights carefully."
@@ -305,142 +298,137 @@
       "fin": "Gravity is working for us now!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "TU": "The Galaxy Donut",
-        "T2": "The Mint Donut"
+        "T2": "The Mint Donut",
+        "T1": "The Lime Macaron"
       }
     },
     26: {
       "titulo": "Hanging Streets",
-      "ensena": "Two valves share the matter among three sweets. Set up each jar so the right matter sits at the bottom.",
+      "ensena": "The scale opens its bridge at the marked weight. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "Streets in place. The city breathes.",
-      "ingenio": "Solve it without hints",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T1": "The Lime Macaron",
-        "T2": "The Mint Donut",
-        "T3": "The Orange Cake"
+        "T2": "The Lime Macaron",
+        "T1": "The Orange Cake"
       }
     },
     27: {
-      "titulo": "Dosing Up High",
-      "ensena": "The flask measures one at a time. In the still, Caramel + Mint turn into steam: don't waste any.",
+      "titulo": "Steam Among the Clouds",
+      "ensena": "Grape weighs 2 and sinks to the bottom. In the still, Caramel + Mint turn into steam for the pinwheel.",
       "intro": [],
       "guia": [],
-      "fin": "Exact dose, even up high.",
+      "fin": "The steam lifts us higher and higher!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "TV": "The Meringue Pinwheel",
-        "T2": "The Orange Cake"
+        "T1": "The Galaxy Donut",
+        "T2": "The Orange Cake",
+        "TV": "The Meringue Pinwheel"
       }
     },
     28: {
-      "titulo": "Roots in the Air",
-      "ensena": "Three sweets, three energies, two valves and a bridge. Every move counts.",
+      "titulo": "Two-Tier Cake",
+      "ensena": "One pipe sends matter back up to another jar: use it to reorder the layers.",
       "intro": [],
       "guia": [],
-      "fin": "The floating roots are blooming!",
-      "ingenio": "Solve it without hints",
+      "fin": "Two flavors, two tiers, one perfect cake!",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "TU": "The Galaxy Donut",
-        "T2": "The Mint Donut",
-        "TG": "The Mint Donut"
+        "T1": "The Orange Cake",
+        "T2": "The Mint Caramel Cake"
       }
     },
     29: {
-      "titulo": "Sky Counterweight",
-      "ensena": "The scale opens its bridge at the marked weight. Work out what to drop first.",
+      "titulo": "Melting Up High",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
-      "fin": "The sky counterweight is balanced.",
-      "ingenio": "Solve it without hints",
+      "fin": "Melted chocolate and an exact dose. Flawless.",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T2": "The Mint Donut"
+        "T2": "The Lime Macaron",
+        "T1": "The Mint Donut"
       }
     },
     30: {
       "titulo": "Crystal Above the Clouds",
-      "ensena": "The crystal pipe only lets Mint through. Separate before you send.",
+      "ensena": "The crystal pipe only lets Mint through.",
       "intro": [],
       "guia": [],
       "fin": "The crystal shines above the clouds!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "TG": "The Orange Cake",
-        "T2": "The Mint Donut",
-        "D": "Reserve"
+        "T3": "The Mint Donut",
+        "T1": "The Lime Macaron",
+        "T2": "The Mint Matcha Macaron"
       }
     },
     31: {
-      "titulo": "The Valve Maze",
-      "ensena": "Two valves share the matter among three sweets. Set up each jar so the right matter sits at the bottom.",
-      "intro": [
-        "Two valves, four jars and very few spare moves."
-      ],
+      "titulo": "The Floating Storeroom",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. Use the Reserve to set aside what gets in the way.",
+      "intro": [],
       "guia": [],
-      "fin": "You got out of the valve maze. Impressive.",
-      "ingenio": "Solve it without hints",
+      "fin": "Everything in its place, even up in the air.",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T1": "The Galaxy Donut",
-        "T2": "The Orange Cake",
-        "T3": "The Orange Cake"
+        "T2": "The Lime Macaron",
+        "T1": "The Lime Macaron",
+        "D": "Reserve"
       }
     },
     32: {
       "titulo": "Three Towers",
-      "ensena": "Each jar empties from the bottom into its sweet. The middle valve can also refill the jar next to it.",
+      "ensena": "The flask takes and gives one measure at a time. Feed the Matcha Seed and the licorice bridge will sprout.",
       "intro": [],
       "guia": [],
       "fin": "The three towers shine again!",
-      "ingenio": "Solve it without hints",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T1": "The Mint Donut",
-        "T2": "The Lime Macaron",
-        "T3": "The Orange Cake"
+        "T2": "The Mint Donut",
+        "T1": "The Matcha Seed"
       }
     },
     33: {
       "titulo": "Free Fall",
-      "ensena": "Whatever sinks comes out of the tap first. Use the grape to slip underneath.",
+      "ensena": "The crystal pipe only lets Mint through. A chocolate seal blocks a jar: melt it by pouring Caramel.",
       "intro": [],
       "guia": [],
       "fin": "Free fall, perfect landing.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "TG": "The Lime Macaron",
-        "TU": "The Galaxy Donut",
-        "T2": "The Mint Donut"
+        "T1": "The Mint Donut",
+        "T3": "The Mint Donut",
+        "T2": "The Matcha Tiramisu"
       }
     },
     34: {
-      "titulo": "Licorice Bridges",
-      "ensena": "The licorice sprouts when its sweet is complete. Which one must wake first?",
+      "titulo": "Sky Pipes",
+      "ensena": "The valve picks which pipe the tap uses: think where each measure goes. One pipe sends matter back up to another jar: use it to reorder the layers.",
       "intro": [],
       "guia": [],
-      "fin": "Licorice bridges all over the city!",
-      "ingenio": "Solve it without hints",
+      "fin": "The sky pipes are flowing again!",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "TG": "The Mint Donut",
-        "T2": "The Orange Cake",
-        "D": "Reserve"
+        "T1": "The Mint Donut",
+        "T2": "The Mint Donut"
       }
     },
     35: {
       "titulo": "The Great Mix",
-      "ensena": "Two valves share the matter among three sweets. Set up each jar so the right matter sits at the bottom.",
+      "ensena": "Feed the Matcha Seed and the licorice bridge will sprout. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "The great mix, solved. You think like a master now.",
-      "ingenio": "Solve it without hints",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T1": "The Lime Macaron",
-        "T2": "The Galaxy Donut",
-        "T3": "The Lime Macaron"
+        "T1": "The Matcha Seed",
+        "T2": "The Orange Cake"
       }
     },
     36: {
       "titulo": "The Primordial Heart",
-      "ensena": "Three sweets, three energies, two valves and a bridge. Every move counts.",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. One pipe sends matter back up to another jar: use it to reorder the layers.",
       "intro": [
         "The last fragment. Everything you've learned, on a single board.",
         "Let's go get the Heart!"
@@ -449,9 +437,165 @@
       "fin": "The Primordial Heart is whole!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "TU": "The Grape Pillar",
-        "T2": "The Mint Pillar",
-        "TG": "The Grape Pillar"
+        "T2": "The Orange Cake",
+        "T1": "The Primordial Heart",
+        "T3": "The Lime Macaron"
+      }
+    },
+    37: {
+      "titulo": "The Flavor Fair",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it.",
+      "intro": [
+        "The Heart beats, but the Flavor Fair is still dark: its sweets have lost their taste.",
+        "Then we'll give them new flavors! Mixes, combos... everything!"
+      ],
+      "guia": [],
+      "fin": "The first fair stall is open!",
+      "ingenio": "Leave the second container on top empty",
+      "nombres": {
+        "T1": "The Mint Caramel Cake",
+        "T2": "The Pink Mint Donut"
+      }
+    },
+    38: {
+      "titulo": "Macaron Stall",
+      "ensena": "The capsule is only filled and emptied through pipes. A chocolate seal blocks a jar: melt it by pouring Caramel.",
+      "intro": [],
+      "guia": [],
+      "fin": "Two-flavor macarons for everyone!",
+      "ingenio": "Leave the fourth container on top empty",
+      "nombres": {
+        "T1": "The Pink Mint Donut",
+        "T2": "The Matcha Tiramisu"
+      }
+    },
+    39: {
+      "titulo": "Licorice and Chocolate",
+      "ensena": "Feed the Matcha Seed and the licorice bridge will sprout. A chocolate block plugs a pipe: only Caramel melts it.",
+      "intro": [],
+      "guia": [],
+      "fin": "What a tasty pair!",
+      "ingenio": "Solve it without hints",
+      "nombres": {
+        "T1": "The Matcha Seed",
+        "T2": "The Mint Matcha Macaron"
+      }
+    },
+    40: {
+      "titulo": "The Cream Ferris Wheel",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. The flask takes and gives one measure at a time.",
+      "intro": [],
+      "guia": [],
+      "fin": "The Ferris wheel is turning again!",
+      "ingenio": "Leave the first container on top empty",
+      "nombres": {
+        "T1": "The Pink Mint Donut",
+        "T2": "The Pink Mint Donut",
+        "T3": "The Mint Caramel Cake"
+      }
+    },
+    41: {
+      "titulo": "Flavor Raffle",
+      "ensena": "One pipe sends matter back up to another jar: use it to reorder the layers. Feed the Matcha Seed and the licorice bridge will sprout.",
+      "intro": [],
+      "guia": [],
+      "fin": "A prize for every sweet!",
+      "ingenio": "Leave the first container on top empty",
+      "nombres": {
+        "T1": "The Mint Caramel Cake",
+        "T2": "The Matcha Seed"
+      }
+    },
+    42: {
+      "titulo": "Caramel Carousel",
+      "ensena": "One pipe sends matter back up to another jar: use it to reorder the layers. A chocolate seal blocks a jar: melt it by pouring Caramel.",
+      "intro": [],
+      "guia": [],
+      "fin": "The carousel spins with joy!",
+      "ingenio": "Solve it without hints",
+      "nombres": {
+        "T2": "The Mint Matcha Macaron",
+        "T1": "The Mint Caramel Cake"
+      }
+    },
+    43: {
+      "titulo": "The Fair Still",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. In the still, Caramel + Mint turn into steam for the pinwheel.",
+      "intro": [],
+      "guia": [],
+      "fin": "Steam, chocolate and flavor. This is fine pastry now.",
+      "ingenio": "Leave the second container on top empty",
+      "nombres": {
+        "T2": "The Mint Caramel Cake",
+        "T1": "The Matcha Tiramisu",
+        "TV": "The Meringue Pinwheel"
+      }
+    },
+    44: {
+      "titulo": "The Roller Coaster",
+      "ensena": "The capsule is only filled and emptied through pipes. Grape weighs 2 and sinks to the bottom.",
+      "intro": [],
+      "guia": [],
+      "fin": "Ups, downs and not a drop wasted!",
+      "ingenio": "Leave the second container on top empty",
+      "nombres": {
+        "T1": "The Grape Caramel Cake",
+        "T2": "The Mint Caramel Cake"
+      }
+    },
+    45: {
+      "titulo": "Three-Flavor Feast",
+      "ensena": "One pipe sends matter back up to another jar: use it to reorder the layers. The flask takes and gives one measure at a time.",
+      "intro": [],
+      "guia": [],
+      "fin": "This is a feast!",
+      "ingenio": "Solve it without hints",
+      "nombres": {
+        "T2": "The Pink Mint Donut",
+        "T3": "The Cappuccino Donut",
+        "T1": "The Mint Caramel Cake"
+      }
+    },
+    46: {
+      "titulo": "The Steam Tent",
+      "ensena": "In the still, Caramel + Mint turn into steam for the pinwheel. The flask takes and gives one measure at a time.",
+      "intro": [],
+      "guia": [],
+      "fin": "What a fragrant tent!",
+      "ingenio": "Leave the first container on top empty",
+      "nombres": {
+        "T3": "The Mint Matcha Macaron",
+        "T1": "The Matcha Donut",
+        "T2": "The Mint Caramel Cake",
+        "TV": "The Meringue Pinwheel"
+      }
+    },
+    47: {
+      "titulo": "Lucky Grapes",
+      "ensena": "Grape weighs 2 and sinks to the bottom. One pipe sends matter back up to another jar: use it to reorder the layers.",
+      "intro": [],
+      "guia": [],
+      "fin": "The grape brought good luck!",
+      "ingenio": "Leave the third container on top empty",
+      "nombres": {
+        "T1": "The Cappuccino Donut",
+        "T2": "The Blueberry Tea Cake"
+      }
+    },
+    48: {
+      "titulo": "The Great Fair Cake",
+      "ensena": "In the still, Caramel + Mint turn into steam for the pinwheel. A chocolate seal blocks a jar: melt it by pouring Caramel.",
+      "intro": [
+        "The Great Fair Cake awaits its perfect mix. Everything you know, on a single board.",
+        "Let's go for the last flavor!"
+      ],
+      "guia": [],
+      "fin": "The Great Cake shines with all its flavors! The whole fair comes back to life.",
+      "ingenio": "Solve it without hints",
+      "nombres": {
+        "T1": "The Mint Caramel Cake",
+        "T2": "The Great Fair Cake",
+        "TV": "The Meringue Pinwheel"
       }
     }
     // ── GENERADOS: FIN ──

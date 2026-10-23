@@ -36,7 +36,8 @@
   var BASE = function () {
     return { v: 2, niveles: {}, vistos: {}, guias: {}, notas: {}, prologo: false, idioma: null,
       musica: true, efectos: true, voces: true, monedas: 0, vitrina: {}, mesa: 'madera', mesas: { madera: true },
-      logros: {}, cont: { vapor: 0, fundidos: 0, sinPistas: 0 }, cofre: { ultimo: '', racha: 0 } };
+      logros: {}, cont: { vapor: 0, fundidos: 0, sinPistas: 0, combos: 0 }, cofre: { ultimo: '', racha: 0 },
+      vidas: { n: 5, desde: 0 }, rango: 0, avatar: 0 };
   };
   var PLAT = window.Plataforma || null;
   var prog = BASE();
@@ -62,9 +63,136 @@
   }
   function resuelto(id) { return !!(prog.niveles[id] && prog.niveles[id].res); }
   function desbloqueado(id) { return id === 1 || resuelto(id - 1); }
-  function fragmentos() { return NIVELES.filter(function (n) { return n.jefe && resuelto(n.id); }).length; }
+  function fragmentos() { return NIVELES.filter(function (n) { return n.jefe && n.region <= 4 && resuelto(n.id); }).length; }
   function dulceDeNivel(id) { return TX.VITRINA.filter(function (p) { return p[3] === id; })[0]; }
   function nVitrina() { return Object.keys(prog.vitrina).length; }
+
+  // ───────────────────────── Puntos y rangos ─────────────────────────
+  // [nombre ES, nombre EN, puntos necesarios, premio]
+  var RANGOS = [
+    ['Aprendiz', 'Apprentice', 0, null],
+    ['Pinche de cocina', 'Kitchen Helper', 1500, { monedas: 50 }],
+    ['Repostero', 'Pastry Cook', 4000, { vidaMax: 1, monedas: 50 }],
+    ['Maestro pastelero', 'Master Baker', 8000, { recarga: 10, monedas: 100 }],
+    ['Gran alquimista', 'Grand Alchemist', 14000, { vidaMax: 1, monedas: 150 }],
+    ['Leyenda de Auralia', 'Legend of Auralia', 22000, { monedas: 300, dulce: 'p30' }]
+  ];
+  function puntosTotales() { var t = 0; for (var id in prog.niveles) t += prog.niveles[id].pts || 0; return t; }
+  function rangoDe(pts) { var r = 0; RANGOS.forEach(function (x, i) { if (pts >= x[2]) r = i; }); return r; }
+  function nombreRango(i) { return RANGOS[i][IDIOMA === 'en' ? 1 : 0]; }
+  function premioTexto(p) {
+    if (!p) return T('premio_ninguno');
+    var t = [];
+    if (p.vidaMax) t.push(T('premio_vida'));
+    if (p.recarga) t.push(T('premio_recarga', { n: p.recarga }));
+    if (p.dulce) t.push(T('premio_dulce'));
+    if (p.monedas) t.push(T('premio_monedas', { n: p.monedas }));
+    return t.join(' · ');
+  }
+  // Aplica los premios de los rangos nuevos; devuelve la lista de rangos conseguidos ahora
+  function subirRango() {
+    var nuevo = rangoDe(puntosTotales()), conseguidos = [];
+    while (prog.rango < nuevo) {
+      prog.rango++;
+      var pr = RANGOS[prog.rango][3] || {};
+      if (pr.monedas) prog.monedas += pr.monedas;
+      if (pr.dulce) { if (!prog.vitrina[pr.dulce]) prog.vitrina[pr.dulce] = true; else prog.monedas += 150; }
+      if (pr.vidaMax) prog.vidas.n = Math.min(maxVidas(), prog.vidas.n + 1);
+      conseguidos.push(prog.rango);
+    }
+    if (conseguidos.length) guardar();
+    return conseguidos;
+  }
+  function formatoPuntos(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, IDIOMA === 'en' ? ',' : '.'); }
+
+  // ───────────────────────── Vidas ─────────────────────────
+  // Se pierde una al perder (o al reiniciar/salir con la partida empezada); se recupera una cada 15 minutos
+  function maxVidas() { var m = 5; for (var i = 1; i <= prog.rango; i++) if (RANGOS[i][3] && RANGOS[i][3].vidaMax) m += RANGOS[i][3].vidaMax; return m; }
+  function minutosRecarga() { var m = 15; for (var i = 1; i <= prog.rango; i++) if (RANGOS[i][3] && RANGOS[i][3].recarga) m = RANGOS[i][3].recarga; return m; }
+  function vidas() {
+    var v = prog.vidas, max = maxVidas(), paso = minutosRecarga() * 60000, ahora = Date.now();
+    if (v.n >= max) { v.desde = ahora; return v.n; }
+    if (!v.desde) v.desde = ahora;
+    var ganadas = Math.floor((ahora - v.desde) / paso);
+    if (ganadas > 0) { v.n = Math.min(max, v.n + ganadas); v.desde = v.n >= max ? ahora : v.desde + ganadas * paso; guardar(); }
+    return v.n;
+  }
+  function proximaVida() { var paso = minutosRecarga() * 60000; return Math.max(0, prog.vidas.desde + paso - Date.now()); }
+  function reloj(ms) { var s = Math.ceil(ms / 1000), m = Math.floor(s / 60); return m + ':' + String(s % 60).padStart(2, '0'); }
+  function gastarVida() {
+    var max = maxVidas(); vidas();
+    if (prog.vidas.n >= max) prog.vidas.desde = Date.now();
+    prog.vidas.n = Math.max(0, prog.vidas.n - 1); guardar(); pintarVidas();
+  }
+  var CORAZON_SVG = '<svg class="corazon-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C5 16 2 12.5 2 8.6 2 5.5 4.4 3.2 7.3 3.2c1.9 0 3.6 1 4.7 2.6 1.1-1.6 2.8-2.6 4.7-2.6 2.9 0 5.3 2.3 5.3 5.4 0 3.9-3 7.4-10 12.4Z" fill="#f2607d" stroke="#8f2440" stroke-width="2" stroke-linejoin="round"/><path d="M6.5 7.5c.6-1.3 1.7-1.9 3-1.9" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".8"/></svg>';
+  function pintarVidas() {
+    var n = vidas(), max = maxVidas();
+    document.querySelectorAll('.chapa-vidas').forEach(function (c) {
+      c.innerHTML = CORAZON_SVG + '<b>' + n + '</b>' + (n < max ? '<small>' + reloj(proximaVida()) + '</small>' : '');
+      c.classList.toggle('vacias', n === 0);
+      c.setAttribute('aria-label', T('vidas_aria', { n: n, m: max }));
+    });
+    document.querySelectorAll('.chapa-puntos').forEach(function (c) {
+      c.innerHTML = '<svg class="estrella-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8Z" fill="#ffd34d" stroke="#9a5e0c" stroke-width="1.8" stroke-linejoin="round"/></svg><b>' + formatoPuntos(puntosTotales()) + '</b>';
+      c.setAttribute('aria-label', T('puntos_aria', { n: formatoPuntos(puntosTotales()), r: nombreRango(prog.rango) }));
+    });
+  }
+  setInterval(function () { if (!$('pantalla-portada').hidden || !$('pantalla-mapa').hidden || !$('modal').hidden) pintarVidas(); }, 1000);
+  // Ventana cuando no quedan vidas: esperar o recargar con monedas
+  var PRECIO_VIDAS = 40;
+  function ventanaSinVidas(alRecargar) {
+    function dibujar(m) {
+      var puede = prog.monedas >= PRECIO_VIDAS;
+      m.querySelector('.ventana').innerHTML = '<button class="btn-redondo cerrar" aria-label="' + T('cerrar') + '">✕</button>' +
+        '<div class="sin-vidas">' + CORAZON_SVG + '</div><h2>' + T('sin_vidas_t') + '</h2>' +
+        '<p class="sub">' + T('sin_vidas', { m: minutosRecarga() }) + '</p>' +
+        '<p class="cuenta-vida">' + T('proxima_vida', { t: reloj(proximaVida()) }) + '</p>' +
+        '<div class="acciones"><button class="btn" id="b-recargar"' + (puede ? '' : ' disabled') + '>' + T('recargar_vidas') + ' · ' + MONEDA_SVG + PRECIO_VIDAS + '</button></div>' +
+        (puede ? '' : '<p class="sub">' + T('vit_falta', { p: PRECIO_VIDAS - prog.monedas }) + '</p>') +
+        '<div class="acciones"><button class="enlace" id="b-esperar">' + T('esperar') + '</button></div>';
+      m.querySelector('.cerrar').addEventListener('click', function () { SON.toque(); cerrarModal(); });
+      m.querySelector('#b-esperar').addEventListener('click', function () { SON.toque(); cerrarModal(); });
+      var br = m.querySelector('#b-recargar');
+      if (br && puede) br.addEventListener('click', function () {
+        prog.monedas -= PRECIO_VIDAS; prog.vidas.n = maxVidas(); prog.vidas.desde = Date.now(); guardar();
+        SON.compra(); pintarMonedas(); pintarVidas(); cerrarModal();
+        toast('<span class="toast-ic">❤️</span><span><b>' + T('vidas_recargadas') + '</b></span>');
+        if (alRecargar) alRecargar();
+      });
+    }
+    abrirModal('', function (m) {
+      dibujar(m);
+      var t = setInterval(function () {
+        if ($('modal').hidden || !m.querySelector('.sin-vidas')) { clearInterval(t); return; }
+        if (vidas() > 0) { clearInterval(t); cerrarModal(); pintarVidas(); if (alRecargar) alRecargar(); return; }
+        var c = m.querySelector('.cuenta-vida'); if (c) c.textContent = T('proxima_vida', { t: reloj(proximaVida()) });
+      }, 1000);
+    });
+  }
+  // Pregunta antes de una acción que cuesta una vida (reiniciar o salir con la partida empezada)
+  function confirmarVida(titulo, texto, si, alAceptar) {
+    abrirModal('<button class="btn-redondo cerrar" aria-label="' + T('cerrar') + '">✕</button><div class="sin-vidas">' + CORAZON_SVG + '</div><h2>' + titulo + '</h2><p class="sub">' + texto + '</p>' +
+      '<p class="cuenta-vida">' + T('vidas_quedan', { n: vidas() }) + '</p>' +
+      '<div class="acciones"><button class="btn sec peq" id="b-cv-no">' + T('seguir_jugando') + '</button><button class="btn peq peligro" id="b-cv-si">' + si + '</button></div>', function (m) {
+      m.querySelector('#b-cv-no').addEventListener('click', function () { SON.toque(); cerrarModal(); });
+      m.querySelector('#b-cv-si').addEventListener('click', function () { SON.toque(); cerrarModal(); alAceptar(); });
+    });
+  }
+  function partidaEmpezada() { return J && !J.fin && J.movs > 0 && !J.n.libre; }
+
+  // ───────────────────────── Ventana de rangos ─────────────────────────
+  function ventanaRangos() {
+    var pts = puntosTotales(), r = rangoDe(pts), sig = RANGOS[r + 1];
+    var lista = RANGOS.map(function (x, i) {
+      return '<div class="rango' + (i <= r ? ' hecho' : '') + (i === r ? ' actual' : '') + '"><span class="rango-ic">' + (i <= r ? '★' : '☆') + '</span><div><b>' + nombreRango(i) + '</b><small>' + formatoPuntos(x[2]) + ' ' + T('puntos').toLowerCase() + ' · ' + premioTexto(x[3]) + '</small></div></div>';
+    }).join('');
+    var prog0 = sig ? Math.round(100 * (pts - RANGOS[r][2]) / (sig[2] - RANGOS[r][2])) : 100;
+    abrirModal('<button class="btn-redondo cerrar" aria-label="' + T('cerrar') + '">✕</button><h2>' + T('rangos') + '</h2>' +
+      '<p class="sub">' + T('rango_sub') + '</p>' +
+      '<div class="rango-resumen"><span class="chapa chapa-puntos"></span><b>' + nombreRango(r) + '</b>' +
+      '<span class="barrita"><i style="width:' + prog0 + '%"></i></span><small>' + (sig ? T('siguiente_rango', { n: formatoPuntos(sig[2] - pts), r: nombreRango(r + 1) }) : T('rango_max')) + '</small></div>' +
+      '<div class="rangos">' + lista + '</div>', function () { pintarVidas(); });
+  }
 
   // ───────────────────────── Idioma ─────────────────────────
   var IDIOMA = (PLAT && PLAT.idioma) || prog.idioma || ((navigator.language || 'es').toLowerCase().indexOf('es') === 0 ? 'es' : 'en');
@@ -217,7 +345,7 @@
     if (!quiere) return;
     var el = new Audio('assets/audio/musica_' + quiere + '.mp3');
     el.loop = true; el.volume = 0;
-    el.addEventListener('error', function () { if (quiere !== 'obrador') { musica.pista = null; ponerMusica(quiere === 'helado' ? 'bosque' : 'obrador'); } });
+    el.addEventListener('error', function () { if (quiere !== 'obrador') { musica.pista = null; ponerMusica(quiere === 'helado' ? 'bosque' : quiere === 'feria' ? 'portada' : 'obrador'); } });
     el.play().then(function () { fundir(el, voz ? VOL_MUSICA * 0.35 : VOL_MUSICA); }).catch(function () {});
     musica.el = el; musica.pista = quiere;
   }
@@ -334,6 +462,7 @@
     switch (id) {
       case 'sin_ayuda': return c.sinPistas;
       case 'vaporista': return c.vapor;
+      case 'combinador': return c.combos || 0;
       case 'fundidor': return c.fundidos;
       case 'perfeccionista': return NIVELES.filter(function (n) { var p = prog.niveles[n.id]; return p && p.dom && p.ing; }).length;
       case 'estudioso': return Object.keys(prog.notas).length;
@@ -360,6 +489,9 @@
         case 'region3': ok = NIVELES.filter(function (n) { return n.region === 3; }).every(function (n) { return resuelto(n.id); }); break;
         case 'region4': ok = NIVELES.filter(function (n) { return n.region === 4; }).every(function (n) { return resuelto(n.id); }); break;
         case 'tenaz': ok = !!ctx.tenaz; break;
+        case 'region5': ok = NIVELES.some(function (n) { return n.region === 5; }) && NIVELES.filter(function (n) { return n.region === 5; }).every(function (n) { return resuelto(n.id); }); break;
+        case 'rango_maestro': ok = prog.rango >= 3; break;
+        case 'leyenda': ok = prog.rango >= RANGOS.length - 1; break;
         default: ok = l[6] > 0 && progresoLogro(id) >= l[6];
       }
       if (ok) {
@@ -599,6 +731,7 @@
 
   // ───────────────────────── Portada ─────────────────────────
   function pintarPortada() {
+    pintarVidas();
     var s = siguienteNivel();
     $('b-jugar-sub').textContent = s ? T('seguir_nivel', { n: s.id }) : T('todo_completo');
   }
@@ -615,6 +748,7 @@
       if (nodo) sc.scrollLeft = Math.max(0, nodo.offsetLeft + nodo.parentNode.offsetLeft - sc.clientWidth / 2);
       if (nodo) sc.scrollTop = Math.max(0, nodo.offsetTop - sc.clientHeight / 2);
       tituloMapa();
+      moverAvatar();
     });
     if (!prog.prologo) {
       prog.prologo = true; guardar();
@@ -628,20 +762,20 @@
   // El mapa son tres paneles: la ilustración original (regiones I y II), su reflejo helado (III) y la ciudad de noche (IV).
   // Cada nivel tiene un panel y un punto del camino; en el reflejo el camino se recorre al revés.
   function posNodo(n) {
-    var i = (n.id - 1) % 12, panel = Math.floor((n.id - 1) / 12);
-    var p = NODOS[panel === 1 ? 11 - i : i];
-    return { panel: panel, x: panel === 1 ? 100 - p[0] : p[0], y: p[1] };
+    var i = (n.id - 1) % 12, panel = Math.floor((n.id - 1) / 12), espejo = panel % 2 === 1;
+    var p = NODOS[espejo ? 11 - i : i];
+    return { panel: panel, x: espejo ? 100 - p[0] : p[0], y: p[1] };
   }
   function pintarMapa() {
     var paneles = $('mapa-lienzo').querySelectorAll('.panel-mapa');
     paneles.forEach(function (pn) { pn.querySelectorAll('.nodo').forEach(function (e) { e.remove(); }); });
-    var actual = siguienteNivel(), mascaras = [[], [], []];
+    var actual = siguienteNivel(), mascaras = [[], [], [], []];
     NIVELES.forEach(function (n) {
       var p = posNodo(n), b = document.createElement('button'), pr = prog.niveles[n.id] || {};
       b.className = 'nodo' + (n.jefe ? ' jefe' : '') + (desbloqueado(n.id) ? '' : ' bloq') + (actual && actual.id === n.id ? ' actual' : '') + (pr.res ? ' hecho' : '');
       b.style.left = p.x + '%'; b.style.top = p.y + '%';
       b.textContent = n.id;
-      b.setAttribute('data-region', n.region);
+      b.setAttribute('data-region', n.region); b.setAttribute('data-id', n.id);
       b.setAttribute('aria-label', T('nivel_aria', { n: n.id, t: TN(n).titulo }) + (desbloqueado(n.id) ? '' : ' ' + T('bloqueado')));
       var mc = document.createElement('span'); mc.className = 'marcas';
       mc.innerHTML = '<i class="' + (pr.res ? 'si' : '') + '"></i><i class="' + (pr.dom ? 'si' : '') + '"></i><i class="' + (pr.ing ? 'si' : '') + '"></i>';
@@ -659,9 +793,38 @@
       if (mascaras[i].length) { var mk = mascaras[i].join(','); col.style.webkitMaskImage = mk; col.style.maskImage = mk; col.style.opacity = 1; }
       else col.style.opacity = 0;
     });
-    $('chapa-fragmentos').innerHTML = '<img src="assets/ic_tarta.png" alt="">' + T('fragmentos', { n: fragmentos() });
+    pintarVidas();
     $('b-mapa-seguir').textContent = actual ? T('jugar_nivel', { n: actual.id }) : T('reino_restaurado');
     tituloMapa();
+  }
+  // Miga camina por el mapa hasta el nivel que toca
+  function posAvatar(id) {
+    var b = $('mapa-lienzo').querySelector('.nodo[data-id="' + id + '"]'); if (!b) return null;
+    return { x: b.offsetLeft + b.parentNode.offsetLeft, y: b.offsetTop - b.offsetHeight * 0.55 };
+  }
+  function moverAvatar() {
+    var av = $('avatar-mapa'); if (!av) return;
+    var meta = siguienteNivel(), destino = meta ? meta.id : NIVELES[NIVELES.length - 1].id;
+    var desde = prog.avatar && prog.avatar < destino && destino - prog.avatar <= 6 ? prog.avatar : destino;
+    var p2 = posAvatar(destino); if (!p2) return;
+    av.hidden = false;
+    var fija = function (p) { av.style.left = p.x + 'px'; av.style.top = p.y + 'px'; };
+    prog.avatar = destino; guardar();
+    if (desde === destino || reducido) { fija(p2); return; }
+    // Camina nodo a nodo, dando un saltito en cada paso
+    var p0 = posAvatar(desde), ruta = [], fr = [];
+    for (var id = desde; id <= destino; id++) { var p = posAvatar(id); if (p) ruta.push(p); }
+    fija(p0);
+    ruta.forEach(function (p, i) {
+      var tx = (p.x - p0.x).toFixed(1), ty = (p.y - p0.y).toFixed(1);
+      if (i > 0) { var q = ruta[i - 1]; fr.push({ offset: (i - 0.5) / (ruta.length - 1), transform: 'translate(' + ((p.x + q.x) / 2 - p0.x).toFixed(1) + 'px,' + ((p.y + q.y) / 2 - p0.y - 26).toFixed(1) + 'px)' }); }
+      fr.push({ offset: i / (ruta.length - 1), transform: 'translate(' + tx + 'px,' + ty + 'px)' });
+    });
+    av.classList.add('andando'); av.classList.toggle('mira-izq', p2.x < p0.x);
+    setTimeout(function () {
+      av.animate(fr, { duration: 650 * (ruta.length - 1), easing: 'ease-in-out' }).onfinish = function () { fija(p2); av.classList.remove('andando', 'mira-izq'); };
+      for (var i = 1; i < ruta.length; i++) setTimeout(function () { SON.burbuja(); }, 650 * i - 120);
+    }, 500);
   }
   // Título grande: la región que ocupa el centro de la pantalla
   var regionTitulo = null;
@@ -676,7 +839,7 @@
     if (r === regionTitulo && $('mapa-titulo').textContent) return;
     regionTitulo = r;
     var t = $('mapa-titulo');
-    t.innerHTML = '<small>' + T('mapa_region', { n: ['I', 'II', 'III', 'IV'][r - 1] }) + '</small><b>' + regionNombre(r) + '</b>';
+    t.innerHTML = '<small>' + T('mapa_region', { n: ['I', 'II', 'III', 'IV', 'V'][r - 1] }) + '</small><b>' + regionNombre(r) + '</b>';
     t.setAttribute('data-region', r);
     if (!reducido) t.animate([{ transform: 'translateY(-8px) scale(.96)', opacity: 0.4 }, { transform: 'none', opacity: 1 }], { duration: 320, easing: 'ease-out' });
   }
@@ -735,6 +898,8 @@
 
   function cargarNivel(id) {
     var n = NIVELES.filter(function (x) { return x.id === id; })[0];
+    if (!n.libre && vidas() <= 0) { ventanaSinVidas(function () { cargarNivel(id); }); return; }
+    $('guia').hidden = true; enfocar([]); // una guía a medias de otro nivel no debe quedarse en pantalla
     var s0 = M.estadoInicial(n);
     var par = n.minimo || (M.resolver(n, s0) || []).length;
     J = { n: n, s: s0, s0: s0, hist: [], movs: 0, sel: null, ocupado: false, pendiente: null, pistas: 0, tramoPista: null,
@@ -742,7 +907,7 @@
       reinicios: 0, inicio: Date.now(), ultimaAccion: Date.now(), ayudaDada: false, conGuia: false, errores: 0, perdio: false };
     J.max = n.libre ? null : (n.maxMovs || par + Math.max(2, Math.ceil(par * 0.6)));
     (n.grifos || []).forEach(function (g) { J.valv[g.id] = 0; });
-    var ambiente = ['obrador', 'bosque', 'helado', 'ciudad'][n.region - 1], suave = 'assets/suave_' + ambiente + '.jpg';
+    var ambiente = ['obrador', 'bosque', 'helado', 'ciudad', 'feria'][n.region - 1], suave = 'assets/suave_' + ambiente + '.jpg';
     mostrar('pantalla-nivel', suave, ambiente);
     $('pantalla-nivel').setAttribute('data-region', n.region);
     $('pantalla-nivel').style.setProperty('--fondo-nivel', 'url("' + suave + '")');
@@ -771,24 +936,39 @@
     (J.n.objetivos || []).forEach(function (o) {
       var b = document.createElement('button'); b.className = 'ficha'; b.setAttribute('data-obj', o.id);
       b.innerHTML = '<span class="ficha-img">' + (o.tipo === 'turbina' ? MOLINILLO_SVG : '<img src="assets/' + o.img + '.png" alt="">') + '</span>' +
-        '<span class="ficha-num"></span><span class="ficha-mat" style="background:' + COLOR[o.materia].base + '">' + iconoMateria(o.materia, 11) + '</span>';
+        '<span class="ficha-num"></span><span class="ficha-mat" style="background:' + fondoSabores(o) + '">' + (o.pide ? '' : iconoMateria(o.materia, 11)) + '</span>';
       b.addEventListener('click', function () { SON.toque(); anillo(o.id, '#ffffff', false); explicaObjetivo(o); });
       c.appendChild(b);
     });
   }
+  // Pedidos combinados: lista de sabores, colores y textos
+  function sabores(o) { var l = []; if (o.pide) Object.keys(o.pide).forEach(function (k) { for (var i = 0; i < o.pide[k]; i++) l.push(k); }); else for (var j = 0; j < o.necesita; j++) l.push(o.materia); return l; }
+  function fondoSabores(o) {
+    if (!o.pide) return COLOR[o.materia].base;
+    var ks = Object.keys(o.pide), paso = 360 / ks.length;
+    return 'conic-gradient(' + ks.map(function (k, i) { return COLOR[k].base + ' ' + (i * paso) + 'deg ' + ((i + 1) * paso) + 'deg'; }).join(',') + ')';
+  }
+  function listaSabores(o, faltan) {
+    var ks = o.pide ? Object.keys(o.pide) : [o.materia], partes = [];
+    ks.forEach(function (k) {
+      var n = o.pide ? o.pide[k] - (faltan ? J.s.tiene[o.id][k] : 0) : o.necesita - (faltan ? J.s.tiene[o.id] : 0);
+      if (n > 0) partes.push(n + ' ' + (IDIOMA === 'en' ? '' : 'de ') + matNombre(k));
+    });
+    return partes.length > 1 ? partes.slice(0, -1).join(', ') + ' ' + T('y') + ' ' + partes[partes.length - 1] : partes.join('');
+  }
   function pintarObjetivos() {
     (J.n.objetivos || []).forEach(function (o) {
       var b = $('objetivos').querySelector('[data-obj="' + o.id + '"]'); if (!b) return;
-      var hecho = !!J.s.hecho[o.id], num = b.querySelector('.ficha-num'), txt = hecho ? '✓' : J.s.tiene[o.id] + '/' + o.necesita;
+      var hecho = !!J.s.hecho[o.id], num = b.querySelector('.ficha-num'), txt = hecho ? '✓' : M.recibido(o, J.s) + '/' + o.necesita;
       if (num.textContent && num.textContent !== txt && !reducido) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.18)', offset: 0.4 }, { transform: 'scale(1)' }], { duration: 380, easing: 'ease-out' });
       num.textContent = txt;
       b.classList.toggle('hecho', hecho);
-      b.setAttribute('aria-label', T('objetivo_aria', { o: nombreObj(o), a: J.s.tiene[o.id], b: o.necesita, m: matNombre(o.materia) }));
+      b.setAttribute('aria-label', T('objetivo_aria', { o: nombreObj(o), a: M.recibido(o, J.s), b: o.necesita, m: o.pide ? listaSabores(o) : matNombre(o.materia) }));
     });
   }
   function explicaObjetivo(o) {
     var s = J.s;
-    avisar(s.hecho[o.id] ? T('objetivo_vivo', { o: nombreObj(o) }) : T('objetivo_pide', { o: nombreObj(o), n: o.necesita - s.tiene[o.id], m: matNombre(o.materia) }), 'zappy');
+    avisar(s.hecho[o.id] ? T('objetivo_vivo', { o: nombreObj(o) }) : o.pide ? T('objetivo_combo', { o: nombreObj(o), l: listaSabores(o, true) }) : T('objetivo_pide', { o: nombreObj(o), n: o.necesita - s.tiene[o.id], m: matNombre(o.materia) }), 'zappy');
   }
 
   // ───────────────────────── Geometría ─────────────────────────
@@ -1068,13 +1248,21 @@
     var tur = o.tipo === 'turbina', ancho = o.necesita * 14;
     var x0 = tur ? o.x + r + 14 : o.x - ancho / 2 + 7, py = tur ? o.y - (o.necesita - 1) * 7 : o.y + r + 14;
     el('rect', { x: x0 - 10, y: py - 10, width: tur ? 20 : ancho + 6, height: tur ? o.necesita * 14 + 6 : 20, rx: 10, fill: '#fff6ea', stroke: '#5a3324', 'stroke-width': 1.8 }, gr);
-    var pips = [];
+    var pips = [], sab = sabores(o);
     for (var i = 0; i < o.necesita; i++) {
-      pips.push(el('circle', { cx: tur ? x0 : x0 + i * 14, cy: tur ? py + i * 14 - 3 : py, r: 5.2, stroke: COLOR[o.materia].sombra, 'stroke-width': 2 }, gr));
+      pips.push(el('circle', { cx: tur ? x0 : x0 + i * 14, cy: tur ? py + i * 14 - 3 : py, r: 5.2, stroke: COLOR[sab[i]].sombra, 'stroke-width': 2 }, gr));
     }
     var icg = el('g', { transform: 'translate(' + (o.x + r * 0.72) + ',' + (o.y - r * 0.72) + ')' }, gr);
-    el('circle', { r: 11, fill: COLOR[o.materia].base, stroke: '#5a3324', 'stroke-width': 2 }, icg);
-    el('path', { 'fill-rule': 'evenodd', d: ICONO[o.materia], fill: '#fff', transform: 'scale(.95)' }, icg);
+    if (o.pide) { // un icono por sabor, montados uno sobre otro
+      Object.keys(o.pide).forEach(function (k, j, ks) {
+        var ig = el('g', { transform: 'translate(' + (j * 15 - (ks.length - 1) * 7.5 + 4) + ',' + (j * 4 - 2) + ')' }, icg);
+        el('circle', { r: 10, fill: COLOR[k].base, stroke: '#5a3324', 'stroke-width': 2 }, ig);
+        el('path', { 'fill-rule': 'evenodd', d: ICONO[k], fill: '#fff', transform: 'scale(.85)' }, ig);
+      });
+    } else {
+      el('circle', { r: 11, fill: COLOR[o.materia].base, stroke: '#5a3324', 'stroke-width': 2 }, icg);
+      el('path', { 'fill-rule': 'evenodd', d: ICONO[o.materia], fill: '#fff', transform: 'scale(.95)' }, icg);
+    }
     var di = function () { explicaObjetivo(o); };
     gr.addEventListener('click', di);
     gr.addEventListener('keydown', function (e) { if (e.key === 'Enter') di(); });
@@ -1263,9 +1451,10 @@
     R.cables.forEach(function (c) { c.el.setAttribute('opacity', M.compuertaAbierta(n, s, c.comp) ? 0.22 : 0.6); });
     (n.objetivos || []).forEach(function (o) {
       var ro = R.obj[o.id], vivo = !!s.hecho[o.id];
-      ro.pips.forEach(function (p, i) { p.setAttribute('fill', i < s.tiene[o.id] ? COLOR[o.materia].base : '#fff'); });
+      var sab = sabores(o), visto = {};
+      ro.pips.forEach(function (p, i) { var k = sab[i]; visto[k] = (visto[k] || 0) + 1; var lleno = o.pide ? visto[k] <= s.tiene[o.id][k] : i < s.tiene[o.id]; p.setAttribute('fill', lleno ? COLOR[k].base : '#fff'); });
       if (ro.vivo !== vivo) { ro.g.classList.toggle('vivo', vivo); ro.icono.style.display = vivo ? 'none' : ''; ro.vivo = vivo; }
-      ro.g.setAttribute('aria-label', T('objetivo_aria', { o: nombreObj(o), a: s.tiene[o.id], b: o.necesita, m: matNombre(o.materia) }));
+      ro.g.setAttribute('aria-label', T('objetivo_aria', { o: nombreObj(o), a: M.recibido(o, s), b: o.necesita, m: o.pide ? listaSabores(o) : matNombre(o.materia) }));
     });
     $('t-movs').querySelector('span').textContent = J.max ? J.movs + '/' + J.max : J.movs;
     $('t-movs').classList.toggle('pocos', !!J.max && J.max - J.movs <= 2 && !J.fin);
@@ -1674,6 +1863,18 @@
   // ───────────────────────── Reiniciar ─────────────────────────
   function reiniciar() {
     if (!J || J.ocupado || J.guia) return;
+    if (partidaEmpezada()) {
+      confirmarVida(T('reiniciar_t'), T('reiniciar_vida'), T('si_reiniciar'), function () {
+        gastarVida(); J.perdio = true;
+        if (vidas() <= 0) { abrirMapa(); ventanaSinVidas(); return; }
+        reiniciarYa();
+      });
+      return;
+    }
+    reiniciarYa();
+  }
+  function reiniciarYa() {
+    if (!J) return;
     J.reinicios++; J.s = J.s0; J.movs = 0; J.hist = []; J.trasvases = 0; J.tocados = {}; J.sel = null; J.fin = false; J.pendiente = null; J.callejonAvisado = null;
     J.ultimaAccion = Date.now();
     (J.n.grifos || []).forEach(function (g) { J.valv[g.id] = 0; });
@@ -1696,6 +1897,7 @@
   }
   function perder(motivo, datos) {
     J.fin = true; J.perdio = true; J.sel = null;
+    if (!J.n.libre) gastarVida();
     var partida = J;
     callarAviso(); quitarPista(); $('t-movs').classList.remove('pocos');
     setTimeout(function () {
@@ -1703,12 +1905,18 @@
       SON.error(); frase('perder', true);
       var titulo = T(motivo === 'callejon' ? 'pierde_t_callejon' : 'pierde_t_movs');
       var texto = T(motivo === 'callejon' ? 'pierde_callejon' : motivo === 'faltan' ? 'pierde_faltan' : 'pierde_movs', datos);
+      var quedan = vidas();
       abrirModal('<div class="derrota"><img src="assets/grumble.png" alt=""><div><small>' + T('pierde_sub') + '</small><h2>' + titulo + '</h2></div></div>' +
         '<p class="sub">' + texto + '</p>' +
+        (J.n.libre ? '' : '<p class="vidas-derrota">' + CORAZON_SVG + T(quedan ? 'pierde_vida' : 'pierde_ultima', { n: quedan }) + '</p>') +
         '<div class="acciones"><button class="btn" id="b-d-reintentar">' + T('reintentar') + '</button></div>' +
         '<p class="consejo-derrota">' + T('pierde_consejo') + '</p>' +
         '<div class="acciones"><button class="enlace" id="b-d-mapa">' + T('v_mapa') + '</button></div>', function (m) {
-        m.querySelector('#b-d-reintentar').addEventListener('click', function () { SON.toque(); cerrarModal(); J.fin = false; reiniciar(); });
+        m.querySelector('#b-d-reintentar').addEventListener('click', function () {
+          SON.toque(); cerrarModal();
+          if (!J.n.libre && vidas() <= 0) { ventanaSinVidas(function () { J.fin = false; reiniciarYa(); }); return; }
+          J.fin = false; reiniciarYa();
+        });
         m.querySelector('#b-d-mapa').addEventListener('click', function () { SON.toque(); cerrarModal(); abrirMapa(); });
       });
     }, 650);
@@ -1921,6 +2129,16 @@
     var monedas = primera ? (n.jefe ? 40 : 20) : 3;
     if (dom && !antes.dom) monedas += 10;
     if (ing && !antes.ing) monedas += 10;
+    // Puntos: más difícil el nivel, más movimientos de sobra, más sellos y sin pistas, más puntos
+    var sobra = J.max ? Math.max(0, J.max - J.movs) : Math.max(0, J.limite + 2 - J.movs);
+    var sellos = 1 + (dom ? 1 : 0) + (ing ? 1 : 0);
+    var puntos = 50 + 10 * n.id + 15 * sobra + 40 * sellos + (J.pistas === 0 ? 30 : 0);
+    var record = puntos > (antes.pts || 0);
+    prog.niveles[n.id].pts = Math.max(antes.pts || 0, puntos);
+    if (n.objetivos.some(function (o) { return o.pide; })) prog.cont.combos = (prog.cont.combos || 0) + (primera ? 1 : 0);
+    var rangosNuevos = subirRango();
+    if (!prog.notas.puntos && n.id >= 4) prog.notas.puntos = Date.now();
+    if (PLAT && PLAT.enPlayables && window.ytgame) { try { ytgame.engagement.sendScore({ value: puntosTotales() }).catch(function () {}); } catch (e) { /* opcional */ } }
     var dulce = dulceDeNivel(n.id), dulceNuevo = !!(dulce && !prog.vitrina[dulce[0]]);
     if (dulce) prog.vitrina[dulce[0]] = true;
     prog.cont.sinPistas = J.pistas === 0 ? prog.cont.sinPistas + 1 : 0;
@@ -1935,7 +2153,7 @@
       // La frase final entra cuando la fanfarria ya va bajando
       setTimeout(function () {
         if (J !== partida) return;
-        hablar([tx.fin]).then(function () { if (J === partida) ventanaVictoria(n, dom, ing, primera, monedas, dulce, dulceNuevo, logrosNuevos); });
+        hablar([tx.fin]).then(function () { if (J === partida) ventanaVictoria(n, dom, ing, primera, monedas, dulce, dulceNuevo, logrosNuevos, { puntos: puntos, record: record, rangos: rangosNuevos }); });
       }, 1500);
     }, 450);
   }
@@ -1952,13 +2170,20 @@
       setTimeout(d.remove.bind(d), 3800);
     }
   }
-  function ventanaVictoria(n, dom, ing, primera, monedas, dulce, dulceNuevo, logrosNuevos) {
+  function ventanaVictoria(n, dom, ing, primera, monedas, dulce, dulceNuevo, logrosNuevos, pt) {
+    pt = pt || { puntos: 0, record: false, rangos: [] };
     var sig = NIVELES.filter(function (x) { return x.id === n.id + 1; })[0], tx = TN(n);
     var sello = function (si, letra, titulo, txt, i) {
       return '<div class="sello' + (si ? ' si' : '') + '" style="animation-delay:' + (i * 0.12) + 's"><span class="disco">' + (si ? '★' : letra) + '</span><b>' + titulo + '</b><small>' + txt + '</small></div>';
     };
-    var frag = n.jefe ? '<div class="fragmento"><img src="assets/ic_tarta.png" alt=""></div><p class="sub"><b>' + T('v_fragmento') + '</b> ' + T('v_fragmento_sub', { n: fragmentos() }) + '</p>' : '';
+    var frag = n.jefe && n.region <= 4 ? '<div class="fragmento"><img src="assets/ic_tarta.png" alt=""></div><p class="sub"><b>' + T('v_fragmento') + '</b> ' + T('v_fragmento_sub', { n: fragmentos() }) + '</p>' : '';
     var logros = logrosNuevos.length ? '<div class="v-logros"><b>' + T('v_logros') + '</b>' + logrosNuevos.map(function (l) { return '<span>🏆 ' + logroDatos(l).t + '</span>'; }).join('') + '</div>' : '';
+    var totalP = puntosTotales(), rAct = rangoDe(totalP), rSig = RANGOS[rAct + 1];
+    var bloquePuntos = '<div class="v-puntos"><svg class="estrella-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8Z" fill="#ffd34d" stroke="#9a5e0c" stroke-width="1.8" stroke-linejoin="round"/></svg>' +
+      '<div><b>' + T('puntos_ganados', { n: formatoPuntos(pt.puntos) }) + (pt.record ? ' <em>' + T('record') + '</em>' : '') + '</b>' +
+      '<small>' + nombreRango(rAct) + ' · ' + T('total_puntos', { n: formatoPuntos(totalP) }) + '</small>' +
+      '<span class="barrita"><i style="width:' + (rSig ? Math.round(100 * (totalP - RANGOS[rAct][2]) / (rSig[2] - RANGOS[rAct][2])) : 100) + '%"></i></span></div></div>' +
+      (pt.rangos.length ? '<div class="v-rango">' + T('sube_rango', { r: nombreRango(pt.rangos[pt.rangos.length - 1]) }) + '<small>' + premioTexto(RANGOS[pt.rangos[pt.rangos.length - 1]][3]) + '</small></div>' : '');
     abrirModal('<div class="v-cab"><h2>' + T(n.jefe ? 'v_titulo_jefe' : 'v_titulo') + '</h2><span class="chapa chapa-monedas"></span></div>' +
       '<p class="sub">' + T('v_sub', { t: tx.titulo, n: J.movs }) + '</p>' + frag +
       '<div class="sellos">' + sello(true, '✓', T('s_resolucion'), T('s_resolucion_d'), 0) +
@@ -1966,14 +2191,14 @@
       sello(ing, '?', T('s_ingenio'), tx.ingenio || T('s_ingenio'), 2) + '</div>' +
       '<div class="v-premios"><div class="v-monedas" id="v-monedas">' + MONEDA_SVG + '<b>+<span id="v-cuenta">0</span></b><small>' + T('v_monedas') + '</small></div>' +
       (dulce ? '<button class="v-dulce' + (dulceNuevo ? ' nuevo' : '') + '" id="v-dulce"><img src="assets/vitrina/' + dulce[0] + '.png" alt=""><span><small>' + T(dulceNuevo ? 'v_nuevo_dulce' : 'v_dulce') + '</small><b>' + nombreDulce(dulce) + '</b><em>' + T('v_ver_receta') + '</em></span></button>' : '') + '</div>' +
-      logros +
+      bloquePuntos + logros +
       '<div class="acciones"><button class="btn sec peq" id="b-v-repetir">' + T('v_repetir') + '</button><button class="btn sec peq" id="b-v-mapa">' + T('v_mapa') + '</button>' +
       (sig ? '<button class="btn peq" id="b-v-sig">' + T('v_siguiente', { n: sig.id }) + '</button>' : '') + '</div>' +
       '<div class="lamina" id="lamina" hidden></div>', function (m) {
       pintarMonedas();
       // Sellos (sólo los conseguidos), después las monedas y al final, si hay, el logro
       [true, dom, ing].forEach(function (si, i) { if (si) setTimeout(function () { SON.sello(i); }, 380 + i * 240); });
-      if (logrosNuevos.length) setTimeout(function () { if (!$('modal').hidden) SON.logro(); }, 2700);
+      if (logrosNuevos.length || pt.rangos.length) setTimeout(function () { if (!$('modal').hidden) SON.logro(); }, 2700);
       setTimeout(function () { bajarMusica(false); }, 3200);
       // Las monedas cuentan hacia arriba y vuelan al contador
       var cuenta = m.querySelector('#v-cuenta'), t0 = performance.now() + 600;
@@ -2005,6 +2230,21 @@
     abrirMapa();
   });
   $('b-vitrina').addEventListener('click', function () { SON.toque(); ventanaVitrina(); });
+  document.querySelectorAll('.b-rangos').forEach(function (b) { b.addEventListener('click', function () { SON.toque(); ventanaRangos(); }); });
+  document.querySelectorAll('.chapa-vidas').forEach(function (b) { b.addEventListener('click', function () { SON.toque(); if (vidas() < maxVidas()) ventanaSinVidas(); else toast('<span class="toast-ic">❤️</span><span><b>' + T('vidas_llenas') + '</b><small>' + T('vidas_info', { m: minutosRecarga() }) + '</small></span>'); }); });
+  // Empezar de cero desde la portada (con confirmación)
+  $('b-cero').addEventListener('click', function () {
+    SON.toque();
+    abrirModal('<button class="btn-redondo cerrar" aria-label="' + T('cerrar') + '">✕</button><h2>' + T('cero_t') + '</h2><p class="sub">' + T('cero_aviso') + '</p>' +
+      '<div class="acciones"><button class="btn sec peq" id="b-cero-no">' + T('aj_cancelar') + '</button><button class="btn peq peligro" id="b-cero-si">' + T('cero_si') + '</button></div>', function (m) {
+      m.querySelector('#b-cero-no').addEventListener('click', function () { SON.toque(); cerrarModal(); });
+      m.querySelector('#b-cero-si').addEventListener('click', function () {
+        var idioma = prog.idioma; prog = BASE(); prog.idioma = idioma; guardar();
+        cerrarModal(); J = null; pintarMonedas(); pintarPortada(); mostrar('pantalla-portada', null, 'portada');
+        toast('<span class="toast-ic">🧁</span><span><b>' + T('cero_hecho') + '</b></span>');
+      });
+    });
+  });
   $('b-logros').addEventListener('click', function () { SON.toque(); ventanaLogros(); });
   document.querySelectorAll('.b-ajustes').forEach(function (b) { b.addEventListener('click', function () { SON.toque(); ventanaAjustes(); }); });
   document.querySelectorAll('.idioma-portada button').forEach(function (b) { b.addEventListener('click', function () { cambiarIdioma(b.getAttribute('data-idioma')); }); });
@@ -2012,7 +2252,11 @@
   $('b-mapa-vitrina').addEventListener('click', function () { SON.toque(); ventanaVitrina(); });
   $('b-cofre').addEventListener('click', function () { SON.toque(); ventanaCofre(); });
   $('b-mapa-seguir').addEventListener('click', function () { var s = siguienteNivel(); SON.toque(); if (s) cargarNivel(s.id); else ventanaVitrina(); });
-  $('b-nivel-volver').addEventListener('click', function () { SON.toque(); callarVoz(); abrirMapa(); });
+  $('b-nivel-volver').addEventListener('click', function () {
+    SON.toque();
+    if (partidaEmpezada()) { confirmarVida(T('salir_t'), T('salir_vida'), T('si_salir'), function () { gastarVida(); callarVoz(); abrirMapa(); }); return; }
+    callarVoz(); abrirMapa();
+  });
   $('b-reiniciar').addEventListener('click', reiniciar);
   $('b-pista').addEventListener('click', pista);
   $('b-leyenda').addEventListener('click', function () { SON.toque(); ventanaCuaderno(); });
@@ -2047,6 +2291,10 @@
   }
   window.Alquimia = { pausar: pausar, reanudar: reanudar, silenciar: silenciar, nivel: cargarNivel, mapa: abrirMapa, partida: function () { return J; }, idioma: cambiarIdioma, prog: function () { return prog; },
     accion: function (a) { if (a.t === 'g') { J.valv[a.g] = a.r; actualizarValvula(a.g); } ejecutar(a); } };
+  // Partidas guardadas antes de los puntos: cada nivel ganado recibe una puntuación estimada
+  Object.keys(prog.niveles).forEach(function (id) { var p = prog.niveles[id]; if (p.res && !p.pts) p.pts = 50 + 10 * Number(id) + 40 * (1 + (p.dom ? 1 : 0) + (p.ing ? 1 : 0)); });
+  if (!prog.cont.combos) prog.cont.combos = 0;
+  subirRango();
   aplicarTextos(); pintarMonedas(); pintarPortada();
   mostrar('pantalla-portada', null, 'portada');
 })();

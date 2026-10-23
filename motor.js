@@ -16,7 +16,9 @@
   function clone(s) {
     var v = {};
     for (var k in s.v) v[k] = s.v[k].slice();
-    return { v: v, sello: Object.assign({}, s.sello), tiene: Object.assign({}, s.tiene),
+    var tiene = {};
+    for (var t in s.tiene) tiene[t] = typeof s.tiene[t] === 'object' ? Object.assign({}, s.tiene[t]) : s.tiene[t];
+    return { v: v, sello: Object.assign({}, s.sello), tiene: tiene,
              hecho: Object.assign({}, s.hecho), fijo: Object.assign({}, s.fijo) };
   }
 
@@ -24,7 +26,11 @@
     if (nivel._ix) return nivel._ix;
     var ix = { vas: {}, obj: {}, comp: {}, grifo: {} };
     nivel.vasijas.forEach(function (x) { ix.vas[x.id] = x; });
-    (nivel.objetivos || []).forEach(function (x) { ix.obj[x.id] = x; });
+    (nivel.objetivos || []).forEach(function (x) {
+      ix.obj[x.id] = x;
+      // Pedido combinado: la primera materia da el color principal y 'necesita' es el total
+      if (x.pide) { var ks = Object.keys(x.pide); x.materia = ks[0]; x.necesita = ks.reduce(function (a, k) { return a + x.pide[k]; }, 0); }
+    });
     (nivel.compuertas || []).forEach(function (x) { ix.comp[x.id] = x; });
     (nivel.grifos || []).forEach(function (x) {
       ix.grifo[x.id] = x;
@@ -45,7 +51,11 @@
       asentar(s.v[x.id], x.forma === 'alambique');
       if (x.sellada) s.sello[x.id] = true;
     });
-    (nivel.objetivos || []).forEach(function (o) { s.tiene[o.id] = 0; });
+    index(nivel);
+    (nivel.objetivos || []).forEach(function (o) {
+      if (o.pide) { s.tiene[o.id] = {}; Object.keys(o.pide).forEach(function (k) { s.tiene[o.id][k] = 0; }); }
+      else s.tiene[o.id] = 0;
+    });
     return actualizar(nivel, s, []);
   }
 
@@ -115,7 +125,7 @@
         }
       });
       (nivel.objetivos || []).forEach(function (o) {
-        if (!s.hecho[o.id] && s.tiene[o.id] >= o.necesita) {
+        if (!s.hecho[o.id] && completo(o, s)) {
           s.hecho[o.id] = true; cambio = true;
           ev.push({ k: 'restaurado', id: o.id });
           var ef = o.alCompletar || {};
@@ -127,6 +137,18 @@
     return s;
   }
 
+  // ¿Tiene ya el objetivo todo lo que pide?
+  function completo(o, s) {
+    if (!o.pide) return s.tiene[o.id] >= o.necesita;
+    for (var k in o.pide) if (s.tiene[o.id][k] < o.pide[k]) return false;
+    return true;
+  }
+  // Total de medidas recibidas (sirve igual para pedidos simples y combinados)
+  function recibido(o, s) {
+    var t = s.tiene[o.id];
+    if (typeof t !== 'object') return t;
+    var n = 0; for (var k in t) n += Math.min(t[k], o.pide[k]); return n;
+  }
   function accesoSuperior(x) { return x.forma !== 'capsula'; }
   function cuelloEstrecho(x) { return x.forma === 'matraz'; }
 
@@ -203,9 +225,15 @@
         if (n <= 0 && !gastado) return fallo('No cabe: el recipiente de destino está lleno.', [r.a], 'lleno');
       } else {
         var o = ix.obj[r.a];
-        if (o.materia !== m) return fallo((o.nombre || 'El objetivo') + ' rechaza ' + MATERIA[m].nombre + '.', [o.id], 'rechaza', { obj: o.id, m: m });
-        n = Math.min(disp, o.necesita - s.tiene[o.id]);
-        if (n <= 0 && !gastado) return fallo('Ya está restaurado: no necesita más.', [o.id], 'completo');
+        if (o.pide) {
+          if (!o.pide[m]) return fallo((o.nombre || 'El objetivo') + ' rechaza ' + MATERIA[m].nombre + '.', [o.id], 'rechaza', { obj: o.id, m: m });
+          n = Math.min(disp, o.pide[m] - s.tiene[o.id][m]);
+          if (n <= 0 && !gastado) return fallo('Ya tiene todo el ' + MATERIA[m].nombre + ' que pide.', [o.id], 'sobra', { obj: o.id, m: m });
+        } else {
+          if (o.materia !== m) return fallo((o.nombre || 'El objetivo') + ' rechaza ' + MATERIA[m].nombre + '.', [o.id], 'rechaza', { obj: o.id, m: m });
+          n = Math.min(disp, o.necesita - s.tiene[o.id]);
+          if (n <= 0 && !gastado) return fallo('Ya está restaurado: no necesita más.', [o.id], 'completo');
+        }
       }
     }
     var quitar = n + gastado;
@@ -216,7 +244,8 @@
         for (var k = 0; k < n; k++) s.v[r.a].push(m);
         var re = asentar(s.v[r.a], ix.vas[r.a].forma === 'alambique');
         if (re) ev.push({ k: 'reacciona', id: r.a, n: re });
-      } else s.tiene[r.a] += n;
+      } else if (ix.obj[r.a].pide) s.tiene[r.a][m] += n;
+      else s.tiene[r.a] += n;
     }
     ev.unshift({ k: 'fluye', grifo: g.id, ruta: ruta || 0, m: m, n: n, a: r.a, gastado: gastado });
     actualizar(nivel, s, ev);
@@ -235,7 +264,7 @@
     var p = [];
     for (var k in s.v) p.push(s.v[k].join(''));
     p.push(Object.keys(s.sello).sort().join(','));
-    for (var t in s.tiene) p.push(s.tiene[t]);
+    for (var t in s.tiene) { var x = s.tiene[t]; p.push(typeof x === 'object' ? Object.keys(x).map(function (k) { return k + x[k]; }).join('') : x); }
     p.push(Object.keys(s.fijo).sort().join(','));
     return p.join('|');
   }
@@ -307,7 +336,7 @@
 
   var Motor = { MATERIA: MATERIA, analizar: analizar, estadoInicial: estadoInicial, aplicar: aplicar, trasvasar: trasvasar,
     abrirGrifo: abrirGrifo, ganado: ganado, resolver: resolver, peso: peso, compuertaAbierta: compuertaAbierta,
-    basculaActiva: basculaActiva, clave: clave, acciones: acciones, index: index };
+    basculaActiva: basculaActiva, clave: clave, acciones: acciones, index: index, completo: completo, recibido: recibido };
   if (typeof module !== 'undefined' && module.exports) module.exports = Motor;
   else global.Motor = Motor;
 })(this);

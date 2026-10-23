@@ -6,6 +6,20 @@
   var UI = {
     es: {
       juego: 'Sugar-Snap Bakery',
+      vidas_aria: 'Vidas: {n} de {m}', puntos: 'Puntos', puntos_aria: '{n} puntos · rango {r}',
+      sin_vidas_t: '¡Sin vidas!', sin_vidas: 'Cada partida perdida cuesta una vida. Se recupera una cada {m} minutos.',
+      proxima_vida: 'Próxima vida en {t}', recargar_vidas: 'Rellenar vidas', esperar: 'Esperar', vidas_recargadas: '¡Vidas al completo!',
+      vidas_quedan: 'Te quedan {n} ❤', seguir_jugando: 'Seguir jugando', vidas_llenas: 'Tienes todas las vidas', vidas_info: 'Se pierde una al perder una partida; vuelve una cada {m} min.',
+      pierde_vida: 'Pierdes una vida · te quedan {n}', pierde_ultima: 'Era tu última vida: espera o rellénalas con monedas',
+      reiniciar_t: '¿Reiniciar el nivel?', reiniciar_vida: 'La partida ya ha empezado: reiniciar cuenta como partida perdida y cuesta una vida.', si_reiniciar: 'Reiniciar (−1 ❤)',
+      salir_t: '¿Salir al mapa?', salir_vida: 'Si sales ahora, la partida cuenta como perdida y cuesta una vida.', si_salir: 'Salir (−1 ❤)',
+      rangos: 'Rangos', rango_sub: 'Gana puntos en cada nivel: cuanto más difícil, con más movimientos de sobra, más sellos y sin pistas, más puntos. Cada rango trae un premio.',
+      siguiente_rango: 'Faltan {n} para {r}', rango_max: '¡Has llegado al rango más alto!',
+      premio_ninguno: 'Tu primer paso', premio_vida: '+1 vida máxima', premio_recarga: 'vidas cada {n} min', premio_dulce: 'un dulce legendario', premio_monedas: '+{n} monedas',
+      puntos_ganados: '+{n} puntos', record: 'RÉCORD', total_puntos: '{n} en total', sube_rango: '¡Nuevo rango: {r}!',
+      objetivo_combo: '{o} pide una mezcla: le falta {l}.', y: 'y',
+      empezar_cero: 'Empezar de cero', cero_t: '¿Empezar de cero?', cero_aviso: 'Se borra todo: niveles, puntos, rangos, monedas, vitrina, logros y notas. No se puede deshacer.',
+      cero_si: 'Borrar todo', cero_hecho: 'Todo listo para empezar de nuevo',
       lema: 'La alquimia más dulce del reino',
       portada_texto: 'Mueve y transforma materia mágica para despertar los dulces dormidos de Auralia.',
       jugar: 'Jugar', seguir_nivel: 'Nivel {n}', todo_completo: 'Reino restaurado',
@@ -28,7 +42,7 @@
       capsula_sin_boca: 'Las cápsulas no tienen boca: sólo se llenan y vacían por tubos.',
       vacio_origen: 'Está vacío: elige un recipiente con materia para trasvasar.',
       donas_tubos: 'Las donas y los molinillos se alimentan por los tubos: usa el grifo del recipiente conectado.',
-      callejon: 'Por aquí ya no hay salida. Deshaz el último movimiento y prueba otro camino.',
+      callejon: 'Por aquí ya no hay salida. Reinicia y prueba otro camino.',
       pierde_t_callejon: '¡Sin salida!', pierde_t_movs: '¡Sin movimientos!', pierde_sub: 'Esta partida se ha perdido',
       pierde_callejon: 'Con el tablero así ya no se puede despertar a todos los dulces. ¡Inténtalo de nuevo!',
       pierde_movs: 'Se acabaron los movimientos antes de despertar a todos los dulces. ¡Inténtalo de nuevo!',
@@ -98,6 +112,20 @@
     },
     en: {
       juego: 'Sugar-Snap Bakery',
+      vidas_aria: 'Lives: {n} of {m}', puntos: 'Points', puntos_aria: '{n} points · rank {r}',
+      sin_vidas_t: 'Out of lives!', sin_vidas: 'Every lost round costs one life. You get one back every {m} minutes.',
+      proxima_vida: 'Next life in {t}', recargar_vidas: 'Refill lives', esperar: 'Wait', vidas_recargadas: 'Lives fully restored!',
+      vidas_quedan: 'You have {n} ❤ left', seguir_jugando: 'Keep playing', vidas_llenas: 'Your lives are full', vidas_info: 'You lose one when you lose a round; one comes back every {m} min.',
+      pierde_vida: 'You lose a life · {n} left', pierde_ultima: 'That was your last life: wait or refill them with coins',
+      reiniciar_t: 'Restart the level?', reiniciar_vida: 'The round has already started: restarting counts as a loss and costs a life.', si_reiniciar: 'Restart (−1 ❤)',
+      salir_t: 'Leave to the map?', salir_vida: 'If you leave now, the round counts as lost and costs a life.', si_salir: 'Leave (−1 ❤)',
+      rangos: 'Ranks', rango_sub: 'Earn points in every level: harder levels, spare moves, more seals and no hints give more points. Every rank brings a prize.',
+      siguiente_rango: '{n} to go for {r}', rango_max: 'You reached the highest rank!',
+      premio_ninguno: 'Your first step', premio_vida: '+1 max life', premio_recarga: 'lives every {n} min', premio_dulce: 'a legendary sweet', premio_monedas: '+{n} coins',
+      puntos_ganados: '+{n} points', record: 'BEST', total_puntos: '{n} total', sube_rango: 'New rank: {r}!',
+      objetivo_combo: '{o} wants a mix: it still needs {l}.', y: 'and',
+      empezar_cero: 'Start from scratch', cero_t: 'Start from scratch?', cero_aviso: 'Everything is erased: levels, points, ranks, coins, showcase, achievements and notes. This cannot be undone.',
+      cero_si: 'Erase everything', cero_hecho: 'All set to start again',
       lema: 'The sweetest alchemy in the kingdom',
       portada_texto: 'Move and transform magical matter to wake up the sleeping sweets of Auralia.',
       jugar: 'Play', seguir_nivel: 'Level {n}', todo_completo: 'Kingdom restored',
@@ -119,7 +147,7 @@
       capsula_sin_boca: 'Capsules have no mouth: they are only filled and emptied through pipes.',
       vacio_origen: "It's empty: pick a container with matter to pour.",
       donas_tubos: "Donuts and pinwheels are fed through pipes: use the tap of the connected container.",
-      callejon: "There's no way out from here. Undo your last move and try another path.",
+      callejon: "There's no way out from here. Restart and try another path.",
       pierde_t_callejon: 'Dead end!', pierde_t_movs: 'Out of moves!', pierde_sub: 'You lost this round',
       pierde_callejon: "With the board like this, there's no way to wake every sweet. Give it another try!",
       pierde_movs: 'You ran out of moves before waking every sweet. Try again!',
@@ -191,7 +219,7 @@
       vapor_baja: 'El vapor no baja por los tubos: busca una chimenea.', cristal: 'Los tubos de cristal sólo conducen la Menta Fluida.',
       cerrado_chocolate: 'Un bloque de chocolate tapa el tubo: sólo el caramelo lo funde.', cerrado_regaliz: 'Falta el puente de regaliz: hay que hacerlo brotar con Matcha.',
       cerrado_puente: 'El puente está cerrado: busca qué báscula lo levanta.', cerrado_compuerta: 'La compuerta está cerrada: sigue la línea rosa para ver qué la abre.',
-      rechaza: '{o} no quiere {m}.', completo: 'Ya está restaurado: no necesita más.' },
+      rechaza: '{o} no quiere {m}.', sobra: '{o} ya tiene todo el {m} que pedía: le falta otro sabor.', completo: 'Ya está restaurado: no necesita más.' },
     en: { distintos: 'Pick two different containers.', capsula: 'The capsule is closed: it is only filled and emptied through pipes.',
       vacio: 'That container is empty.', sello_origen: 'It has a hard chocolate seal. Melt it with caramel.',
       vapor_verter: "Steam can't be poured: it only rises through chimneys.", sello_destino: 'Hard chocolate seal: only Fiery Caramel melts it.',
@@ -200,7 +228,7 @@
       vapor_baja: "Steam doesn't go down pipes: look for a chimney.", cristal: 'Crystal pipes only carry Flowing Mint.',
       cerrado_chocolate: 'A chocolate block plugs the pipe: only caramel melts it.', cerrado_regaliz: 'The licorice bridge is missing: sprout it with Matcha.',
       cerrado_puente: 'The bridge is closed: find which scale lifts it.', cerrado_compuerta: 'The gate is closed: follow the pink line to see what opens it.',
-      rechaza: "{o} doesn't want {m}.", completo: 'Already restored: it needs nothing else.' }
+      rechaza: "{o} doesn't want {m}.", sobra: '{o} already has all the {m} it asked for: it needs another flavor.', completo: 'Already restored: it needs nothing else.' }
   };
 
   var MATERIAS = {
@@ -226,14 +254,14 @@
         ['grumble', 'Sin él, las donas se durmieron, los ríos de glaseado se apagaron y el color se fue escapando del mapa.'],
         ['miga', '¿Y un aprendiz de pastelero puede arreglar eso?'],
         ['grumble', 'Un aprendiz de alquimista, sí. Y todo empieza aquí, en la Sugar-Snap Bakery, la pastelería de mi familia.']],
-      epilogo: '¡Los cuatro fragmentos han vuelto! El Corazón Primordial late otra vez y Auralia recupera todos sus colores. Gracias, alquimista.'
+      epilogo: '¡La Feria de los Sabores vuelve a girar! El Corazón late, Auralia brilla y cada dulce tiene su mezcla perfecta. Eres una leyenda de la alquimia pastelera.'
     },
     en: {
       prologo: [['grumble', 'Auralia was the sweetest kingdom in the world, until the Primordial Heart broke into four fragments.'],
         ['grumble', 'Without it, the donuts fell asleep, the frosting rivers went dark and the color slowly drained from the map.'],
         ['miga', 'And can a pastry apprentice fix that?'],
         ['grumble', "An alchemy apprentice can. And it all starts here, at Sugar-Snap Bakery, my family's bakery."]],
-      epilogo: 'All four fragments are back! The Primordial Heart beats again and Auralia gets all its colors back. Thank you, alchemist.'
+      epilogo: 'The Flavor Fair is spinning again! The Heart beats, Auralia shines and every sweet has its perfect mix. You are a legend of pastry alchemy.'
     }
   };
 
@@ -269,6 +297,9 @@
     ['matraz', ['Matraz', 'Cuello estrecho: entra y sale de una medida en una. Sirve para dosificar.'], ['Flask', 'Narrow neck: things go in and out one measure at a time. Great for measuring.']],
     ['uva', ['Uva Galáctica', 'Pesa 2 por medida en las básculas.'], ['Galactic Grape', 'Weighs 2 per measure on scales.']],
     ['limite', ['Movimientos contados', 'A partir del nivel 4 cada nivel tiene un máximo de movimientos (marcador 3/8). Si se acaban, o si el tablero se queda sin salida, se pierde y se vuelve a intentar.'], ['Counted moves', 'From level 4 on, every level has a maximum number of moves (counter 3/8). If they run out, or the board reaches a dead end, you lose and try again.']],
+    ['vidas', ['Vidas', 'Tienes 5 vidas. Perder una partida (o reiniciarla/salir cuando ya ha empezado) cuesta una. Vuelve una cada 15 minutos, o rellénalas con 40 monedas.'], ['Lives', 'You have 5 lives. Losing a round (or restarting/leaving once it started) costs one. One comes back every 15 minutes, or refill them for 40 coins.']],
+    ['puntos', ['Puntos y rangos', 'Cada victoria da puntos: más por niveles difíciles, movimientos de sobra, sellos y no usar pistas. Suben tu rango y cada rango da premios: monedas, más vidas, recarga rápida y un dulce legendario.'], ['Points and ranks', 'Every win gives points: more for hard levels, spare moves, seals and not using hints. They raise your rank, and every rank gives prizes: coins, more lives, faster refills and a legendary sweet.']],
+    ['combinado', ['Pedidos combinados', 'Algunos dulces piden una mezcla de sabores: el icono doble y los circulitos de colores dicen cuánto de cada uno. Si ya tiene todo de un sabor, rechaza más de ese.'], ['Mixed orders', 'Some sweets ask for a mix of flavors: the double icon and the colored circles tell how much of each. Once one flavor is complete, it refuses more of it.']],
     ['hundir', ['La uva se hunde', 'Se coloca debajo de las demás materias, así que sale la primera por el grifo.'], ['Grape sinks', 'It settles below the other matters, so it comes out of the tap first.']]
   ];
 
@@ -329,6 +360,10 @@
     ['region2', 'El bosque respira', 'Completa la Región II.', 'The forest breathes', 'Complete Region II.', 80, 0],
     ['region3', 'Deshielo', 'Completa la Región III.', 'The thaw', 'Complete Region III.', 120, 0],
     ['region4', 'El Corazón late', 'Completa la Región IV y reúne los 4 fragmentos.', 'The Heart beats', 'Complete Region IV and gather all 4 fragments.', 200, 0],
+    ['region5', 'La gran feria', 'Completa la Región V, la Feria de los Sabores.', 'The grand fair', 'Complete Region V, the Flavor Fair.', 250, 0],
+    ['combinador', 'Mezclador experto', 'Gana 8 niveles con pedidos combinados.', 'Expert mixer', 'Win 8 levels with mixed orders.', 60, 8],
+    ['rango_maestro', 'Maestro pastelero', 'Alcanza el rango Maestro pastelero.', 'Master baker', 'Reach the Master Baker rank.', 80, 0],
+    ['leyenda', 'Leyenda de Auralia', 'Alcanza el rango más alto.', 'Legend of Auralia', 'Reach the highest rank.', 200, 0],
     ['tenaz', 'Tenaz', 'Gana un nivel después de haberlo perdido.', 'Tenacious', 'Win a level after losing it.', 20, 0],
     ['perfeccionista', 'Perfeccionista', 'Consigue los 3 sellos en 12 niveles.', 'Perfectionist', 'Get all 3 seals in 12 levels.', 150, 12],
     ['estudioso', 'Estudioso', 'Desbloquea 10 notas del cuaderno.', 'Studious', 'Unlock 10 notebook notes.', 20, 10],
