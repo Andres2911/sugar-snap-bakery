@@ -149,7 +149,8 @@
       "fin": "Crack! The first block of ice just broke.",
       "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Caramel Cake"
+        "T2": "The Caramel Cake",
+        "T1": "The Mint Cake"
       }
     },
     14: {
@@ -163,8 +164,8 @@
       "fin": "Two flavors in one sweet. Now we are talking!",
       "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T2": "The Matcha Tiramisu",
-        "T1": "The Matcha Cake",
+        "T2": "The Matcha Cake",
+        "T1": "The Matcha Tiramisu",
         "D": "Reserve"
       }
     },
@@ -177,7 +178,7 @@
       "ingenio": "Solve it without hints",
       "nombres": {
         "T2": "The Matcha Seed",
-        "T1": "The Matcha Cake"
+        "T1": "The Caramel Cake"
       }
     },
     16: {
@@ -188,7 +189,8 @@
       "fin": "Exact weight. Even ice respects a good scale.",
       "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T1": "The Mint Cake"
+        "T2": "The Galactic Cake",
+        "T1": "The Matcha Cake"
       }
     },
     17: {
@@ -199,7 +201,8 @@
       "fin": "Clean crystal, open path.",
       "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T1": "The Mint Cake"
+        "T2": "The Mint Cake",
+        "T1": "The Matcha Cake"
       }
     },
     18: {
@@ -210,7 +213,8 @@
       "fin": "The capsule weighed just right!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Mint Cake"
+        "T1": "The Caramel Cake",
+        "T2": "The Mint Cake"
       }
     },
     19: {
@@ -221,7 +225,8 @@
       "fin": "Not even an avalanche can stop us!",
       "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Mint Matcha Macaron"
+        "T1": "The Mint Caramel Cake",
+        "T2": "The Mint Cake"
       }
     },
     20: {
@@ -230,10 +235,11 @@
       "intro": [],
       "guia": [],
       "fin": "The frosted oven warms up again.",
-      "ingenio": "Leave the third container on top empty",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T2": "The Galactic Cake",
-        "T1": "The Mint Cake"
+        "T2": "The Matcha Cake",
+        "T3": "The Galactic Cake",
+        "T1": "The Caramel Cake"
       }
     },
     21: {
@@ -244,8 +250,8 @@
       "fin": "The chocolate melted, and so did the ice.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Caramel Cake",
-        "T2": "The Caramel Cake"
+        "T2": "The Caramel Cake",
+        "T1": "The Matcha Cake"
       }
     },
     22: {
@@ -254,11 +260,10 @@
       "intro": [],
       "guia": [],
       "fin": "Three scoops and none of them fell!",
-      "ingenio": "Leave the second container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T3": "The Mint Caramel Cake",
-        "T2": "The Mint Cake",
-        "T1": "The Mint Cake"
+        "T2": "The Matcha Tiramisu",
+        "T1": "The Matcha Cake"
       }
     },
     23: {
@@ -267,10 +272,11 @@
       "intro": [],
       "guia": [],
       "fin": "Everything sorted in the freezer!",
-      "ingenio": "Leave the third container on top empty",
+      "ingenio": "Leave the fourth container on top empty",
       "nombres": {
         "T1": "The Caramel Cake",
-        "T2": "The Caramel Cake"
+        "T3": "The Galactic Cake",
+        "T2": "The Galactic Cake"
       }
     },
     24: {
@@ -283,8 +289,9 @@
       "fin": "The Ice Heart is melting! Third fragment recovered.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Mint Cake",
-        "T2": "The Ice Heart"
+        "T1": "The Ice Heart",
+        "T2": "The Mint Caramel Cake",
+        "T3": "The Matcha Cake"
       }
     },
     25: {
@@ -296,10 +303,11 @@
       ],
       "guia": [],
       "fin": "Gravity is working for us now!",
-      "ingenio": "Solve it without hints",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T2": "The Mint Donut",
-        "T1": "The Lime Macaron"
+        "T1": "The Mint Donut",
+        "T3": "The Lime Macaron",
+        "T2": "The Orange Cake"
       }
     },
     26: {
@@ -308,10 +316,10 @@
       "intro": [],
       "guia": [],
       "fin": "Streets in place. The city breathes.",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T2": "The Lime Macaron",
-        "T1": "The Orange Cake"
+        "T2": "The Orange Cake",
+        "T1": "The Lime Macaron"
       }
     },
     27: {
@@ -322,7 +330,8 @@
       "fin": "The steam lifts us higher and higher!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Galaxy Donut",
+        "T3": "The Galaxy Donut",
+        "T1": "The Mint Donut",
         "T2": "The Orange Cake",
         "TV": "The Meringue Pinwheel"
       }
@@ -333,10 +342,11 @@
       "intro": [],
       "guia": [],
       "fin": "Two flavors, two tiers, one perfect cake!",
-      "ingenio": "Leave the second container on top empty",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T1": "The Orange Cake",
-        "T2": "The Mint Caramel Cake"
+        "T1": "The Mint Matcha Macaron",
+        "T2": "The Orange Cake",
+        "T3": "The Mint Donut"
       }
     },
     29: {
@@ -345,9 +355,9 @@
       "intro": [],
       "guia": [],
       "fin": "Melted chocolate and an exact dose. Flawless.",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T2": "The Lime Macaron",
+        "T2": "The Orange Cake",
         "T1": "The Mint Donut"
       }
     },
@@ -359,9 +369,9 @@
       "fin": "The crystal shines above the clouds!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T3": "The Mint Donut",
-        "T1": "The Lime Macaron",
-        "T2": "The Mint Matcha Macaron"
+        "T2": "The Mint Donut",
+        "T3": "The Lime Macaron",
+        "T1": "The Mint Caramel Cake"
       }
     },
     31: {
@@ -372,7 +382,7 @@
       "fin": "Everything in its place, even up in the air.",
       "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T2": "The Lime Macaron",
+        "T2": "The Mint Donut",
         "T1": "The Lime Macaron",
         "D": "Reserve"
       }
@@ -383,10 +393,11 @@
       "intro": [],
       "guia": [],
       "fin": "The three towers shine again!",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the fourth container on top empty",
       "nombres": {
-        "T2": "The Mint Donut",
-        "T1": "The Matcha Seed"
+        "T2": "The Matcha Seed",
+        "T3": "The Lime Macaron",
+        "T1": "The Mint Donut"
       }
     },
     33: {
@@ -398,8 +409,8 @@
       "ingenio": "Solve it without hints",
       "nombres": {
         "T1": "The Mint Donut",
-        "T3": "The Mint Donut",
-        "T2": "The Matcha Tiramisu"
+        "T3": "The Matcha Tiramisu",
+        "T2": "The Mint Donut"
       }
     },
     34: {
@@ -408,10 +419,11 @@
       "intro": [],
       "guia": [],
       "fin": "The sky pipes are flowing again!",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Mint Donut",
-        "T2": "The Mint Donut"
+        "T2": "The Mint Donut",
+        "T3": "The Lime Macaron",
+        "T1": "The Mint Donut"
       }
     },
     35: {
@@ -422,8 +434,8 @@
       "fin": "The great mix, solved. You think like a master now.",
       "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T1": "The Matcha Seed",
-        "T2": "The Orange Cake"
+        "T2": "The Matcha Seed",
+        "T1": "The Orange Cake"
       }
     },
     36: {
@@ -437,9 +449,9 @@
       "fin": "The Primordial Heart is whole!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Orange Cake",
-        "T1": "The Primordial Heart",
-        "T3": "The Lime Macaron"
+        "T1": "The Lime Macaron",
+        "T2": "The Primordial Heart",
+        "T3": "The Orange Cake"
       }
     },
     37: {
@@ -451,10 +463,10 @@
       ],
       "guia": [],
       "fin": "The first fair stall is open!",
-      "ingenio": "Leave the second container on top empty",
+      "ingenio": "Leave the fourth container on top empty",
       "nombres": {
-        "T1": "The Mint Caramel Cake",
-        "T2": "The Pink Mint Donut"
+        "T1": "The Mint Matcha Macaron",
+        "T2": "The Matcha Donut"
       }
     },
     38: {
@@ -463,10 +475,10 @@
       "intro": [],
       "guia": [],
       "fin": "Two-flavor macarons for everyone!",
-      "ingenio": "Leave the fourth container on top empty",
+      "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T1": "The Pink Mint Donut",
-        "T2": "The Matcha Tiramisu"
+        "T2": "The Mint Caramel Cake",
+        "T1": "The Matcha Donut"
       }
     },
     39: {
@@ -477,8 +489,8 @@
       "fin": "What a tasty pair!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Matcha Seed",
-        "T2": "The Mint Matcha Macaron"
+        "T1": "The Matcha Tiramisu",
+        "T2": "The Matcha Seed"
       }
     },
     40: {
@@ -487,11 +499,10 @@
       "intro": [],
       "guia": [],
       "fin": "The Ferris wheel is turning again!",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Pink Mint Donut",
         "T2": "The Pink Mint Donut",
-        "T3": "The Mint Caramel Cake"
+        "T1": "The Mint Matcha Macaron"
       }
     },
     41: {
@@ -500,10 +511,11 @@
       "intro": [],
       "guia": [],
       "fin": "A prize for every sweet!",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Mint Caramel Cake",
-        "T2": "The Matcha Seed"
+        "T3": "The Mint Caramel Cake",
+        "T1": "The Matcha Seed",
+        "T2": "The Mint Caramel Cake"
       }
     },
     42: {
@@ -514,8 +526,9 @@
       "fin": "The carousel spins with joy!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Mint Matcha Macaron",
-        "T1": "The Mint Caramel Cake"
+        "T2": "The Pink Mint Donut",
+        "T1": "The Mint Caramel Cake",
+        "T3": "The Matcha Tiramisu"
       }
     },
     43: {
@@ -524,10 +537,10 @@
       "intro": [],
       "guia": [],
       "fin": "Steam, chocolate and flavor. This is fine pastry now.",
-      "ingenio": "Leave the second container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T2": "The Mint Caramel Cake",
-        "T1": "The Matcha Tiramisu",
+        "T1": "The Mint Caramel Cake",
+        "T2": "The Matcha Tiramisu",
         "TV": "The Meringue Pinwheel"
       }
     },
@@ -539,8 +552,9 @@
       "fin": "Ups, downs and not a drop wasted!",
       "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Grape Caramel Cake",
-        "T2": "The Mint Caramel Cake"
+        "T3": "The Blueberry Cake",
+        "T2": "The Mint Matcha Macaron",
+        "T1": "The Mint Matcha Macaron"
       }
     },
     45: {
@@ -551,9 +565,8 @@
       "fin": "This is a feast!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Pink Mint Donut",
-        "T3": "The Cappuccino Donut",
-        "T1": "The Mint Caramel Cake"
+        "T1": "The Matcha Tiramisu",
+        "T2": "The Mint Matcha Macaron"
       }
     },
     46: {
@@ -564,9 +577,9 @@
       "fin": "What a fragrant tent!",
       "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T3": "The Mint Matcha Macaron",
-        "T1": "The Matcha Donut",
         "T2": "The Mint Caramel Cake",
+        "T1": "The Matcha Donut",
+        "T3": "The Mint Matcha Macaron",
         "TV": "The Meringue Pinwheel"
       }
     },
@@ -578,8 +591,9 @@
       "fin": "The grape brought good luck!",
       "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T1": "The Cappuccino Donut",
-        "T2": "The Blueberry Tea Cake"
+        "T2": "The Mint Caramel Cake",
+        "T1": "The Blueberry Cake",
+        "T3": "The Mint Caramel Cake"
       }
     },
     48: {
@@ -593,8 +607,8 @@
       "fin": "The Great Cake shines with all its flavors! The whole fair comes back to life.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Mint Caramel Cake",
         "T2": "The Great Fair Cake",
+        "T1": "The Mint Matcha Macaron",
         "TV": "The Meringue Pinwheel"
       }
     }

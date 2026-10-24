@@ -1042,7 +1042,7 @@
       el('stop', { offset: 1, 'stop-color': COLOR[k].base }, lg);
     });
     var vd = el('linearGradient', { id: 'vidrio', x1: 0, x2: 1 }, d);
-    [[0, 0.55], [0.25, 0.12], [0.8, 0.05], [1, 0.35]].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': '#fff', 'stop-opacity': p[1] }, vd); });
+    [[0, 0.62], [0.16, 0.22], [0.5, 0.04], [0.82, 0.08], [1, 0.42]].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[0] > 0.3 && p[0] < 0.9 ? '#e6fbff' : '#fff', 'stop-opacity': p[1] }, vd); });
     var la = el('linearGradient', { id: 'laton', x1: 0, x2: 0, y1: 0, y2: 1 }, d);
     el('stop', { offset: 0, 'stop-color': '#ffe08a' }, la); el('stop', { offset: 0.5, 'stop-color': '#e3a83b' }, la); el('stop', { offset: 1, 'stop-color': '#a8691c' }, la);
     var co = el('linearGradient', { id: 'cobre', x1: 0, x2: 1 }, d);
@@ -1053,6 +1053,31 @@
     [[0, '#d99a62'], [0.5, '#b8743f'], [1, '#8a5230']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, ma); });
     var vf = el('linearGradient', { id: 'vidrioFondo', x1: 0, x2: 1 }, d);
     [[0, 0.32], [0.3, 0.12], [0.7, 0.1], [1, 0.26]].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': '#fff8ef', 'stop-opacity': p[1] }, vf); });
+    // Oro brillante (como los marcos de los iconos de RECURSOS)
+    var oh = el('linearGradient', { id: 'oroH', x1: 0, x2: 1 }, d);
+    [[0, '#a8620c'], [0.22, '#f0b230'], [0.42, '#fff3b8'], [0.58, '#ffd34d'], [0.85, '#d18a17'], [1, '#8f520a']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, oh); });
+    var ov = el('linearGradient', { id: 'oroV', x1: 0, x2: 0, y1: 0, y2: 1 }, d);
+    [[0, '#fff6c4'], [0.35, '#ffd34d'], [0.7, '#e39a1c'], [1, '#9c5e0a']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, ov); });
+    var ob = el('radialGradient', { id: 'oroBola', cx: 0.38, cy: 0.32, r: 0.75 }, d);
+    [[0, '#fffbe0'], [0.3, '#ffd85a'], [0.75, '#d9901a'], [1, '#8f520a']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, ob); });
+    // Caramelo glaseado para los grifos (rosa) y las chimeneas (lila)
+    var cr = el('radialGradient', { id: 'caramelo', cx: 0.36, cy: 0.3, r: 0.8 }, d);
+    [[0, '#ffd0dc'], [0.35, '#ff7d9c'], [0.75, '#e2476b'], [1, '#a8284a']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, cr); });
+    var li = el('radialGradient', { id: 'lila', cx: 0.36, cy: 0.3, r: 0.8 }, d);
+    [[0, '#f3e8ff'], [0.35, '#c9aef0'], [0.75, '#9472c9'], [1, '#5f3f94']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, li); });
+    // Fuego: tres capas de llama y el resplandor de las brasas
+    var le = el('linearGradient', { id: 'llamaExt', x1: 0, x2: 0, y1: 1, y2: 0 }, d);
+    [[0, '#d8281a'], [0.45, '#ff5a1f'], [1, '#ff9a2e']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, le); });
+    var lm = el('linearGradient', { id: 'llamaMed', x1: 0, x2: 0, y1: 1, y2: 0 }, d);
+    [[0, '#ff7a1a'], [0.6, '#ffb52e'], [1, '#ffd85e'] ].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, lm); });
+    var ln = el('linearGradient', { id: 'llamaNucleo', x1: 0, x2: 0, y1: 1, y2: 0 }, d);
+    [[0, '#fff3b0'], [1, '#ffffff']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, ln); });
+    var br = el('radialGradient', { id: 'resplandor' }, d);
+    [[0, '#ffd166', 0.85], [0.45, '#ff8a3d', 0.45], [1, '#ff5a1f', 0]].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1], 'stop-opacity': p[2] }, br); });
+    var bs = el('radialGradient', { id: 'brasa', cx: 0.5, cy: 0.35 }, d);
+    [[0, '#fff1a8'], [0.4, '#ff9a2e'], [1, '#b8320f']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, bs); });
+    var hi = el('linearGradient', { id: 'hierro', x1: 0, x2: 0, y1: 0, y2: 1 }, d);
+    [[0, '#8a6a5a'], [0.4, '#5a3d30'], [1, '#2e1b14']].forEach(function (p) { el('stop', { offset: p[0], 'stop-color': p[1] }, hi); });
     var hal = el('radialGradient', { id: 'halo' }, d);
     el('stop', { offset: 0, 'stop-color': '#fff7c2', 'stop-opacity': 0.95 }, hal);
     el('stop', { offset: 0.6, 'stop-color': '#ffd36b', 'stop-opacity': 0.35 }, hal);
@@ -1072,7 +1097,7 @@
         return 'M' + (l + rc) + ',' + t + ' L' + (r - rc) + ',' + t + ' Q' + r + ',' + t + ' ' + r + ',' + (t + rc) + ' L' + r + ',' + (b - rc) + ' Q' + r + ',' + b + ' ' + (r - rc) + ',' + b +
           ' L' + (l + rc) + ',' + b + ' Q' + l + ',' + b + ' ' + l + ',' + (b - rc) + ' L' + l + ',' + (t + rc) + ' Q' + l + ',' + t + ' ' + (l + rc) + ',' + t + 'Z';
       default:
-        var rad = v.forma === 'alambique' ? 22 : 15;
+        var rad = v.forma === 'alambique' ? 15 : 9;
         return 'M' + l + ',' + t + ' L' + r + ',' + t + ' L' + r + ',' + (b - rad) + ' Q' + r + ',' + b + ' ' + (r - rad) + ',' + b + ' L' + (l + rad) + ',' + b + ' Q' + l + ',' + b + ' ' + l + ',' + (b - rad) + 'Z';
     }
   }
@@ -1114,19 +1139,30 @@
       R.rutas[g.id] = g.rutas.map(function (r, i) {
         var pts = puntosRuta(g, i), d = camino(pts);
         var gr = el('g', { class: 'tubo' }, capas.tubos), vap = g.lado === 'arriba';
-        el('path', { d: d, fill: 'none', stroke: '#5a3324', 'stroke-width': 14, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, gr);
-        el('path', { d: d, fill: 'none', stroke: r.cristal ? '#c9f3ff' : (vap ? '#efe6fb' : '#fbf1e4'), 'stroke-width': 9.5, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, gr);
-        el('path', { class: 'canal', d: d, fill: 'none', stroke: r.cristal ? '#8fdcf2' : (vap ? '#d6c4ef' : '#e6c9a8'), 'stroke-width': 4.5, 'stroke-opacity': 0.8, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, gr);
-        el('path', { d: d, fill: 'none', stroke: '#fff', 'stroke-opacity': 0.9, 'stroke-width': 1.6, 'stroke-dasharray': r.cristal ? '4 8' : null, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', transform: 'translate(-2.2,-2.2)' }, gr);
+        var lineal = { fill: 'none', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' };
+        el('path', Object.assign({ d: d, stroke: '#3d1f10', 'stroke-opacity': 0.16, 'stroke-width': 15, transform: 'translate(2,4)' }, lineal), gr);
+        el('path', Object.assign({ d: d, stroke: '#4a2a1c', 'stroke-width': 15.5 }, lineal), gr);
+        el('path', Object.assign({ d: d, stroke: r.cristal ? '#c6f1ff' : (vap ? '#f1e8fd' : '#fdf6ec'), 'stroke-width': 10.5 }, lineal), gr);
+        el('path', Object.assign({ class: 'canal', d: d, stroke: r.cristal ? '#8fdcf2' : (vap ? '#d6c4ef' : '#ead2b4'), 'stroke-width': 5.4, 'stroke-opacity': 0.85 }, lineal), gr);
+        el('path', Object.assign({ d: d, stroke: '#fff', 'stroke-opacity': 0.95, 'stroke-width': 2, 'stroke-dasharray': r.cristal ? '5 7' : null, transform: 'translate(-2.4,-2.4)' }, lineal), gr);
+        el('path', Object.assign({ d: d, stroke: '#7a4a2a', 'stroke-opacity': 0.18, 'stroke-width': 1.6, transform: 'translate(2.6,2.6)' }, lineal), gr);
+        // Anillas de oro a lo largo de los tramos largos
+        for (var q2 = 1; q2 < pts.length; q2++) {
+          var a0 = pts[q2 - 1], a1 = pts[q2], lg = Math.hypot(a1[0] - a0[0], a1[1] - a0[1]);
+          if (lg < 70) continue;
+          var hor = a0[1] === a1[1], mx = (a0[0] + a1[0]) / 2, my = (a0[1] + a1[1]) / 2;
+          el('rect', { x: hor ? mx - 3 : mx - 9.5, y: hor ? my - 9.5 : my - 3, width: hor ? 6 : 19, height: hor ? 19 : 6, rx: 2.5, fill: hor ? 'url(#oroV)' : 'url(#oroH)', stroke: '#4a2a1c', 'stroke-width': 1.8 }, gr);
+        }
         for (var q = 1; q < pts.length - 1; q++) {
           if (g.valvula && pts[q][0] === g.valvula[0] && pts[q][1] === g.valvula[1]) continue;
           var jn = el('g', { transform: 'translate(' + pts[q][0] + ',' + pts[q][1] + ')' }, gr);
-          el('circle', { r: 7.2, fill: 'url(#laton)', stroke: '#5a3324', 'stroke-width': 2 }, jn);
-          el('circle', { r: 2, cx: -2.2, cy: -2.2, fill: '#fff', opacity: 0.65 }, jn);
+          el('circle', { r: 8.6, fill: 'url(#oroBola)', stroke: '#4a2a1c', 'stroke-width': 2.2 }, jn);
+          el('ellipse', { rx: 3, ry: 2, cx: -2.6, cy: -3, fill: '#fff', opacity: 0.85, transform: 'rotate(-30 -2.6 -3)' }, jn);
         }
         var fin = pts[pts.length - 1], dest = objetivo(r.a);
-        el('path', { d: 'M' + (fin[0] - 7) + ',' + (fin[1] - 6) + ' L' + (fin[0] + 7) + ',' + (fin[1] - 6) + ' L' + (fin[0] + 4) + ',' + fin[1] + ' L' + (fin[0] - 4) + ',' + fin[1] + 'Z',
-          fill: '#e3a83b', stroke: '#5a3324', 'stroke-width': 2, 'stroke-linejoin': 'round', transform: dest && dest.materia === 'V' ? 'rotate(180 ' + fin[0] + ' ' + (fin[1] - 3) + ')' : null }, gr);
+        // Boquilla de oro en forma de embudo
+        el('path', { d: 'M' + (fin[0] - 9) + ',' + (fin[1] - 9) + ' L' + (fin[0] + 9) + ',' + (fin[1] - 9) + ' L' + (fin[0] + 5) + ',' + fin[1] + ' L' + (fin[0] - 5) + ',' + fin[1] + 'Z',
+          fill: 'url(#oroH)', stroke: '#4a2a1c', 'stroke-width': 2.2, 'stroke-linejoin': 'round', transform: dest && dest.materia === 'V' ? 'rotate(180 ' + fin[0] + ' ' + (fin[1] - 4.5) + ')' : null }, gr);
         if (g.valvula) {
           var toque = el('path', { class: 'tubo-toque', d: d, fill: 'none', stroke: 'transparent', 'stroke-width': 24, 'stroke-linecap': 'round' }, gr);
           toque.addEventListener('click', function () { elegirRuta(g.id, i); });
@@ -1147,23 +1183,19 @@
     el('rect', { x: G.izq - 12, y: G.top - 18, width: G.w + 24, height: G.h + 28, fill: 'transparent' }, gr);
     el('ellipse', { class: 'sombra-vasija', cx: v.x, cy: v.y + (v.bascula ? 13 : 5), rx: G.w * 0.6, ry: 6, fill: '#3d1f10', opacity: 0.16 }, gr);
     if (v.forma === 'matraz') { // trípode de hierro: se queda en la mesa cuando se levanta el matraz
-      el('path', { d: 'M' + (v.x - 21) + ',' + (v.y - 22) + ' L' + (v.x - 29) + ',' + (v.y + 6) + ' M' + (v.x + 21) + ',' + (v.y - 22) + ' L' + (v.x + 29) + ',' + (v.y + 6) + ' M' + v.x + ',' + (v.y - 4) + ' L' + v.x + ',' + (v.y + 6),
+      el('path', { d: 'M' + (v.x - 17) + ',' + (v.y - 5) + ' L' + (v.x - 27) + ',' + (v.y + 8) + ' M' + (v.x + 17) + ',' + (v.y - 5) + ' L' + (v.x + 27) + ',' + (v.y + 8) + ' M' + v.x + ',' + (v.y - 2) + ' L' + v.x + ',' + (v.y + 8),
         stroke: '#4a2a1c', 'stroke-width': 4.2, 'stroke-linecap': 'round' }, gr);
-      el('rect', { x: v.x - 30, y: v.y - 25, width: 60, height: 6, rx: 3, fill: 'url(#metal)', stroke: '#4a2a1c', 'stroke-width': 1.8 }, gr);
-    } else if (v.forma === 'frasco' && !v.bascula) { // posavasos de madera
-      el('rect', { x: G.izq - 7, y: v.y - 1, width: G.w + 14, height: 8, rx: 4, fill: 'url(#madera)', stroke: '#5a3324', 'stroke-width': 2 }, gr);
+      el('rect', { x: v.x - 24, y: v.y - 7, width: 48, height: 6, rx: 3, fill: 'url(#oroH)', stroke: '#4a2a1c', 'stroke-width': 1.8 }, gr);
+    } else if (v.forma === 'frasco' && !v.bascula) { // peana de madera con filo de oro
+      el('rect', { x: G.izq - 8, y: v.y - 1, width: G.w + 16, height: 9, rx: 4.5, fill: 'url(#madera)', stroke: '#4a2a1c', 'stroke-width': 2.2 }, gr);
+      el('rect', { x: G.izq - 5, y: v.y - 0.5, width: G.w + 10, height: 2.4, rx: 1.2, fill: 'url(#oroH)', opacity: 0.95 }, gr);
     }
-    if (v.forma === 'alambique') {
-      var fz = el('g', { transform: 'translate(' + v.x + ',' + (v.y + 15) + ')' }, gr);
-      [-16, 0, 16].forEach(function (dx, i) {
-        el('path', { class: 'llama', style: 'animation-delay:' + (i * 0.15) + 's', d: 'M' + dx + ',0 C' + (dx - 7) + ',-6 ' + (dx - 3) + ',-12 ' + dx + ',-17 C' + (dx + 3) + ',-12 ' + (dx + 7) + ',-6 ' + dx + ',0Z', fill: '#ff8a3d', stroke: '#c4470f', 'stroke-width': 1.5 }, fz);
-      });
-      el('rect', { x: v.x - 30, y: v.y + 13, width: 60, height: 7, rx: 3.5, fill: '#5a3324' }, gr);
-    }
+    if (v.forma === 'alambique') construirFuego(v, gr);
     var ref = { g: gr, capas: null };
     if (v.bascula) {
-      el('rect', { x: G.izq - 10, y: v.y + 1, width: G.w + 20, height: 9, rx: 4.5, fill: 'url(#laton)', stroke: '#5a3324', 'stroke-width': 2 }, gr);
-      el('rect', { x: v.x - 4, y: v.y + 10, width: 8, height: 8, fill: '#a8691c', stroke: '#5a3324', 'stroke-width': 2 }, gr);
+      el('rect', { x: v.x - 4.5, y: v.y + 9, width: 9, height: 10, fill: 'url(#oroH)', stroke: '#4a2a1c', 'stroke-width': 2 }, gr);
+      el('rect', { x: G.izq - 11, y: v.y + 1, width: G.w + 22, height: 10, rx: 5, fill: 'url(#oroV)', stroke: '#4a2a1c', 'stroke-width': 2.2 }, gr);
+      el('rect', { x: G.izq - 6, y: v.y + 2.5, width: G.w + 12, height: 2.2, rx: 1.1, fill: '#fff', opacity: 0.7 }, gr);
       var um = v.bascula.umbral, conPips = um <= 6, anchoB = conPips ? 30 + um * 13 : 64;
       ref.badgeRect = el('rect', { class: 'insignia', x: v.x - anchoB / 2, y: v.y + 19, width: anchoB, height: 22, rx: 11, stroke: '#5a3324', 'stroke-width': 2 }, gr);
       ref.badgeIc = el('text', { x: v.x - anchoB / 2 + 12, y: v.y + 35, 'text-anchor': 'middle', 'font-size': 13 }, gr); ref.badgeIc.textContent = '⚖';
@@ -1190,12 +1222,17 @@
     var baseY = v.y - 5, rayas = el('g', { 'pointer-events': 'none' }, liq);
     for (var k = 1; k < v.cap; k++) el('line', { x1: G.izq, x2: G.der, y1: baseY - k * G.u, y2: baseY - k * G.u, stroke: '#fff', 'stroke-opacity': 0.42, 'stroke-width': 1.1, 'stroke-dasharray': '3 4' }, rayas);
     for (var k2 = 1; k2 <= v.cap; k2++) el('line', { x1: G.der - 11, x2: G.der - 3, y1: baseY - k2 * G.u, y2: baseY - k2 * G.u, stroke: '#fff', 'stroke-opacity': 0.95, 'stroke-width': 2 }, rayas);
-    // Reflejos del cristal
-    el('rect', { x: G.izq + 5, y: G.top + 8, width: 5.5, height: Math.max(10, G.h - 24), rx: 2.75, fill: '#fff', opacity: 0.5, 'clip-path': recorte, 'pointer-events': 'none' }, cu);
-    el('rect', { x: G.der - 9.5, y: G.top + 9, width: 2.6, height: Math.max(6, G.h * 0.28), rx: 1.3, fill: '#fff', opacity: 0.38, 'clip-path': recorte, 'pointer-events': 'none' }, cu);
+    // Reflejos del cristal: una franja larga y curvada, otra fina, el fondo grueso y un destello
+    var ref1 = G.izq + 6, alto = Math.max(10, G.h - 26);
+    el('path', { d: 'M' + ref1 + ',' + (G.top + 10) + ' Q' + (ref1 - 1.5) + ',' + (G.top + 10 + alto / 2) + ' ' + (ref1 + 1) + ',' + (G.top + 10 + alto) + ' L' + (ref1 + 6) + ',' + (G.top + 10 + alto) + ' Q' + (ref1 + 3.5) + ',' + (G.top + 10 + alto / 2) + ' ' + (ref1 + 5.5) + ',' + (G.top + 10) + 'Z',
+      fill: '#fff', opacity: 0.62, 'clip-path': recorte, 'pointer-events': 'none' }, cu);
+    el('rect', { x: ref1 + 9, y: G.top + 12, width: 2, height: Math.max(6, alto * 0.45), rx: 1, fill: '#fff', opacity: 0.4, 'clip-path': recorte, 'pointer-events': 'none' }, cu);
+    el('rect', { x: G.der - 9.5, y: G.top + 10, width: 3, height: Math.max(6, G.h * 0.26), rx: 1.5, fill: '#fff', opacity: 0.42, 'clip-path': recorte, 'pointer-events': 'none' }, cu);
+    if (v.forma === 'frasco' || v.forma === 'cuenco') el('path', { d: 'M' + (G.izq + 4) + ',' + (v.y - 4.5) + ' Q' + v.x + ',' + (v.y - 1) + ' ' + (G.der - 4) + ',' + (v.y - 4.5), fill: 'none', stroke: '#fff', 'stroke-opacity': 0.55, 'stroke-width': 2.2, 'stroke-linecap': 'round', 'pointer-events': 'none' }, cu);
+    el('path', { class: 'destello', d: 'M0,-5 L1.2,-1.2 5,0 1.2,1.2 0,5 -1.2,1.2 -5,0 -1.2,-1.2Z', fill: '#fff', transform: 'translate(' + (G.der - 13) + ',' + (G.top + 16) + ')', 'pointer-events': 'none', style: 'animation-delay:-' + ((v.x % 7) * 0.4).toFixed(1) + 's' }, cu);
     // Cristal grueso: borde oscuro y un filo claro por dentro
-    el('path', { class: 'vidrio', d: forma0, fill: 'url(#vidrio)', stroke: '#5a3324', 'stroke-width': 2.6 }, cu);
-    el('path', { d: formaVasija(v, G, 2.4), fill: 'none', stroke: '#fff', 'stroke-opacity': 0.6, 'stroke-width': 1.3, 'pointer-events': 'none' }, cu);
+    el('path', { class: 'vidrio', d: forma0, fill: 'url(#vidrio)', stroke: '#4a2a1c', 'stroke-width': 3 }, cu);
+    el('path', { d: formaVasija(v, G, 2.6), fill: 'none', stroke: '#fff', 'stroke-opacity': 0.7, 'stroke-width': 1.4, 'pointer-events': 'none' }, cu);
     if (v.forma === 'alambique') { // alambique de cobre con remaches
       el('path', { d: forma0, fill: 'none', stroke: 'url(#cobre)', 'stroke-width': 6, opacity: 0.95 }, cu);
       el('path', { d: forma0, fill: 'none', stroke: '#5a3324', 'stroke-width': 1.5 }, cu);
@@ -1207,10 +1244,12 @@
       el('rect', { x: G.izq - 4, y: v.y - 7, width: G.w + 8, height: 12, rx: 5, fill: 'url(#metal)', stroke: '#4a2a1c', 'stroke-width': 2 }, cu);
       el('path', { d: 'M' + (G.izq - 1) + ',' + (G.top + 2) + ' L' + (G.der + 1) + ',' + (G.top + 2), stroke: '#fff', 'stroke-opacity': 0.7, 'stroke-width': 1.4 }, cu);
     } else if (v.forma === 'matraz') { // boca del matraz
-      el('rect', { x: v.x - 15, y: G.top - 6, width: 30, height: 9, rx: 4.5, fill: 'url(#laton)', stroke: '#5a3324', 'stroke-width': 2.1 }, cu);
+      el('rect', { x: v.x - 15, y: G.top - 7, width: 30, height: 10, rx: 5, fill: 'url(#oroH)', stroke: '#4a2a1c', 'stroke-width': 2.2 }, cu);
+      el('rect', { x: v.x - 11, y: G.top - 5.5, width: 22, height: 2, rx: 1, fill: '#fff', opacity: 0.75 }, cu);
     } else { // frasco y cuenco: borde de latón con la boca a la vista
-      el('rect', { x: G.izq - 5, y: G.top - 6, width: G.w + 10, height: 10, rx: 5, fill: 'url(#laton)', stroke: '#5a3324', 'stroke-width': 2.2 }, cu);
-      el('ellipse', { cx: v.x, cy: G.top - 1, rx: G.w / 2 - 3, ry: 1.8, fill: '#5a3324', opacity: 0.35 }, cu);
+      el('rect', { x: G.izq - 6, y: G.top - 7, width: G.w + 12, height: 11, rx: 5.5, fill: 'url(#oroH)', stroke: '#4a2a1c', 'stroke-width': 2.4 }, cu);
+      el('rect', { x: G.izq - 1, y: G.top - 5.5, width: G.w + 2, height: 2.2, rx: 1.1, fill: '#fff', opacity: 0.7 }, cu);
+      el('ellipse', { cx: v.x, cy: G.top + 0.5, rx: G.w / 2 - 3, ry: 1.8, fill: '#4a2a1c', opacity: 0.35 }, cu);
     }
     // Sello de chocolate (se muestra u oculta)
     ref.sello = el('g', {}, cu);
@@ -1222,10 +1261,31 @@
     var fl = el('g', { class: 'flecha', transform: 'translate(' + v.x + ',' + (G.top - 26) + ')' }, cu);
     el('path', { class: 'flecha-in', d: 'M-9,-6 L0,4 L9,-6', fill: 'none', stroke: '#fff', 'stroke-width': 5, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, fl);
     if (v.nombre) {
-      el('text', { x: v.x, y: v.y + (v.bascula ? 58 : (v.forma === 'alambique' ? 34 : 18)), 'text-anchor': 'middle', 'font-family': 'Nunito, sans-serif', 'font-weight': 900, 'font-size': 11, fill: '#6b3714' }, gr).textContent = v.nombre;
+      el('text', { x: v.x, y: v.y + (v.bascula ? 58 : (v.forma === 'alambique' ? 54 : 18)), 'text-anchor': 'middle', 'font-family': 'Nunito, sans-serif', 'font-weight': 900, 'font-size': 11, fill: '#6b3714' }, gr).textContent = v.nombre;
     }
     gr.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tocarVasija(v.id); } });
     R.vas[v.id] = ref;
+  }
+
+  // Quemador del alambique: resplandor que late, brasas, llamas vivas y chispas que suben
+  function construirFuego(v, padre) {
+    var fz = el('g', { class: 'fuego', transform: 'translate(' + v.x + ',' + (v.y + 27) + ')', 'pointer-events': 'none' }, padre);
+    el('ellipse', { class: 'fuego-resplandor', cx: 0, cy: -10, rx: 46, ry: 26, fill: 'url(#resplandor)' }, fz);
+    var LLAMA = 'M0,0 C-9,-1 -11,-9 -7,-15 C-5,-11 -3,-11 -3,-14 C-3,-20 0,-24 2,-30 C4,-23 9,-19 9,-12 C11,-15 11,-17 10,-20 C14,-14 13,-4 8,-1 C5,0.6 3,0.8 0,0Z';
+    [[-18, 0.9, 0], [18, 0.95, 0.23], [0, 1.2, 0.11]].forEach(function (f, i) {
+      var g = el('g', { transform: 'translate(' + f[0] + ',0) scale(' + f[1] + ')' }, fz);
+      var ext = el('path', { class: 'llama llama-ext', d: LLAMA, fill: 'url(#llamaExt)', stroke: '#b8240f', 'stroke-width': 1.4, 'stroke-linejoin': 'round' }, g);
+      var med = el('path', { class: 'llama llama-med', d: LLAMA, fill: 'url(#llamaMed)', transform: 'translate(0,-1) scale(.66)' }, g);
+      var nuc = el('path', { class: 'llama llama-nuc', d: LLAMA, fill: 'url(#llamaNucleo)', transform: 'translate(0,-1) scale(.34)' }, g);
+      [ext, med, nuc].forEach(function (p, k) { p.style.animationDelay = (-(i * 0.17 + k * 0.09)).toFixed(2) + 's'; p.style.animationDuration = (0.52 + i * 0.07 + k * 0.05).toFixed(2) + 's'; });
+    });
+    // Quemador: cuenco de hierro con borde de oro y brasas encendidas
+    el('path', { d: 'M-31,0 L31,0 L26,9 Q0,13 -26,9Z', fill: 'url(#hierro)', stroke: '#2a160e', 'stroke-width': 2, 'stroke-linejoin': 'round' }, fz);
+    [[-18, 1.5], [-6, 3], [7, 2], [19, 1.2]].forEach(function (b, i) {
+      el('ellipse', { class: 'brasa', cx: b[0], cy: b[1] + 1, rx: 6.5, ry: 3.2, fill: 'url(#brasa)', style: 'animation-delay:-' + (i * 0.35).toFixed(2) + 's' }, fz);
+    });
+    el('rect', { x: -34, y: -2.5, width: 68, height: 5.5, rx: 2.75, fill: 'url(#oroH)', stroke: '#4a2a1c', 'stroke-width': 1.8 }, fz);
+    for (var c = 0; c < 4; c++) el('circle', { class: 'chispa-fuego', cx: -14 + c * 9, cy: -6, r: 1.4 + (c % 2) * 0.6, fill: c % 2 ? '#fff1a8' : '#ffb52e', style: 'animation-delay:-' + (c * 0.37).toFixed(2) + 's' }, fz);
   }
 
   function construirObjetivo(o) {
@@ -1283,10 +1343,13 @@
       el('rect', { x: -15, y: -7, width: 30, height: 14, rx: 7, fill: '#d8323f', stroke: '#5a3324', 'stroke-width': 2, transform: 'rotate(' + rot + ')' }, abie);
       el('path', { d: 'M-10,-6 L-6,6 M-3,-6 L1,6 M4,-6 L8,6', stroke: '#ff8a93', 'stroke-width': 2, transform: 'rotate(' + rot + ')' }, abie);
     } else {
-      el('rect', { x: -13, y: -13, width: 26, height: 26, rx: 7, fill: c.tipo === 'puente' ? '#e3a83b' : '#f2607d', stroke: '#5a3324', 'stroke-width': 2.2 }, cerr);
+      el('rect', { x: -14, y: -11, width: 28, height: 28, rx: 8, fill: '#3d1f10', opacity: 0.18 }, cerr);
+      el('rect', { x: -14, y: -14, width: 28, height: 28, rx: 8, fill: c.tipo === 'puente' ? 'url(#oroV)' : 'url(#caramelo)', stroke: '#4a2a1c', 'stroke-width': 2.4 }, cerr);
+      el('rect', { x: -10, y: -11, width: 12, height: 3, rx: 1.5, fill: '#fff', opacity: 0.75 }, cerr);
       if (c.tipo === 'puente') el('text', { y: 6, 'text-anchor': 'middle', 'font-size': 15, fill: '#5a3324' }, cerr).textContent = '⚖';
       else el('path', { d: 'M0,-8 L2.4,-2.6 8,-2.2 3.7,1.5 5,7 0,4 -5,7 -3.7,1.5 -8,-2.2 -2.4,-2.6Z', fill: '#fff' }, cerr);
-      el('circle', { r: 11, fill: '#6cc24a', stroke: '#5a3324', 'stroke-width': 2, opacity: 0.95 }, abie);
+      el('circle', { r: 12, fill: '#6cc24a', stroke: '#4a2a1c', 'stroke-width': 2.2 }, abie);
+      el('ellipse', { rx: 4, ry: 2.2, cx: -3.5, cy: -5, fill: '#fff', opacity: 0.6 }, abie);
       el('path', { d: 'M-5,0 L-1.5,4 L5.5,-4', fill: 'none', stroke: '#fff', 'stroke-width': 2.6, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, abie);
     }
     R.comp[c.id] = { cerr: cerr, abie: abie, abierta: null };
@@ -1295,27 +1358,37 @@
   function construirGrifo(g) {
     var sp = salidaGrifo(g), lado = g.sale === 'izq' ? -1 : 1, arriba = g.lado === 'arriba';
     var cano = el('g', {}, capas.grifos);
-    el('path', { d: 'M' + sp.base[0] + ',' + sp.base[1] + ' L' + sp.p[0] + ',' + sp.p[1], stroke: '#5a3324', 'stroke-width': 13, 'stroke-linecap': 'round' }, cano);
-    el('path', { d: 'M' + sp.base[0] + ',' + sp.base[1] + ' L' + sp.p[0] + ',' + sp.p[1], stroke: 'url(#laton)', 'stroke-width': 8, 'stroke-linecap': 'round' }, cano);
+    el('path', { d: 'M' + sp.base[0] + ',' + sp.base[1] + ' L' + sp.p[0] + ',' + sp.p[1], stroke: '#4a2a1c', 'stroke-width': 14, 'stroke-linecap': 'round' }, cano);
+    el('path', { d: 'M' + sp.base[0] + ',' + sp.base[1] + ' L' + sp.p[0] + ',' + sp.p[1], stroke: arriba ? 'url(#oroH)' : 'url(#oroV)', 'stroke-width': 9, 'stroke-linecap': 'round' }, cano);
     var gr = el('g', { class: 'grifo', 'data-id': g.id, tabindex: 0, role: 'button', 'aria-label': T(arriba ? 'chimenea_aria' : 'grifo_aria', vars(nombreVasija(vasija(g.de)))) }, capas.grifos);
     var kx = sp.p[0] + (arriba ? 0 : lado * 2), ky = sp.p[1] + (arriba ? -2 : 0);
     var per = el('g', { transform: 'translate(' + kx + ',' + ky + ')' }, gr);
     el('circle', { r: 19, fill: 'transparent' }, per);
-    var bot = el('g', { class: 'perilla' }, per);
-    el('circle', { r: 11, fill: arriba ? '#b69ad6' : '#f2607d', stroke: '#5a3324', 'stroke-width': 2.4 }, bot);
-    el('circle', { r: 4.5, cx: -3, cy: -3, fill: '#fff', opacity: 0.55 }, bot);
-    el('path', { d: arriba ? ICONO.V : 'M0,-5 C2,-2 3.5,0 3.5,1.5 A3.5,3.5 0 0 1 -3.5,1.5 C-3.5,0 -2,-2 0,-5Z', fill: '#fff', transform: arriba ? 'scale(.75)' : null }, bot);
+    // Si la válvula queda pegada a la llave, ambas se reducen lo justo para no montarse
+    var juntas = g.valvula ? Math.hypot(g.valvula[0] - kx, g.valvula[1] - ky) : 99, esc = Math.min(1, Math.max(0.72, (juntas - 2) / 24.5));
+    var bot = el('g', { class: 'perilla' }, el('g', { transform: esc < 1 ? 'scale(' + esc.toFixed(2) + ')' : null }, per));
+    // Llave: aro de oro, cuatro pétalos de caramelo glaseado y el icono en el centro
+    el('circle', { r: 12, fill: '#3d1f10', opacity: 0.18, cy: 2.2 }, bot);
+    el('circle', { r: 11, fill: 'url(#oroBola)', stroke: '#4a2a1c', 'stroke-width': 2 }, bot);
+    var petalos = el('g', { class: 'petalos' }, bot);
+    for (var pk = 0; pk < 4; pk++) el('ellipse', { rx: 4.6, ry: 7.2, cy: -5.2, fill: arriba ? 'url(#lila)' : 'url(#caramelo)', stroke: '#4a2a1c', 'stroke-width': 1.8, transform: 'rotate(' + (45 + pk * 90) + ')' }, petalos);
+    el('circle', { r: 6.6, fill: arriba ? 'url(#lila)' : 'url(#caramelo)', stroke: '#4a2a1c', 'stroke-width': 1.9 }, bot);
+    el('ellipse', { rx: 2.8, ry: 1.6, cx: -2.2, cy: -3, fill: '#fff', opacity: 0.85, transform: 'rotate(-30 -2.4 -3.4)' }, bot);
+    el('path', { d: arriba ? ICONO.V : 'M0,-3.9 C1.6,-1.6 2.7,0 2.7,1.2 A2.7,2.7 0 0 1 -2.7,1.2 C-2.7,0 -1.6,-1.6 0,-3.9Z', fill: '#fff', transform: arriba ? 'scale(.48)' : 'translate(0,0.6)' }, bot);
     if (J.n.id <= 3) etiqueta(kx, ky + 27, T(arriba ? 'chimenea' : 'grifo'));
     if (g.valvula && J.n.id <= 3) etiqueta(g.valvula[0], g.valvula[1] - 22, T('valvula'));
     gr.addEventListener('click', function (e) { e.stopPropagation(); abrir(g.id); });
     gr.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(g.id); } });
     if (g.valvula) {
-      var vv = el('g', { class: 'valvula', 'data-id': 'v-' + g.id, tabindex: 0, role: 'button', transform: 'translate(' + g.valvula[0] + ',' + g.valvula[1] + ')' }, capas.grifos);
+      var vv = el('g', { class: 'valvula', 'data-id': 'v-' + g.id, tabindex: 0, role: 'button', transform: 'translate(' + g.valvula[0] + ',' + g.valvula[1] + ')' + (esc < 1 ? ' scale(' + esc.toFixed(2) + ')' : '') }, capas.grifos);
       el('circle', { r: 20, fill: 'transparent' }, vv);
-      el('circle', { r: 13, fill: 'url(#laton)', stroke: '#5a3324', 'stroke-width': 2.4 }, vv);
+      el('circle', { r: 13, fill: '#3d1f10', opacity: 0.18, cy: 2.2 }, vv);
+      el('circle', { r: 12.5, fill: 'url(#oroBola)', stroke: '#4a2a1c', 'stroke-width': 2.2 }, vv);
+      el('circle', { r: 8.6, fill: '#fff6dc', stroke: '#4a2a1c', 'stroke-width': 1.5 }, vv);
+      for (var rk = 0; rk < 6; rk++) el('path', { d: 'M0,-8.6 L0,-11.6', stroke: '#4a2a1c', 'stroke-width': 1.6, transform: 'rotate(' + (rk * 60) + ')' }, vv);
       var rotor = el('g', { class: 'rotor' }, vv);
-      el('path', { d: 'M-5,-4.5 L9,0 L-5,4.5Z', fill: '#f2607d', stroke: '#5a3324', 'stroke-width': 1.8, 'stroke-linejoin': 'round' }, rotor);
-      el('circle', { r: 3, fill: '#5a3324' }, vv);
+      el('path', { d: 'M-5,-4.6 L9.5,0 L-5,4.6 Q-3,0 -5,-4.6Z', fill: 'url(#caramelo)', stroke: '#4a2a1c', 'stroke-width': 1.9, 'stroke-linejoin': 'round' }, rotor);
+      el('circle', { r: 3.3, fill: 'url(#oroBola)', stroke: '#4a2a1c', 'stroke-width': 1.4 }, vv);
       vv.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); girarValvula(g.id); } });
       R.valv[g.id] = { g: vv, rotor: rotor, ang: null };
     }
@@ -1610,6 +1683,8 @@
   function abrir(idGrifo) {
     if (!activo()) return;
     if (J.sel !== null) { J.sel = null; actualizarSeleccion(); }
+    var gg = SVG && SVG.querySelector('.grifo[data-id="' + idGrifo + '"]');
+    if (gg) { gg.classList.add('abriendo'); setTimeout(function () { gg.classList.remove('abriendo'); }, 700); }
     ejecutar({ t: 'g', g: idGrifo, r: null });
   }
   function girarValvula(idGrifo) {
