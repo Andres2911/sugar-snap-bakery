@@ -20,6 +20,12 @@
       objetivo_combo: '{o} pide una mezcla: le falta {l}.', y: 'y',
       empezar_cero: 'Empezar de cero', cero_t: '¿Empezar de cero?', cero_aviso: 'Se borra todo: niveles, puntos, rangos, monedas, vitrina, logros y notas. No se puede deshacer.',
       cero_si: 'Borrar todo', cero_hecho: 'Todo listo para empezar de nuevo',
+      v_siguiente_inf: 'Receta {n}', abierto_infinito: '¡Se ha abierto el Obrador sin fin!', abierto_diario: '¡Nuevo: el reto del día!', abierto_sub: 'Búscalo en la portada.', infinito: 'Obrador sin fin', infinito_sub: 'Receta nº {n}', infinito_req: 'Al completar la región V', infinito_bloq: 'El Obrador sin fin se abre al completar la región V.',
+      inf_titulo_es: 'Obrador sin fin · Nº {n}', inf_consejo: 'Piensa antes de mover.', hoy: 'HOY',
+      diario: 'Reto del día', diario_sub: 'Un tablero nuevo cada día', diario_req: 'Al completar el nivel 12', diario_bloq: 'El reto del día se abre al completar el nivel 12.',
+      diario_hecho: '¡Reto de hoy superado!', diario_hecho_corto: '¡Hecho! Vuelve mañana', diario_vuelve: 'Mañana habrá uno nuevo.',
+      preparando: 'Preparando el tablero…', preparando_sub: 'Grumble está mezclando una receta que nadie ha jugado antes.',
+      descanso_t: '¿Un descanso?', descanso_sub: 'Llevas un buen rato', descanso: 'Estira las piernas, bebe agua y descansa la vista. Tus dulces te esperan aquí mismo.', descanso_si: 'Descansar',
       lema: 'La alquimia más dulce del reino',
       portada_texto: 'Mueve y transforma materia mágica para despertar los dulces dormidos de Auralia.',
       jugar: 'Jugar', seguir_nivel: 'Nivel {n}', todo_completo: 'Reino restaurado',
@@ -126,6 +132,12 @@
       objetivo_combo: '{o} wants a mix: it still needs {l}.', y: 'and',
       empezar_cero: 'Start from scratch', cero_t: 'Start from scratch?', cero_aviso: 'Everything is erased: levels, points, ranks, coins, showcase, achievements and notes. This cannot be undone.',
       cero_si: 'Erase everything', cero_hecho: 'All set to start again',
+      v_siguiente_inf: 'Recipe {n}', abierto_infinito: 'The Endless Bakery is open!', abierto_diario: "New: Today's Challenge!", abierto_sub: 'Find it on the title screen.', infinito: 'Endless Bakery', infinito_sub: 'Recipe no. {n}', infinito_req: 'After completing Region V', infinito_bloq: 'The Endless Bakery opens after completing Region V.',
+      inf_titulo_es: 'Endless Bakery · No. {n}', inf_consejo: 'Think before you move.', hoy: 'TODAY',
+      diario: "Today's Challenge", diario_sub: 'A new board every day', diario_req: 'After completing level 12', diario_bloq: "Today's Challenge opens after completing level 12.",
+      diario_hecho: "Today's challenge done!", diario_hecho_corto: 'Done! Come back tomorrow', diario_vuelve: "There'll be a new one tomorrow.",
+      preparando: 'Preparing the board…', preparando_sub: 'Grumble is mixing a recipe nobody has played before.',
+      descanso_t: 'Time for a break?', descanso_sub: "You've been playing a while", descanso: 'Stretch your legs, drink some water and rest your eyes. Your sweets will be right here.', descanso_si: 'Take a break',
       lema: 'The sweetest alchemy in the kingdom',
       portada_texto: 'Move and transform magical matter to wake up the sleeping sweets of Auralia.',
       jugar: 'Play', seguir_nivel: 'Level {n}', todo_completo: 'Kingdom restored',
@@ -236,12 +248,18 @@
       M: ['Menta Fluida', 'Flujo', 'La única que viaja por tubos de cristal.'],
       G: ['Matcha Vital', 'Vida', 'Hace brotar puentes de regaliz en las semillas.'],
       U: ['Uva Galáctica', 'Gravedad', 'Pesa el doble y se hunde al fondo.'],
-      V: ['Vapor de Azúcar', 'Empuje', 'Pesa 0, sube arriba y sólo sale por chimeneas.'] },
+      V: ['Vapor de Azúcar', 'Empuje', 'Pesa 0, sube arriba y sólo sale por chimeneas.'],
+      F: ['Fresa Estelar', 'Dulzor', 'Un sabor clásico: combina con todos los demás.'],
+      L: ['Limón Solar', 'Chispa', 'Ácido y brillante, despierta las mezclas más atrevidas.'],
+      B: ['Arándano Eléctrico', 'Energía', 'Pequeño pero intenso: un toque basta para notarlo.'] },
     en: { C: ['Fiery Caramel', 'Heat', 'Melts hard chocolate. In the still, with Mint, it turns into steam.'],
       M: ['Flowing Mint', 'Flow', 'The only one that travels through crystal pipes.'],
       G: ['Vital Matcha', 'Life', 'Sprouts licorice bridges from seeds.'],
       U: ['Galactic Grape', 'Gravity', 'Weighs double and sinks to the bottom.'],
-      V: ['Sugar Steam', 'Lift', 'Weighs 0, rises to the top and only leaves through chimneys.'] }
+      V: ['Sugar Steam', 'Lift', 'Weighs 0, rises to the top and only leaves through chimneys.'],
+      F: ['Star Strawberry', 'Sweetness', 'A classic flavor: it goes with all the others.'],
+      L: ['Sun Lemon', 'Zing', 'Sour and bright, it wakes up the boldest mixes.'],
+      B: ['Electric Blueberry', 'Energy', 'Small but intense: a little goes a long way.'] }
   };
 
   var PERSONAJES = { es: { grumble: 'Maestro Grumble', miga: 'Miga', zippy: 'Zippy', zappy: 'Zappy' },
@@ -254,14 +272,14 @@
         ['grumble', 'Sin él, las donas se durmieron, los ríos de glaseado se apagaron y el color se fue escapando del mapa.'],
         ['miga', '¿Y un aprendiz de pastelero puede arreglar eso?'],
         ['grumble', 'Un aprendiz de alquimista, sí. Y todo empieza aquí, en la Sugar-Snap Bakery, la pastelería de mi familia.']],
-      epilogo: '¡La Feria de los Sabores vuelve a girar! El Corazón late, Auralia brilla y cada dulce tiene su mezcla perfecta. Eres una leyenda de la alquimia pastelera.'
+      epilogo: '¡La Corona de Azúcar brilla sobre todo el reino! Auralia ha recuperado cada uno de sus sabores. Y el Obrador sin fin seguirá horneando recetas nuevas para ti.'
     },
     en: {
       prologo: [['grumble', 'Auralia was the sweetest kingdom in the world, until the Primordial Heart broke into four fragments.'],
         ['grumble', 'Without it, the donuts fell asleep, the frosting rivers went dark and the color slowly drained from the map.'],
         ['miga', 'And can a pastry apprentice fix that?'],
         ['grumble', "An alchemy apprentice can. And it all starts here, at Sugar-Snap Bakery, my family's bakery."]],
-      epilogo: 'The Flavor Fair is spinning again! The Heart beats, Auralia shines and every sweet has its perfect mix. You are a legend of pastry alchemy.'
+      epilogo: 'The Sugar Crown shines over the whole kingdom! Auralia has every one of its flavors back. And the Endless Bakery will keep baking new recipes for you.'
     }
   };
 
@@ -276,7 +294,8 @@
     logro: ['zippy', '¡Logro desbloqueado!', 'Achievement unlocked!'],
     ayuda: ['zappy', '¿Te echo una mano? Toca la varita.', 'Need a hand? Tap the wand.'],
     victoria: ['grumble', '¡Así se hace, aprendiz!', "That's the way, apprentice!"],
-    perder: ['grumble', '¡Oh, no! Respira hondo e inténtalo otra vez.', 'Oh no! Take a deep breath and try again.']
+    perder: ['grumble', '¡Oh, no! Respira hondo e inténtalo otra vez.', 'Oh no! Take a deep breath and try again.'],
+    descanso: ['grumble', 'Llevas un buen rato horneando. ¿Un descanso? Tus dulces te esperan.', "You've been baking for a while. Time for a break? Your sweets will wait for you."]
   };
 
   var NOTAS = [
@@ -300,6 +319,11 @@
     ['vidas', ['Vidas', 'Tienes 5 vidas. Perder una partida (o reiniciarla/salir cuando ya ha empezado) cuesta una. Vuelve una cada 15 minutos, o rellénalas con 40 monedas.'], ['Lives', 'You have 5 lives. Losing a round (or restarting/leaving once it started) costs one. One comes back every 15 minutes, or refill them for 40 coins.']],
     ['puntos', ['Puntos y rangos', 'Cada victoria da puntos: más por niveles difíciles, movimientos de sobra, sellos y no usar pistas. Suben tu rango y cada rango da premios: monedas, más vidas, recarga rápida y un dulce legendario.'], ['Points and ranks', 'Every win gives points: more for hard levels, spare moves, seals and not using hints. They raise your rank, and every rank gives prizes: coins, more lives, faster refills and a legendary sweet.']],
     ['combinado', ['Pedidos combinados', 'Algunos dulces piden una mezcla de sabores: el icono doble y los circulitos de colores dicen cuánto de cada uno. Si ya tiene todo de un sabor, rechaza más de ese.'], ['Mixed orders', 'Some sweets ask for a mix of flavors: the double icon and the colored circles tell how much of each. Once one flavor is complete, it refuses more of it.']],
+    ['fresa', ['Fresa Estelar', 'Sabor rosa sin propiedades especiales: pesa 1 y combina con todo.'], ['Star Strawberry', 'Pink flavor with no special properties: it weighs 1 and goes with everything.']],
+    ['limon', ['Limón Solar', 'Sabor amarillo brillante (el Caramelo es naranja). Pesa 1.'], ['Sun Lemon', 'Bright yellow flavor (Caramel is orange). It weighs 1.']],
+    ['arandano', ['Arándano Eléctrico', 'Sabor azul con coronita. Pesa 1.'], ['Electric Blueberry', 'Blue flavor with a little crown. It weighs 1.']],
+    ['infinito', ['Obrador sin fin', 'Cada receta es un tablero nuevo creado para ti, y cada vez un poco más difícil. Da puntos y monedas.'], ['Endless Bakery', 'Every recipe is a new board made for you, each a little harder. It gives points and coins.']],
+    ['diario', ['Reto del día', 'Un tablero especial cada día: +40 monedas al superarlo. Si lo superas varios días seguidos, sube tu racha.'], ["Today's Challenge", 'A special board every day: +40 coins when you beat it. Beat it several days in a row to grow your streak.']],
     ['hundir', ['La uva se hunde', 'Se coloca debajo de las demás materias, así que sale la primera por el grifo.'], ['Grape sinks', 'It settles below the other matters, so it comes out of the tap first.']]
   ];
 
@@ -364,6 +388,11 @@
     ['combinador', 'Mezclador experto', 'Gana 8 niveles con pedidos combinados.', 'Expert mixer', 'Win 8 levels with mixed orders.', 60, 8],
     ['rango_maestro', 'Maestro pastelero', 'Alcanza el rango Maestro pastelero.', 'Master baker', 'Reach the Master Baker rank.', 80, 0],
     ['leyenda', 'Leyenda de Auralia', 'Alcanza el rango más alto.', 'Legend of Auralia', 'Reach the highest rank.', 200, 0],
+    ['region11', 'La Corona de Azúcar', 'Completa la Región XI.', 'The Sugar Crown', 'Complete Region XI.', 300, 0],
+    ['infinito10', 'Repostero sin fin', 'Llega a la receta 10 del Obrador sin fin.', 'Endless baker', 'Reach recipe 10 in the Endless Bakery.', 60, 10],
+    ['infinito50', 'Horno incansable', 'Llega a la receta 50 del Obrador sin fin.', 'Tireless oven', 'Reach recipe 50 in the Endless Bakery.', 200, 50],
+    ['diario7', 'Cita diaria', 'Supera el reto del día 7 días seguidos.', 'Daily date', "Beat Today's Challenge 7 days in a row.", 100, 7],
+    ['eterno', 'Alquimista Eterno', 'Alcanza el rango más alto.', 'Eternal Alchemist', 'Reach the highest rank.', 300, 0],
     ['tenaz', 'Tenaz', 'Gana un nivel después de haberlo perdido.', 'Tenacious', 'Win a level after losing it.', 20, 0],
     ['perfeccionista', 'Perfeccionista', 'Consigue los 3 sellos en 12 niveles.', 'Perfectionist', 'Get all 3 seals in 12 levels.', 150, 12],
     ['estudioso', 'Estudioso', 'Desbloquea 10 notas del cuaderno.', 'Studious', 'Unlock 10 notebook notes.', 20, 10],
@@ -374,8 +403,38 @@
 
   var COFRE = [15, 20, 25, 30, 40, 50, 80];
 
+  var CONSEJOS = {
+    valvula: ['La válvula elige por qué tubo sale el grifo.', 'The valve picks which pipe the tap uses.'],
+    reserva: ['Usa la Reserva para apartar lo que estorba.', 'Use the Reserve to set aside what gets in the way.'],
+    bascula: ['La báscula abre su puente al llegar al peso marcado.', 'The scale opens its bridge at the marked weight.'],
+    subida: ['Un tubo devuelve materia a otro frasco de arriba.', 'One pipe sends matter back up to another jar.'],
+    matraz: ['El matraz entra y sale de una medida en una.', 'The flask takes and gives one measure at a time.'],
+    capsula: ['La cápsula sólo se llena y se vacía por tubos.', 'The capsule is only filled and emptied through pipes.'],
+    alambique: ['En el alambique, Caramelo + Menta se vuelven vapor.', 'In the still, Caramel + Mint turn into steam.'],
+    sello: ['Un sello de chocolate tapa un frasco: fúndelo con Caramelo.', 'A chocolate seal blocks a jar: melt it with Caramel.'],
+    chocolate: ['Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.', 'A chocolate block plugs a pipe: only Caramel melts it.'],
+    cristal: ['El tubo de cristal sólo deja pasar la Menta.', 'The crystal pipe only lets Mint through.'],
+    regaliz: ['Alimenta la Semilla de Matcha y brotará el puente de regaliz.', 'Feed the Matcha Seed and the licorice bridge will sprout.'],
+    uva: ['La Uva pesa 2 y se hunde al fondo.', 'Grape weighs 2 and sinks to the bottom.'],
+    combo: ['Los pedidos combinados quieren varios sabores.', 'Mixed orders want several flavors.']
+  };
+  var FIN_POOL = [
+    ['grumble', '¡Receta perfecta! Así se hace.', "Perfect recipe! That's how it's done."],
+    ['zippy', '¡Sabe a gloria!', 'It tastes amazing!'],
+    ['zappy', 'Cada medida en su sitio. Precioso.', 'Every measure in its place. Beautiful.'],
+    ['miga', '¡Otro dulce despierto! Esto no para.', "Another sweet wakes up! There's no stopping us."],
+    ['grumble', 'Ni una gota de más. Eres todo un maestro.', "Not a drop wasted. You're a true master."],
+    ['zippy', '¡Mezcla brillante!', 'Brilliant mix!'],
+    ['zappy', 'Lo pensaste bien. Se nota.', 'You thought it through. It shows.'],
+    ['miga', '¡Huele de maravilla!', 'It smells wonderful!'],
+    ['grumble', 'Paso a paso, el reino recupera su sabor.', 'Step by step, the kingdom gets its flavor back.'],
+    ['zippy', '¡Uno más para la colección!', 'One more for the collection!'],
+    ['zappy', 'Dulce, exacto y elegante.', 'Sweet, exact and elegant.'],
+    ['miga', '¡Esto merece una fiesta!', 'This deserves a party!']
+  ];
+
   var datos = { UI: UI, MOTOR: MOTOR, MATERIAS: MATERIAS, PERSONAJES: PERSONAJES, HISTORIA: HISTORIA, FRASES: FRASES,
-    NOTAS: NOTAS, VITRINA: VITRINA, MESAS: MESAS, LOGROS: LOGROS, COFRE: COFRE };
+    NOTAS: NOTAS, VITRINA: VITRINA, MESAS: MESAS, LOGROS: LOGROS, COFRE: COFRE, CONSEJOS: CONSEJOS, FIN_POOL: FIN_POOL };
   if (typeof module !== 'undefined' && module.exports) module.exports = datos;
   else global.TEXTOS = datos;
 })(this);

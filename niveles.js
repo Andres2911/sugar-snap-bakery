@@ -12,7 +12,13 @@
       lema: 'Raíces de regaliz, cristales y gravedad' },
     { id: 3, nombre: 'Las Ruinas del Helado', lema: 'Ordenar, dosificar y pensar dos pasos por delante' },
     { id: 4, nombre: 'La Ciudad Suspendida', lema: 'Gravedad, básculas y todo combinado' },
-    { id: 5, nombre: 'La Feria de los Sabores', lema: 'Pedidos combinados y mezclas de sabores' }
+    { id: 5, nombre: 'La Feria de los Sabores', lema: 'Pedidos combinados y mezclas de sabores' },
+    { id: 6, nombre: 'El Mar de Gelatina', lema: 'Llega la Fresa Estelar' },
+    { id: 7, nombre: 'Las Cumbres de Merengue', lema: 'Llega el Limón Solar y hay poco sitio libre' },
+    { id: 8, nombre: 'La Selva de Cacao', lema: 'Llega el Arándano Eléctrico' },
+    { id: 9, nombre: 'El Volcán de Caramelo', lema: 'Cinco frascos y muchos sabores' },
+    { id: 10, nombre: 'La Biblioteca de Recetas', lema: 'Las mezclas más difíciles del reino' },
+    { id: 11, nombre: 'El Palacio de las Estrellas', lema: 'Todo lo aprendido, al máximo' }
   ];
 
   var NIVELES = [
@@ -6519,6 +6525,13073 @@
             ]
           },
           "nombre": "El Molinillo de Merengue"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "region": 6,
+      "titulo": "Olas de fresa",
+      "minimo": 16,
+      "ensena": "Nuevo sabor: la Fresa Estelar. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [
+        {
+          "q": "grumble",
+          "t": "Más allá de la feria se extiende el Mar de Gelatina. Aquí llega un sabor nuevo: la Fresa Estelar."
+        },
+        {
+          "q": "miga",
+          "t": "¡Fresa! ¡Mi favorita!"
+        }
+      ],
+      "guia": [
+        {
+          "q": "zippy",
+          "t": "¡Sabor nuevo! La Fresa Estelar: rosa, dulce y sin trucos. Combina con todo.",
+          "foco": [
+            "T3"
+          ],
+          "nota": "fresa"
+        }
+      ],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Sabe a gloria!",
+        "voz": "fin_pool_1"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "C",
+            "C",
+            "U"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "U",
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F",
+            "C"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  124,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "T2",
+              "via": [
+                [
+                  124,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            124,
+            290
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "M": 1,
+            "C": 2
+          },
+          "materia": "M",
+          "necesita": 3,
+          "img": "vitrina/p29",
+          "nombre": "La Tarta Menta-Caramelo"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "U": 2,
+            "C": 1
+          },
+          "materia": "U",
+          "necesita": 3,
+          "img": "vitrina/p28",
+          "nombre": "La Tarta de Uva y Caramelo"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "region": 6,
+      "titulo": "Islas de gelatina",
+      "minimo": 14,
+      "ensena": "Nuevo sabor: la Fresa Estelar. Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Cada medida en su sitio. Precioso.",
+        "voz": "fin_pool_2"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "F"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "C",
+            "M",
+            "C"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "M",
+            "C",
+            "M"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 315,
+          "y": 300,
+          "sellada": true
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "C",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p15",
+          "nombre": "La Dona Capuchino"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "M": 1,
+            "F": 1
+          },
+          "materia": "M",
+          "necesita": 2,
+          "img": "vitrina/p13",
+          "nombre": "La Dona de Fresa y Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "region": 6,
+      "titulo": "La bahía temblorosa",
+      "minimo": 14,
+      "ensena": "Nuevo sabor: la Fresa Estelar. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Otro dulce despierto! Esto no para.",
+        "voz": "fin_pool_3"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "M"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "F",
+            "M"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "G",
+            "F",
+            "M"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "M": 2,
+            "F": 2
+          },
+          "materia": "M",
+          "necesita": 4,
+          "img": "vitrina/p13",
+          "nombre": "La Dona de Fresa y Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "region": 6,
+      "titulo": "Corrientes dulces",
+      "minimo": 17,
+      "ensena": "Nuevo sabor: la Fresa Estelar. Un tubo devuelve materia a otro frasco de arriba: úsalo para reordenar las capas.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Ni una gota de más. Eres todo un maestro.",
+        "voz": "fin_pool_4"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "G",
+            "G"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "F"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "F",
+            "F",
+            "G"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  236,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "C",
+              "via": [
+                [
+                  236,
+                  150
+                ],
+                [
+                  300,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            236,
+            290
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  348,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "C",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p15",
+          "nombre": "La Dona Capuchino"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "region": 6,
+      "titulo": "El arrecife de azúcar",
+      "minimo": 17,
+      "ensena": "Nuevo sabor: la Fresa Estelar. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Mezcla brillante!",
+        "voz": "fin_pool_5"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "U",
+            "U",
+            "F",
+            "F",
+            "G"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "G",
+            "U"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.351,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "region": 6,
+      "titulo": "Marea alta",
+      "minimo": 17,
+      "ensena": "Nuevo sabor: la Fresa Estelar. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Lo pensaste bien. Se nota.",
+        "voz": "fin_pool_6"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "M",
+            "C"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F",
+            "M"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.506,
+          "id": "R",
+          "tipo": "regaliz"
+        },
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.351,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "region": 6,
+      "titulo": "Perlas de tapioca",
+      "minimo": 15,
+      "ensena": "En el alambique, Caramelo + Menta se vuelven vapor para el molinillo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Huele de maravilla!",
+        "voz": "fin_pool_7"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "C",
+            "F"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "alambique",
+          "cap": 4,
+          "capas": [
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "G",
+            "C",
+            "F"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "cB",
+          "de": "B",
+          "lado": "arriba",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "TV",
+              "via": [],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "K"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  257,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "K",
+          "tipo": "compuerta"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "C": 1,
+            "F": 2
+          },
+          "materia": "C",
+          "necesita": 3,
+          "img": "vitrina/p13",
+          "nombre": "La Dona de Caramelo y Fresa"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "TV",
+          "tipo": "turbina",
+          "materia": "V",
+          "necesita": 2,
+          "x": 159,
+          "y": 92,
+          "alCompletar": {
+            "abre": [
+              "K"
+            ]
+          },
+          "nombre": "El Molinillo de Merengue"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "region": 6,
+      "titulo": "El barco de galleta",
+      "minimo": 16,
+      "ensena": "El tubo de cristal sólo deja pasar la Menta. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Paso a paso, el reino recupera su sabor.",
+        "voz": "fin_pool_8"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "F"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "F"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "M",
+            "G"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.429,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "region": 6,
+      "titulo": "Espuma de mar",
+      "minimo": 13,
+      "ensena": "En el alambique, Caramelo + Menta se vuelven vapor para el molinillo. La báscula abre su puente al llegar al peso marcado.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Uno más para la colección!",
+        "voz": "fin_pool_9"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "alambique",
+          "cap": 5,
+          "capas": [
+            "G",
+            "G"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "G",
+            "M",
+            "G",
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 300,
+          "y": 300
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 3,
+          "capas": [],
+          "x": 180,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "cA",
+          "de": "A",
+          "lado": "arriba",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "TV",
+              "via": [],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  111,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "P"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "S",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "K"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.356,
+          "id": "P",
+          "tipo": "puente"
+        },
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.506,
+          "id": "K",
+          "tipo": "compuerta"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "TV",
+          "tipo": "turbina",
+          "materia": "V",
+          "necesita": 2,
+          "x": 81,
+          "y": 92,
+          "alCompletar": {
+            "abre": [
+              "K"
+            ]
+          },
+          "nombre": "El Molinillo de Merengue"
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "region": 6,
+      "titulo": "Faro a la vista",
+      "minimo": 16,
+      "ensena": "La cápsula sólo se llena y se vacía por tubos. Un tubo devuelve materia a otro frasco de arriba: úsalo para reordenar las capas.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Dulce, exacto y elegante.",
+        "voz": "fin_pool_10"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "capsula",
+          "cap": 4,
+          "capas": [],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "M",
+            "M",
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "G",
+            "G",
+            "M",
+            "G"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  236,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "C",
+              "via": [
+                [
+                  236,
+                  150
+                ],
+                [
+                  300,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            236,
+            290
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  356,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "A",
+              "via": [
+                [
+                  356,
+                  132
+                ],
+                [
+                  60,
+                  132
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            356,
+            290
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "region": 6,
+      "titulo": "Tormenta de sirope",
+      "minimo": 17,
+      "ensena": "El matraz entra y sale de una medida en una. La válvula elige por qué tubo sale el grifo: piensa a dónde va cada medida.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Esto merece una fiesta!",
+        "voz": "fin_pool_11"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "F",
+            "F",
+            "F",
+            "M"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 4,
+          "capas": [
+            "M",
+            "M",
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "M"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  116,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "T2",
+              "via": [
+                [
+                  116,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            116,
+            290
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "region": 6,
+      "jefe": true,
+      "titulo": "El Faro de Gelatina",
+      "minimo": 16,
+      "ensena": "El tubo de cristal sólo deja pasar la Menta. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "¡El faro vuelve a brillar sobre el mar!"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "matraz",
+          "cap": 4,
+          "capas": [
+            "C",
+            "M"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "C",
+            "M",
+            "C",
+            "F"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  108,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "C",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p27",
+          "nombre": "El Faro de Gelatina"
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "region": 7,
+      "titulo": "Primeros picos",
+      "minimo": 17,
+      "ensena": "Nuevo sabor: el Limón Solar. El matraz entra y sale de una medida en una.",
+      "intro": [
+        {
+          "q": "zappy",
+          "t": "En las Cumbres de Merengue brilla el Limón Solar. Cuidado: aquí hay poco sitio para equivocarse."
+        }
+      ],
+      "guia": [
+        {
+          "q": "zappy",
+          "t": "El Limón Solar es amarillo brillante. No lo confundas con el Caramelo, que es naranja.",
+          "foco": [
+            "T1"
+          ],
+          "nota": "limon"
+        }
+      ],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Sabe a gloria!",
+        "voz": "fin_pool_1"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "G",
+            "M"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "C",
+            "L",
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "alambique",
+          "cap": 2,
+          "capas": [
+            "L"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "cC",
+          "de": "C",
+          "lado": "arriba",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "TV",
+              "via": [],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "K"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  249,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "K",
+          "tipo": "compuerta"
+        },
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 95,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        },
+        {
+          "id": "TV",
+          "tipo": "turbina",
+          "materia": "V",
+          "necesita": 2,
+          "x": 279,
+          "y": 92,
+          "alCompletar": {
+            "abre": [
+              "K"
+            ]
+          },
+          "nombre": "El Molinillo de Merengue"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "region": 7,
+      "titulo": "El sendero de limón",
+      "minimo": 14,
+      "ensena": "Nuevo sabor: el Limón Solar. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Cada medida en su sitio. Precioso.",
+        "voz": "fin_pool_2"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "M"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "U",
+            "U",
+            "C"
+          ],
+          "x": 180,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "U",
+            "M"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  62,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "M": 1,
+            "C": 1
+          },
+          "materia": "M",
+          "necesita": 2,
+          "img": "vitrina/p29",
+          "nombre": "La Tarta Menta-Caramelo"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "L": 1,
+            "M": 1
+          },
+          "materia": "L",
+          "necesita": 2,
+          "img": "vitrina/p21",
+          "nombre": "La Tarta de Limón y Menta"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "region": 7,
+      "titulo": "Nieve de merengue",
+      "minimo": 17,
+      "ensena": "Nuevo sabor: el Limón Solar. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Otro dulce despierto! Esto no para.",
+        "voz": "fin_pool_3"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "U",
+            "U"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F",
+            "C"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "F",
+            "F",
+            "F"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "U"
+          ],
+          "x": 330,
+          "y": 300
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 2,
+          "capas": [],
+          "x": 60,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "S",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "P"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.429,
+          "id": "P",
+          "tipo": "puente"
+        },
+        {
+          "ruta": [
+            "gF",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "region": 7,
+      "titulo": "Ventisca dulce",
+      "minimo": 18,
+      "ensena": "Nuevo sabor: el Limón Solar. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Ni una gota de más. Eres todo un maestro.",
+        "voz": "fin_pool_4"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "M",
+            "L"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "M",
+            "M",
+            "M"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  348,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.506,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "region": 7,
+      "titulo": "El refugio de montaña",
+      "minimo": 18,
+      "ensena": "Nuevo sabor: el Limón Solar. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Mezcla brillante!",
+        "voz": "fin_pool_5"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "L",
+            "M",
+            "M"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "M",
+            "M"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L",
+            "M"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  183,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "region": 7,
+      "titulo": "Cornisa estrecha",
+      "minimo": 13,
+      "ensena": "Nuevo sabor: el Limón Solar. La báscula abre su puente al llegar al peso marcado.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Lo pensaste bien. Se nota.",
+        "voz": "fin_pool_6"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L",
+            "G"
+          ],
+          "x": 60,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "L",
+            "C",
+            "G"
+          ],
+          "x": 300,
+          "y": 300
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 1,
+          "capas": [],
+          "x": 180,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  124,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "P"
+              ]
+            },
+            {
+              "a": "S",
+              "via": [
+                [
+                  124,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            124,
+            290
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.395,
+          "id": "P",
+          "tipo": "puente"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "region": 7,
+      "titulo": "El paso helado",
+      "minimo": 17,
+      "ensena": "La Uva pesa 2 y se hunde al fondo. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Huele de maravilla!",
+        "voz": "fin_pool_7"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "M"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "C",
+            "U"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "U",
+            "C",
+            "G"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.351,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "C": 1,
+            "U": 2
+          },
+          "materia": "C",
+          "necesita": 3,
+          "img": "vitrina/p28",
+          "nombre": "La Tarta de Uva y Caramelo"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "C": 1,
+            "M": 2
+          },
+          "materia": "C",
+          "necesita": 3,
+          "img": "vitrina/p29",
+          "nombre": "La Tarta Menta-Caramelo"
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "region": 7,
+      "titulo": "Teleférico de caramelo",
+      "minimo": 15,
+      "ensena": "El matraz entra y sale de una medida en una. Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Paso a paso, el reino recupera su sabor.",
+        "voz": "fin_pool_8"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "G"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "C",
+            "G",
+            "G"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 225,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "G"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  87,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 95,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "region": 7,
+      "titulo": "Aludes de azúcar",
+      "minimo": 14,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. El tubo de cristal sólo deja pasar la Menta.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Uno más para la colección!",
+        "voz": "fin_pool_9"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "F",
+            "M"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L",
+            "M"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "L",
+            "G"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.429,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "F": 1,
+            "G": 1
+          },
+          "materia": "F",
+          "necesita": 2,
+          "img": "vitrina/p11",
+          "nombre": "La Tarta de Fresa y Matcha"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "region": 7,
+      "titulo": "La cueva de cristal",
+      "minimo": 14,
+      "ensena": "La báscula abre su puente al llegar al peso marcado. Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Dulce, exacto y elegante.",
+        "voz": "fin_pool_10"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "G",
+            "F"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "F",
+            "G",
+            "G"
+          ],
+          "x": 300,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 2,
+          "capas": [],
+          "x": 300,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  116,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "C",
+              "via": [
+                [
+                  116,
+                  150
+                ],
+                [
+                  300,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            116,
+            290
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "P"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "S",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.429,
+          "id": "P",
+          "tipo": "puente"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "region": 7,
+      "titulo": "Casi en la cima",
+      "minimo": 17,
+      "ensena": "Alimenta la Semilla de Matcha y brotará el puente de regaliz. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Esto merece una fiesta!",
+        "voz": "fin_pool_11"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "M",
+            "L",
+            "G"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "L",
+            "M"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  236,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "cristal": true,
+              "compuertas": [
+                "R"
+              ]
+            },
+            {
+              "a": "T2",
+              "via": [
+                [
+                  236,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            236,
+            290
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.461,
+          "id": "R",
+          "tipo": "regaliz"
+        },
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.351,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "region": 7,
+      "jefe": true,
+      "titulo": "La Cima Nevada",
+      "minimo": 15,
+      "ensena": "El matraz entra y sale de una medida en una. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Hemos llegado a la cima!"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "C",
+            "M",
+            "C"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "C",
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "C"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  121,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "T1",
+              "via": [
+                [
+                  121,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            121,
+            290
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  223,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.506,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "C",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p23",
+          "nombre": "La Tarta de la Cima"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "M": 1,
+            "C": 1
+          },
+          "materia": "M",
+          "necesita": 2,
+          "img": "vitrina/p29",
+          "nombre": "La Tarta Menta-Caramelo"
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "region": 8,
+      "titulo": "Lianas de regaliz",
+      "minimo": 12,
+      "ensena": "Nuevo sabor: el Arándano Eléctrico. Usa la Reserva para apartar lo que estorba.",
+      "intro": [
+        {
+          "q": "zippy",
+          "t": "¡Qué selva tan espesa! Entre el cacao crece el Arándano Eléctrico."
+        }
+      ],
+      "guia": [
+        {
+          "q": "miga",
+          "t": "¡Arándano Eléctrico! Es el azul con la coronita. Ya tienes siete sabores.",
+          "foco": [],
+          "nota": "arandano"
+        }
+      ],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Sabe a gloria!",
+        "voz": "fin_pool_1"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "G",
+            "C",
+            "M"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "alambique",
+          "cap": 2,
+          "capas": [],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "M",
+            "M",
+            "M"
+          ],
+          "x": 300,
+          "y": 300
+        },
+        {
+          "id": "H",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 60,
+          "y": 470,
+          "nombre": "Reserva"
+        }
+      ],
+      "grifos": [
+        {
+          "id": "cB",
+          "de": "B",
+          "lado": "arriba",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "TV",
+              "via": [],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "H",
+              "via": [
+                [
+                  129,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  17,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "K"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.506,
+          "id": "K",
+          "tipo": "compuerta"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "TV",
+          "tipo": "turbina",
+          "materia": "V",
+          "necesita": 4,
+          "x": 159,
+          "y": 92,
+          "alCompletar": {
+            "abre": [
+              "K"
+            ]
+          },
+          "nombre": "El Molinillo de Merengue"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "region": 8,
+      "titulo": "El río de chocolate",
+      "minimo": 11,
+      "ensena": "Nuevo sabor: el Arándano Eléctrico. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Cada medida en su sitio. Precioso.",
+        "voz": "fin_pool_2"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "B",
+            "G",
+            "G",
+            "B"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 330,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 3,
+          "capas": [],
+          "x": 300,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "P"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "S",
+              "via": [
+                [
+                  298,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "P",
+          "tipo": "puente"
+        },
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.429,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "region": 8,
+      "titulo": "Hojas de menta",
+      "minimo": 13,
+      "ensena": "Nuevo sabor: el Arándano Eléctrico. El tubo de cristal sólo deja pasar la Menta.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Otro dulce despierto! Esto no para.",
+        "voz": "fin_pool_3"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "U",
+            "B",
+            "C",
+            "B"
+          ],
+          "x": 60,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "U",
+            "M"
+          ],
+          "x": 180,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "B",
+            "M"
+          ],
+          "x": 300,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  103,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  343,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "region": 8,
+      "titulo": "El templo perdido",
+      "minimo": 15,
+      "ensena": "Nuevo sabor: el Arándano Eléctrico. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Ni una gota de más. Eres todo un maestro.",
+        "voz": "fin_pool_4"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F",
+            "F",
+            "U"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "B"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "U",
+            "F",
+            "M"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  177,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "B": 1,
+            "M": 1
+          },
+          "materia": "B",
+          "necesita": 2,
+          "img": "vitrina/p21",
+          "nombre": "La Dona de Arándano y Menta"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "region": 8,
+      "titulo": "Ranas de gominola",
+      "minimo": 14,
+      "ensena": "Nuevo sabor: el Arándano Eléctrico. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Mezcla brillante!",
+        "voz": "fin_pool_5"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "B"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "capsula",
+          "cap": 3,
+          "capas": [],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "U",
+            "B",
+            "B",
+            "U"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "F"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "A",
+              "via": [
+                [
+                  371,
+                  150
+                ],
+                [
+                  45,
+                  150
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "B",
+              "via": [
+                [
+                  371,
+                  132
+                ],
+                [
+                  135,
+                  132
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            371,
+            290
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "region": 8,
+      "titulo": "El puente colgante",
+      "minimo": 17,
+      "ensena": "Nuevo sabor: el Arándano Eléctrico. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Lo pensaste bien. Se nota.",
+        "voz": "fin_pool_6"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "U",
+            "B",
+            "B",
+            "B"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "capsula",
+          "cap": 2,
+          "capas": [],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "C",
+              "via": [
+                [
+                  358,
+                  150
+                ],
+                [
+                  225,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.507,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "region": 8,
+      "titulo": "Lluvia de arándanos",
+      "minimo": 16,
+      "ensena": "Alimenta la Semilla de Matcha y brotará el puente de regaliz. Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Huele de maravilla!",
+        "voz": "fin_pool_7"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "L",
+            "G"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "G",
+            "F",
+            "F"
+          ],
+          "x": 135,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "G"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "G": 1,
+            "F": 1
+          },
+          "materia": "G",
+          "necesita": 2,
+          "img": "vitrina/p11",
+          "nombre": "La Tarta de Fresa y Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "G": 2,
+            "F": 1,
+            "L": 1
+          },
+          "materia": "G",
+          "necesita": 4,
+          "img": "vitrina/p13",
+          "nombre": "La Tarta de Fresa, Matcha y Limón"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "region": 8,
+      "titulo": "Raíces profundas",
+      "minimo": 13,
+      "ensena": "Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo. El tubo de cristal sólo deja pasar la Menta.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Paso a paso, el reino recupera su sabor.",
+        "voz": "fin_pool_8"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "C"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "L",
+            "L"
+          ],
+          "x": 225,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "M"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 95,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "region": 8,
+      "titulo": "El claro escondido",
+      "minimo": 14,
+      "ensena": "Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Uno más para la colección!",
+        "voz": "fin_pool_9"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "F",
+            "C"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 4,
+          "capas": [
+            "G",
+            "G",
+            "F"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "F"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  87,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        },
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 95,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "region": 8,
+      "titulo": "Monos golosos",
+      "minimo": 13,
+      "ensena": "La Uva pesa 2 y se hunde al fondo. El tubo de cristal sólo deja pasar la Menta.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Dulce, exacto y elegante.",
+        "voz": "fin_pool_10"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "M"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "M",
+            "B",
+            "U"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "U",
+            "G"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "U"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "U": 2,
+            "B": 1
+          },
+          "materia": "U",
+          "necesita": 3,
+          "img": "vitrina/p11",
+          "nombre": "La Dona de Arándano y Uva"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "M": 2,
+            "G": 1,
+            "U": 1
+          },
+          "materia": "M",
+          "necesita": 4,
+          "img": "vitrina/p24",
+          "nombre": "La Tarta Glaseada"
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "region": 8,
+      "titulo": "La cascada de cacao",
+      "minimo": 14,
+      "ensena": "Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Esto merece una fiesta!",
+        "voz": "fin_pool_11"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "B",
+            "B",
+            "B",
+            "C"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C",
+            "U"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "B"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "C": 1,
+            "F": 1,
+            "B": 2
+          },
+          "materia": "C",
+          "necesita": 4,
+          "img": "vitrina/p21",
+          "nombre": "La Dona de Arándano, Caramelo y Fresa"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "region": 8,
+      "jefe": true,
+      "titulo": "El Árbol del Cacao",
+      "minimo": 12,
+      "ensena": "La báscula abre su puente al llegar al peso marcado. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡El árbol del cacao florece!"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "matraz",
+          "cap": 3,
+          "capas": [
+            "F",
+            "M"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "F",
+            "M",
+            "L"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "M",
+            "M"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "L"
+          ],
+          "x": 315,
+          "y": 300
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 1,
+          "capas": [],
+          "x": 300,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  93,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "P"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "S",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.345,
+          "id": "P",
+          "tipo": "puente"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "L": 2,
+            "F": 2,
+            "M": 2
+          },
+          "materia": "L",
+          "necesita": 6,
+          "img": "vitrina/p28",
+          "nombre": "El Árbol del Cacao"
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "region": 9,
+      "titulo": "Ladera humeante",
+      "minimo": 16,
+      "ensena": "El tubo de cristal sólo deja pasar la Menta. El matraz entra y sale de una medida en una.",
+      "intro": [
+        {
+          "q": "grumble",
+          "t": "El Volcán de Caramelo burbujea. Muchos frascos, muchos sabores: piensa cada paso."
+        }
+      ],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Sabe a gloria!",
+        "voz": "fin_pool_1"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 3,
+          "capas": [
+            "M",
+            "L",
+            "M"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "G",
+            "M"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  183,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "M": 1,
+            "L": 2,
+            "C": 1
+          },
+          "materia": "M",
+          "necesita": 4,
+          "img": "vitrina/p20",
+          "nombre": "El Macaron de Caramelo, Limón y Menta"
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "region": 9,
+      "titulo": "Ríos de lava dulce",
+      "minimo": 14,
+      "ensena": "Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Cada medida en su sitio. Precioso.",
+        "voz": "fin_pool_2"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "B"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "B",
+            "M",
+            "C"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "B"
+          ],
+          "x": 225,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "G",
+            "C"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  182,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "region": 9,
+      "titulo": "El horno natural",
+      "minimo": 15,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. El tubo de cristal sólo deja pasar la Menta.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Otro dulce despierto! Esto no para.",
+        "voz": "fin_pool_3"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "G",
+            "U",
+            "U"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "U"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.429,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "region": 9,
+      "titulo": "Géiseres de sirope",
+      "minimo": 12,
+      "ensena": "Usa la Reserva para apartar lo que estorba. Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Ni una gota de más. Eres todo un maestro.",
+        "voz": "fin_pool_4"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "M",
+            "F"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "F",
+            "G",
+            "C"
+          ],
+          "x": 315,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "H",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 180,
+          "y": 470,
+          "nombre": "Reserva"
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "H",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "C": 2,
+            "F": 2
+          },
+          "materia": "C",
+          "necesita": 4,
+          "img": "vitrina/p13",
+          "nombre": "La Dona de Caramelo y Fresa"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "G": 1,
+            "M": 1
+          },
+          "materia": "G",
+          "necesita": 2,
+          "img": "vitrina/p17",
+          "nombre": "El Macaron Menta-Matcha"
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "region": 9,
+      "titulo": "Rocas de turrón",
+      "minimo": 14,
+      "ensena": "Alimenta la Semilla de Matcha y brotará el puente de regaliz. Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Mezcla brillante!",
+        "voz": "fin_pool_5"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "U",
+            "C"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "L"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "B",
+            "G",
+            "L"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 315,
+          "y": 300,
+          "sellada": true
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gC",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 95,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 265,
+          "y": 505,
+          "pide": {
+            "U": 1,
+            "B": 1,
+            "L": 2
+          },
+          "materia": "U",
+          "necesita": 4,
+          "img": "vitrina/p13",
+          "nombre": "La Tarta de Arándano, Limón y Uva"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "region": 9,
+      "titulo": "Cenizas de canela",
+      "minimo": 13,
+      "ensena": "El matraz entra y sale de una medida en una. El tubo de cristal sólo deja pasar la Menta.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Lo pensaste bien. Se nota.",
+        "voz": "fin_pool_6"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 4,
+          "capas": [
+            "B",
+            "L"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C",
+            "M"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "L",
+            "C"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  87,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "B": 1,
+            "C": 1,
+            "L": 1
+          },
+          "materia": "B",
+          "necesita": 3,
+          "img": "vitrina/p17",
+          "nombre": "La Tarta de Arándano, Caramelo y Limón"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "region": 9,
+      "titulo": "El túnel ardiente",
+      "minimo": 15,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Huele de maravilla!",
+        "voz": "fin_pool_7"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F",
+            "U"
+          ],
+          "x": 30,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "U",
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "U",
+            "F",
+            "G",
+            "F"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  148,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.425,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "region": 9,
+      "titulo": "Burbujas de caramelo",
+      "minimo": 12,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Usa la Reserva para apartar lo que estorba.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Paso a paso, el reino recupera su sabor.",
+        "voz": "fin_pool_8"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "U",
+            "F"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "F",
+            "M"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "M"
+          ],
+          "x": 330,
+          "y": 300
+        },
+        {
+          "id": "H",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [],
+          "x": 60,
+          "y": 470,
+          "nombre": "Reserva"
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "H",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  148,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  298,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "U": 1,
+            "M": 1,
+            "F": 2
+          },
+          "materia": "U",
+          "necesita": 4,
+          "img": "vitrina/p28",
+          "nombre": "El Pastel de Fresa, Menta y Uva"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "region": 9,
+      "titulo": "Fumarolas de azúcar",
+      "minimo": 16,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Uno más para la colección!",
+        "voz": "fin_pool_9"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "U",
+            "C",
+            "M"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "U"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "U",
+            "M"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gF",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "region": 9,
+      "titulo": "El borde del cráter",
+      "minimo": 16,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Dulce, exacto y elegante.",
+        "voz": "fin_pool_10"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "M",
+            "M"
+          ],
+          "x": 105,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "M",
+            "G"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "M",
+            "M"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  298,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "region": 9,
+      "titulo": "Erupción de sabor",
+      "minimo": 18,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Usa la Reserva para apartar lo que estorba.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Esto merece una fiesta!",
+        "voz": "fin_pool_11"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "F",
+        "txt": "Dejar vacío el quinto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L",
+            "L"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "capsula",
+          "cap": 1,
+          "capas": [],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "L",
+            "G",
+            "G"
+          ],
+          "x": 330,
+          "y": 300
+        },
+        {
+          "id": "H",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [],
+          "x": 60,
+          "y": 470,
+          "nombre": "Reserva"
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "H",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  298,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "E",
+              "via": [
+                [
+                  148,
+                  150
+                ],
+                [
+                  255,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "L",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p26",
+          "nombre": "La Tarta de Limón"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "region": 9,
+      "jefe": true,
+      "titulo": "El Cráter Dorado",
+      "minimo": 16,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. La cápsula sólo se llena y se vacía por tubos.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "¡El volcán se ha calmado!"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "capsula",
+          "cap": 2,
+          "capas": [],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "F",
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "G",
+            "C",
+            "M"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  298,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "A",
+              "via": [
+                [
+                  137,
+                  150
+                ],
+                [
+                  30,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.426,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 95,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 265,
+          "y": 505,
+          "pide": {
+            "F": 1,
+            "C": 1,
+            "G": 2
+          },
+          "materia": "F",
+          "necesita": 4,
+          "img": "vitrina/p06",
+          "nombre": "La Tarta del Cráter"
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "region": 10,
+      "titulo": "Estantes de azúcar",
+      "minimo": 14,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [
+        {
+          "q": "zappy",
+          "t": "En la Biblioteca de Recetas se guardan las mezclas más difíciles del reino."
+        }
+      ],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Sabe a gloria!",
+        "voz": "fin_pool_1"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M",
+            "U"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 105,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "U",
+            "U",
+            "M"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "C"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  62,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  298,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.426,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 95,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "region": 10,
+      "titulo": "La sección prohibida",
+      "minimo": 13,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. La báscula abre su puente al llegar al peso marcado.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Cada medida en su sitio. Precioso.",
+        "voz": "fin_pool_2"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "B",
+            "M",
+            "B"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "F",
+            "F"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "B"
+          ],
+          "x": 330,
+          "y": 300
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 4,
+          "capas": [],
+          "x": 300,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  62,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": [
+                "P"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "S",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.5,
+          "id": "P",
+          "tipo": "puente"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "B": 2,
+            "F": 2
+          },
+          "materia": "B",
+          "necesita": 4,
+          "img": "vitrina/p27",
+          "nombre": "El Pastel de Arándano y Fresa"
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "region": 10,
+      "titulo": "Recetas olvidadas",
+      "minimo": 15,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Otro dulce despierto! Esto no para.",
+        "voz": "fin_pool_3"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "C",
+            "F",
+            "U",
+            "U"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "F"
+          ],
+          "x": 180,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "U"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "F"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  62,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  298,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.345,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 95,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "region": 10,
+      "titulo": "El atril de cobre",
+      "minimo": 17,
+      "ensena": "El tubo de cristal sólo deja pasar la Menta. La cápsula sólo se llena y se vacía por tubos.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Ni una gota de más. Eres todo un maestro.",
+        "voz": "fin_pool_4"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "G",
+            "G",
+            "G"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "capsula",
+          "cap": 4,
+          "capas": [],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "C",
+              "via": [
+                [
+                  358,
+                  150
+                ],
+                [
+                  225,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 95,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 265,
+          "y": 505,
+          "pide": {
+            "C": 2,
+            "G": 2
+          },
+          "materia": "C",
+          "necesita": 4,
+          "img": "vitrina/p21",
+          "nombre": "El Tiramisú de Matcha"
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "region": 10,
+      "titulo": "Tinta de arándano",
+      "minimo": 14,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. La cápsula sólo se llena y se vacía por tubos.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Mezcla brillante!",
+        "voz": "fin_pool_5"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "F"
+          ],
+          "x": 30,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "M",
+            "F"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "M",
+            "M",
+            "C"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "capsula",
+          "cap": 1,
+          "capas": [],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  148,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "F",
+              "via": [
+                [
+                  212,
+                  150
+                ],
+                [
+                  330,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "M": 2,
+            "C": 1
+          },
+          "materia": "M",
+          "necesita": 3,
+          "img": "vitrina/p29",
+          "nombre": "La Tarta Menta-Caramelo"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "F": 2,
+            "M": 1
+          },
+          "materia": "F",
+          "necesita": 3,
+          "img": "vitrina/p13",
+          "nombre": "La Dona de Fresa y Menta"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "region": 10,
+      "titulo": "Páginas pegajosas",
+      "minimo": 17,
+      "ensena": "Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Lo pensaste bien. Se nota.",
+        "voz": "fin_pool_6"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "B"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "B",
+            "F"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "F",
+            "F",
+            "F"
+          ],
+          "x": 315,
+          "y": 300,
+          "sellada": true
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        },
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "region": 10,
+      "titulo": "El índice secreto",
+      "minimo": 15,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Huele de maravilla!",
+        "voz": "fin_pool_7"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "F",
+        "txt": "Dejar vacío el quinto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "U",
+            "C",
+            "U"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "capsula",
+          "cap": 3,
+          "capas": [],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "U",
+            "C",
+            "C"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  62,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  298,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "C",
+              "via": [
+                [
+                  373,
+                  150
+                ],
+                [
+                  180,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.426,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 95,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "C",
+          "necesita": 3,
+          "x": 265,
+          "y": 505,
+          "img": "vitrina/p15",
+          "nombre": "La Dona Capuchino"
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "region": 10,
+      "titulo": "La sala de lectura",
+      "minimo": 13,
+      "ensena": "El tubo de cristal sólo deja pasar la Menta. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Paso a paso, el reino recupera su sabor.",
+        "voz": "fin_pool_8"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "B",
+            "B"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "B"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "matraz",
+          "cap": 4,
+          "capas": [
+            "M",
+            "M",
+            "B"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "M": 1,
+            "B": 1,
+            "G": 1
+          },
+          "materia": "M",
+          "necesita": 3,
+          "img": "vitrina/p24",
+          "nombre": "El Macaron de Arándano, Matcha y Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "region": 10,
+      "titulo": "Notas al margen",
+      "minimo": 16,
+      "ensena": "La cápsula sólo se llena y se vacía por tubos. La báscula abre su puente al llegar al peso marcado.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Uno más para la colección!",
+        "voz": "fin_pool_9"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "C",
+            "M",
+            "L",
+            "C"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "capsula",
+          "cap": 1,
+          "capas": [],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "L"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 315,
+          "y": 300
+        },
+        {
+          "id": "S",
+          "forma": "capsula",
+          "cap": 2,
+          "capas": [],
+          "x": 60,
+          "y": 470,
+          "bascula": {
+            "umbral": 1,
+            "abre": [
+              "P"
+            ]
+          }
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "S",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "P"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "B",
+              "via": [
+                [
+                  358,
+                  150
+                ],
+                [
+                  135,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.5,
+          "id": "P",
+          "tipo": "puente"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "C": 2,
+            "L": 1
+          },
+          "materia": "C",
+          "necesita": 3,
+          "img": "vitrina/p21",
+          "nombre": "La Tarta de Caramelo y Limón"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "L": 1,
+            "M": 1,
+            "C": 1
+          },
+          "materia": "L",
+          "necesita": 3,
+          "img": "vitrina/p20",
+          "nombre": "El Macaron de Caramelo, Limón y Menta"
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "region": 10,
+      "titulo": "El archivo de sabores",
+      "minimo": 20,
+      "ensena": "El matraz entra y sale de una medida en una. La cápsula sólo se llena y se vacía por tubos.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Dulce, exacto y elegante.",
+        "voz": "fin_pool_10"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "matraz",
+          "cap": 3,
+          "capas": [
+            "B",
+            "B",
+            "B"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "B",
+            "C",
+            "F"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "capsula",
+          "cap": 5,
+          "capas": [],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L",
+            "B"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  182,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "C",
+              "via": [
+                [
+                  -3,
+                  150
+                ],
+                [
+                  225,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "C": 1,
+            "B": 2,
+            "L": 1
+          },
+          "materia": "C",
+          "necesita": 4,
+          "img": "vitrina/p17",
+          "nombre": "La Tarta de Arándano, Caramelo y Limón"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "region": 10,
+      "titulo": "La última página",
+      "minimo": 16,
+      "ensena": "Alimenta la Semilla de Matcha y brotará el puente de regaliz. Usa la Reserva para apartar lo que estorba.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Esto merece una fiesta!",
+        "voz": "fin_pool_11"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "F"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "G"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "F",
+            "B"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "B",
+            "G",
+            "G",
+            "G"
+          ],
+          "x": 315,
+          "y": 300
+        },
+        {
+          "id": "H",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 180,
+          "y": 470,
+          "nombre": "Reserva"
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "H",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "G": 2,
+            "F": 2,
+            "B": 2
+          },
+          "materia": "G",
+          "necesita": 6,
+          "img": "vitrina/p13",
+          "nombre": "La Tarta de Arándano, Fresa y Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "region": 10,
+      "jefe": true,
+      "titulo": "El Gran Recetario",
+      "minimo": 16,
+      "ensena": "Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "¡El Gran Recetario está completo!"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "C",
+            "G"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "M",
+            "G"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "M"
+          ],
+          "x": 225,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "L": 1,
+            "M": 1,
+            "G": 1
+          },
+          "materia": "L",
+          "necesita": 3,
+          "img": "vitrina/p22",
+          "nombre": "La Tarta del Recetario"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 265,
+          "y": 505,
+          "pide": {
+            "M": 2,
+            "G": 1
+          },
+          "materia": "M",
+          "necesita": 3,
+          "img": "vitrina/p17",
+          "nombre": "El Macaron Menta-Matcha"
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "region": 11,
+      "titulo": "Las puertas del palacio",
+      "minimo": 17,
+      "ensena": "La cápsula sólo se llena y se vacía por tubos. Un tubo devuelve materia a otro frasco de arriba: úsalo para reordenar las capas.",
+      "intro": [
+        {
+          "q": "grumble",
+          "t": "El Palacio de las Estrellas. Aquí acaba el mapa… pero no la repostería."
+        },
+        {
+          "q": "miga",
+          "t": "¡A por el último desafío!"
+        }
+      ],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Sabe a gloria!",
+        "voz": "fin_pool_1"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "B",
+        "txt": "Dejar vacío el segundo recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "F",
+            "L"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "L",
+            "L",
+            "G"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "capsula",
+          "cap": 4,
+          "capas": [],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "F",
+            "G"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "B",
+              "via": [
+                [
+                  371,
+                  150
+                ],
+                [
+                  135,
+                  150
+                ]
+              ],
+              "compuertas": []
+            },
+            {
+              "a": "C",
+              "via": [
+                [
+                  371,
+                  132
+                ],
+                [
+                  225,
+                  132
+                ]
+              ],
+              "compuertas": []
+            }
+          ],
+          "valvula": [
+            371,
+            290
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "G": 2,
+            "F": 1
+          },
+          "materia": "G",
+          "necesita": 3,
+          "img": "vitrina/p11",
+          "nombre": "La Tarta de Fresa y Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 265,
+          "y": 505,
+          "pide": {
+            "L": 2,
+            "F": 1
+          },
+          "materia": "L",
+          "necesita": 3,
+          "img": "vitrina/p27",
+          "nombre": "El Macaron de Fresa y Limón"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "region": 11,
+      "titulo": "El salón de espejos",
+      "minimo": 16,
+      "ensena": "Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Cada medida en su sitio. Precioso.",
+        "voz": "fin_pool_2"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "C",
+            "B",
+            "U"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "matraz",
+          "cap": 5,
+          "capas": [
+            "U",
+            "U"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "U"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "B"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  183,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  272,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "B": 1,
+            "U": 2,
+            "C": 1
+          },
+          "materia": "B",
+          "necesita": 4,
+          "img": "vitrina/p18",
+          "nombre": "El Macaron de Arándano, Caramelo y Uva"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "B",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p08",
+          "nombre": "La Dona de Arándano"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "region": 11,
+      "titulo": "La escalera de caramelo",
+      "minimo": 20,
+      "ensena": "Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde. La cápsula sólo se llena y se vacía por tubos.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Otro dulce despierto! Esto no para.",
+        "voz": "fin_pool_3"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "G",
+            "F"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "B",
+            "F",
+            "G"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "capsula",
+          "cap": 2,
+          "capas": [],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "G"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  272,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "C",
+              "via": [
+                [
+                  178,
+                  150
+                ],
+                [
+                  225,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        },
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "B": 1,
+            "F": 2
+          },
+          "materia": "B",
+          "necesita": 3,
+          "img": "vitrina/p27",
+          "nombre": "El Pastel de Arándano y Fresa"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 265,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "region": 11,
+      "titulo": "El jardín de estrellas",
+      "minimo": 18,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Alimenta la Semilla de Matcha y brotará el puente de regaliz.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Ni una gota de más. Eres todo un maestro.",
+        "voz": "fin_pool_4"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "F"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "capsula",
+          "cap": 3,
+          "capas": [],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "B",
+            "G",
+            "L"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  148,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "B",
+              "via": [
+                [
+                  223,
+                  150
+                ],
+                [
+                  105,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.425,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "F": 1,
+            "B": 1,
+            "L": 1
+          },
+          "materia": "F",
+          "necesita": 3,
+          "img": "vitrina/p28",
+          "nombre": "El Macaron de Arándano, Fresa y Limón"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "C",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p15",
+          "nombre": "La Dona Capuchino"
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "region": 11,
+      "titulo": "La cocina real",
+      "minimo": 21,
+      "ensena": "La cápsula sólo se llena y se vacía por tubos. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Mezcla brillante!",
+        "voz": "fin_pool_5"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "E",
+        "txt": "Dejar vacío el cuarto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "M",
+            "M"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L"
+          ],
+          "x": 135,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "capsula",
+          "cap": 4,
+          "capas": [
+            "M",
+            "G",
+            "M"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "G",
+            "M",
+            "G"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "C",
+              "via": [
+                [
+                  2,
+                  150
+                ],
+                [
+                  225,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "M": 2,
+            "G": 2
+          },
+          "materia": "M",
+          "necesita": 4,
+          "img": "vitrina/p17",
+          "nombre": "El Macaron Menta-Matcha"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 265,
+          "y": 505,
+          "pide": {
+            "L": 1,
+            "G": 1,
+            "M": 2
+          },
+          "materia": "L",
+          "necesita": 4,
+          "img": "vitrina/p24",
+          "nombre": "El Macaron de Matcha, Limón y Menta"
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "region": 11,
+      "titulo": "El baile de los sabores",
+      "minimo": 19,
+      "ensena": "El tubo de cristal sólo deja pasar la Menta. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Lo pensaste bien. Se nota.",
+        "voz": "fin_pool_6"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "C",
+            "G",
+            "M"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "M",
+            "C"
+          ],
+          "x": 135,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "G",
+            "M"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "matraz",
+          "cap": 2,
+          "capas": [
+            "M"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  88,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  267,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 3,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p19",
+          "nombre": "La Tarta de Té Matcha"
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "region": 11,
+      "titulo": "La torre de merengue",
+      "minimo": 16,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Huele de maravilla!",
+        "voz": "fin_pool_7"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "C"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "C",
+            "U"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "C",
+            "G",
+            "U"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  62,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  298,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.345,
+          "id": "R",
+          "tipo": "regaliz"
+        },
+        {
+          "ruta": [
+            "gE",
+            0
+          ],
+          "en": 0.426,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "G": 1,
+            "U": 2,
+            "C": 2
+          },
+          "materia": "G",
+          "necesita": 5,
+          "img": "vitrina/p25",
+          "nombre": "La Tarta de Melocotón"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 1,
+          "x": 265,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "region": 11,
+      "titulo": "El trono de chocolate",
+      "minimo": 14,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. La Uva pesa 2 y se hunde al fondo.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "Paso a paso, el reino recupera su sabor.",
+        "voz": "fin_pool_8"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "A",
+        "txt": "Dejar vacío el primer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "U"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "U"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M",
+            "M"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "U",
+            "C",
+            "M"
+          ],
+          "x": 330,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "H",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 300,
+          "y": 470,
+          "nombre": "Reserva"
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "H",
+              "via": [
+                [
+                  287,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 3,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 3,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "region": 11,
+      "titulo": "La galería de tartas",
+      "minimo": 14,
+      "ensena": "La Uva pesa 2 y se hunde al fondo. El matraz entra y sale de una medida en una.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zippy",
+        "t": "¡Uno más para la colección!",
+        "voz": "fin_pool_9"
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "matraz",
+          "cap": 4,
+          "capas": [
+            "C"
+          ],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "G",
+            "C",
+            "L",
+            "U",
+            "L"
+          ],
+          "x": 135,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "U"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  93,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  178,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  268,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [],
+      "objetivos": [
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "U",
+          "necesita": 2,
+          "x": 60,
+          "y": 505,
+          "img": "vitrina/p10",
+          "nombre": "La Dona Galáctica"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 180,
+          "y": 505,
+          "pide": {
+            "G": 1,
+            "L": 2,
+            "C": 1
+          },
+          "materia": "G",
+          "necesita": 4,
+          "img": "vitrina/p24",
+          "nombre": "El Macaron de Caramelo, Matcha y Limón"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "materia": "C",
+          "necesita": 1,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p15",
+          "nombre": "La Dona Capuchino"
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "region": 11,
+      "titulo": "El observatorio",
+      "minimo": 19,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Un tubo devuelve materia a otro frasco de arriba: úsalo para reordenar las capas.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "zappy",
+        "t": "Dulce, exacto y elegante.",
+        "voz": "fin_pool_10"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "C",
+        "txt": "Dejar vacío el tercer recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "G"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "M",
+            "L"
+          ],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "M",
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "capsula",
+          "cap": 4,
+          "capas": [
+            "M",
+            "M"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "L",
+            "G"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "R"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  148,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  298,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "B",
+              "via": [
+                [
+                  223,
+                  150
+                ],
+                [
+                  105,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gF",
+          "de": "F",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "E",
+              "via": [
+                [
+                  373,
+                  132
+                ],
+                [
+                  255,
+                  132
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "R",
+          "tipo": "regaliz"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "M": 2,
+            "L": 1
+          },
+          "materia": "M",
+          "necesita": 3,
+          "img": "vitrina/p21",
+          "nombre": "La Tarta de Limón y Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "G",
+          "necesita": 2,
+          "x": 180,
+          "y": 505,
+          "alCompletar": {
+            "abre": [
+              "R"
+            ]
+          },
+          "img": "dona_matcha",
+          "nombre": "La Semilla de Matcha"
+        },
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 300,
+          "y": 505,
+          "pide": {
+            "M": 2,
+            "G": 1
+          },
+          "materia": "M",
+          "necesita": 3,
+          "img": "vitrina/p17",
+          "nombre": "El Macaron Menta-Matcha"
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "region": 11,
+      "titulo": "La antesala",
+      "minimo": 14,
+      "ensena": "Cinco frascos y poco sitio libre: planifica antes de mover. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "miga",
+        "t": "¡Esto merece una fiesta!",
+        "voz": "fin_pool_11"
+      },
+      "ingenio": {
+        "tipo": "vacia",
+        "id": "F",
+        "txt": "Dejar vacío el quinto recipiente de arriba"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "frasco",
+          "cap": 5,
+          "capas": [
+            "M",
+            "F",
+            "F",
+            "F"
+          ],
+          "x": 30,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [],
+          "x": 105,
+          "y": 300
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "G"
+          ],
+          "x": 180,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 2,
+          "capas": [
+            "C"
+          ],
+          "x": 255,
+          "y": 300
+        },
+        {
+          "id": "F",
+          "forma": "frasco",
+          "cap": 1,
+          "capas": [
+            "M"
+          ],
+          "x": 330,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gA",
+          "de": "A",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  73,
+                  338
+                ],
+                [
+                  60,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  223,
+                  356
+                ],
+                [
+                  180,
+                  356
+                ]
+              ],
+              "cristal": true,
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T3",
+              "via": [
+                [
+                  298,
+                  374
+                ],
+                [
+                  300,
+                  374
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gA",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 60,
+          "y": 505,
+          "pide": {
+            "G": 1,
+            "M": 1,
+            "F": 1
+          },
+          "materia": "G",
+          "necesita": 3,
+          "img": "vitrina/p18",
+          "nombre": "El Macaron de Fresa, Matcha y Menta"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "materia": "M",
+          "necesita": 1,
+          "x": 180,
+          "y": 505,
+          "img": "vitrina/p03",
+          "nombre": "La Dona de Menta"
+        },
+        {
+          "id": "T3",
+          "tipo": "dona",
+          "materia": "F",
+          "necesita": 2,
+          "x": 300,
+          "y": 505,
+          "img": "vitrina/p14",
+          "nombre": "La Dona de Fresa"
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "region": 11,
+      "jefe": true,
+      "titulo": "La Corona de Azúcar",
+      "minimo": 19,
+      "ensena": "Un sello de chocolate tapa un frasco: fúndelo vertiendo Caramelo. Un bloque de chocolate tapa un tubo: sólo el Caramelo lo funde.",
+      "intro": [],
+      "guia": [],
+      "fin": {
+        "q": "grumble",
+        "t": "¡La Corona de Azúcar brilla! Ya eres leyenda, y el Obrador sin fin te espera."
+      },
+      "ingenio": {
+        "tipo": "sinPistas",
+        "txt": "Resolver sin pistas"
+      },
+      "vasijas": [
+        {
+          "id": "A",
+          "forma": "capsula",
+          "cap": 3,
+          "capas": [],
+          "x": 45,
+          "y": 300
+        },
+        {
+          "id": "B",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "B",
+            "C",
+            "C"
+          ],
+          "x": 135,
+          "y": 300,
+          "sellada": true
+        },
+        {
+          "id": "C",
+          "forma": "frasco",
+          "cap": 4,
+          "capas": [
+            "C",
+            "L",
+            "L"
+          ],
+          "x": 225,
+          "y": 300
+        },
+        {
+          "id": "E",
+          "forma": "frasco",
+          "cap": 3,
+          "capas": [
+            "C",
+            "L",
+            "B"
+          ],
+          "x": 315,
+          "y": 300
+        }
+      ],
+      "grifos": [
+        {
+          "id": "gB",
+          "de": "B",
+          "lado": "abajo",
+          "sale": "izq",
+          "rutas": [
+            {
+              "a": "T1",
+              "via": [
+                [
+                  92,
+                  338
+                ],
+                [
+                  95,
+                  338
+                ]
+              ],
+              "compuertas": [
+                "Q"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "gC",
+          "de": "C",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "T2",
+              "via": [
+                [
+                  268,
+                  356
+                ],
+                [
+                  265,
+                  356
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        },
+        {
+          "id": "gE",
+          "de": "E",
+          "lado": "abajo",
+          "sale": "der",
+          "rutas": [
+            {
+              "a": "A",
+              "via": [
+                [
+                  358,
+                  150
+                ],
+                [
+                  45,
+                  150
+                ]
+              ],
+              "compuertas": []
+            }
+          ]
+        }
+      ],
+      "compuertas": [
+        {
+          "ruta": [
+            "gB",
+            0
+          ],
+          "en": 0.5,
+          "id": "Q",
+          "tipo": "chocolate"
+        }
+      ],
+      "objetivos": [
+        {
+          "id": "T1",
+          "tipo": "dona",
+          "x": 95,
+          "y": 505,
+          "pide": {
+            "B": 1,
+            "L": 2
+          },
+          "materia": "B",
+          "necesita": 3,
+          "img": "vitrina/p28",
+          "nombre": "El Macaron de Arándano y Limón"
+        },
+        {
+          "id": "T2",
+          "tipo": "dona",
+          "x": 265,
+          "y": 505,
+          "pide": {
+            "B": 1,
+            "C": 2,
+            "L": 1
+          },
+          "materia": "B",
+          "necesita": 4,
+          "img": "vitrina/p30",
+          "nombre": "La Corona de Azúcar"
         }
       ]
     }

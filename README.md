@@ -1,6 +1,6 @@
 # Sugar-Snap Bakery
 
-Puzle de alquimia pastelera (español e inglés): mueve, mezcla y transforma materia mágica para despertar los dulces dormidos de Auralia. 48 niveles en cinco regiones.
+Puzle de alquimia pastelera (español e inglés): mueve, mezcla y transforma materia mágica para despertar los dulces dormidos de Auralia. 120 niveles en once regiones, un Obrador sin fin y un reto cada día.
 
 **Jugar:** https://andres2911.github.io/sugar-snap-bakery/
 

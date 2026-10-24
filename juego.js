@@ -14,7 +14,10 @@
     M: { base: '#3fd0bb', luz: '#a8f5e8', sombra: '#1d9886' },
     G: { base: '#86c443', luz: '#c8ef8f', sombra: '#558c22' },
     U: { base: '#7b52d9', luz: '#b99cff', sombra: '#4b2a9e' },
-    V: { base: '#dccbf7', luz: '#f6f0ff', sombra: '#9c7fd0' }
+    V: { base: '#dccbf7', luz: '#f6f0ff', sombra: '#9c7fd0' },
+    F: { base: '#ff5f8f', luz: '#ffb3c9', sombra: '#c22c5c' },
+    L: { base: '#f7d93b', luz: '#fff3a3', sombra: '#b89a0c' },
+    B: { base: '#3d7bf2', luz: '#9ec0ff', sombra: '#1f4fb0' }
   };
   var RETRATO = { grumble: 'assets/grumble.png', miga: 'assets/miga.png', zippy: 'assets/zippy.png', zappy: 'assets/zappy.png' };
   // Posición de cada nivel sobre el mapa ilustrado (porcentaje del ancho/alto de la imagen)
@@ -27,7 +30,10 @@
     M: 'M0,-7 C3,-2 5,1 5,3 A5,5 0 0 1 -5,3 C-5,1 -3,-2 0,-7Z',
     G: 'M-5.5,5.5 C-6.5,-3 0,-7.5 6.5,-6.5 C6.5,0 2,6.5 -5.5,5.5Z',
     U: 'M0,-5 A5,5 0 1 1 -0.01,-5Z M-8,2.5 C-4,-1 4,-4 8,-2.5 L8,-1.5 C4,-3 -4,0 -8,3.5Z',
-    V: 'M-6,3 A3,3 0 0 1 -5,-2 A4,4 0 0 1 2,-4 A3.5,3.5 0 0 1 6,1 A2.5,2.5 0 0 1 5,4 L-5,4 A2,2 0 0 1 -6,3Z'
+    V: 'M-6,3 A3,3 0 0 1 -5,-2 A4,4 0 0 1 2,-4 A3.5,3.5 0 0 1 6,1 A2.5,2.5 0 0 1 5,4 L-5,4 A2,2 0 0 1 -6,3Z',
+    F: 'M0,-3 C3,-6.5 7.5,-4 5.5,1 C4.5,4 1.5,6.5 0,7.5 C-1.5,6.5 -4.5,4 -5.5,1 C-7.5,-4 -3,-6.5 0,-3Z M-1.6,0.2 A0.9,0.9 0 1 0 -1.59,0.2Z M1.8,-0.6 A0.9,0.9 0 1 0 1.81,-0.6Z M0.2,3.2 A0.9,0.9 0 1 0 0.21,3.2Z M-3.6,-6.8 L0,-4.2 L3.6,-6.8 L1.2,-7.4 L0,-9.2 L-1.2,-7.4Z',
+    L: 'M0,-6.5 A6.5,6.5 0 1 1 -0.01,-6.5Z M0,-4.6 L3.2,-2.2 L0,0 Z M3.8,-0.6 L3.8,2.8 L0.6,1Z M2.2,4 L-1.6,4.2 L0,1.2Z M-3.6,2.4 L-3.6,-1.2 L-0.6,0.6Z M-2.4,-3.8 L1.2,-4.6 L-0.2,-0.8Z',
+    B: 'M0,-4.5 A5.5,5.5 0 1 1 -0.01,-4.5Z M-2.4,-4.2 L0,-1.6 L2.4,-4.2 L0.9,-4 L0,-5.6 L-0.9,-4Z'
   };
   var reducido = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -37,7 +43,8 @@
     return { v: 2, niveles: {}, vistos: {}, guias: {}, notas: {}, prologo: false, idioma: null,
       musica: true, efectos: true, voces: true, monedas: 0, vitrina: {}, mesa: 'madera', mesas: { madera: true },
       logros: {}, cont: { vapor: 0, fundidos: 0, sinPistas: 0, combos: 0 }, cofre: { ultimo: '', racha: 0 },
-      vidas: { n: 5, desde: 0 }, rango: 0, avatar: 0 };
+      vidas: { n: 5, desde: 0 }, rango: 0, avatar: 0,
+      infinito: { nivel: 1, mejor: 0, pts: 0, sal: 0, actual: null }, diario: { fecha: '', hecho: '', racha: 0, pts: 0, nivel: null } };
   };
   var PLAT = window.Plataforma || null;
   var prog = BASE();
@@ -75,9 +82,11 @@
     ['Repostero', 'Pastry Cook', 4000, { vidaMax: 1, monedas: 50 }],
     ['Maestro pastelero', 'Master Baker', 8000, { recarga: 10, monedas: 100 }],
     ['Gran alquimista', 'Grand Alchemist', 14000, { vidaMax: 1, monedas: 150 }],
-    ['Leyenda de Auralia', 'Legend of Auralia', 22000, { monedas: 300, dulce: 'p30' }]
+    ['Leyenda de Auralia', 'Legend of Auralia', 22000, { monedas: 300, dulce: 'p30' }],
+    ['Guardián del Sabor', 'Flavor Guardian', 40000, { monedas: 300 }],
+    ['Alquimista Eterno', 'Eternal Alchemist', 70000, { vidaMax: 1, monedas: 500 }]
   ];
-  function puntosTotales() { var t = 0; for (var id in prog.niveles) t += prog.niveles[id].pts || 0; return t; }
+  function puntosTotales() { var t = (prog.infinito.pts || 0) + (prog.diario.pts || 0); for (var id in prog.niveles) t += prog.niveles[id].pts || 0; return t; }
   function rangoDe(pts) { var r = 0; RANGOS.forEach(function (x, i) { if (pts >= x[2]) r = i; }); return r; }
   function nombreRango(i) { return RANGOS[i][IDIOMA === 'en' ? 1 : 0]; }
   function premioTexto(p) {
@@ -212,9 +221,9 @@
     return {
       titulo: e ? e.titulo : n.titulo,
       ensena: e ? e.ensena : n.ensena,
-      intro: n.intro.map(function (l, i) { return { id: 'n' + n.id + '_intro_' + i, q: l.q, t: e ? e.intro[i] : l.t }; }),
+      intro: n.intro.map(function (l, i) { return { id: l.voz || 'n' + n.id + '_intro_' + i, q: l.q, t: e ? e.intro[i] : l.t }; }),
       guia: n.guia.map(function (l, i) { return Object.assign({}, l, { t: e ? e.guia[i] : l.t }); }),
-      fin: { id: 'n' + n.id + '_fin', q: n.fin.q, t: e ? e.fin : n.fin.t },
+      fin: { id: n.fin.voz || 'n' + n.id + '_fin', q: n.fin.q, t: e ? e.fin : n.fin.t },
       ingenio: e ? e.ingenio : (n.ingenio || {}).txt
     };
   }
@@ -373,8 +382,12 @@
   document.addEventListener('pointerdown', function primerToque() { audio(); ponerMusica(); document.removeEventListener('pointerdown', primerToque); });
 
   // ───────────────────────── Pantallas ─────────────────────────
+  // Ambiente de cada región (fondo assets/suave_<ambiente>.jpg) y la música que le corresponde
+  var AMBIENTES = ['obrador', 'bosque', 'helado', 'ciudad', 'feria', 'mar', 'cumbres', 'selva', 'volcan', 'biblioteca', 'palacio'];
+  var MUSICA_DE = { mar: 'helado', cumbres: 'portada', selva: 'bosque', volcan: 'obrador', biblioteca: 'ciudad', palacio: 'feria' };
+  function romano(n) { var v = [[10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']], t = ''; v.forEach(function (p) { while (n >= p[0]) { t += p[1]; n -= p[0]; } }); return t; }
   function mostrar(id, fondo, pista) {
-    ponerMusica(pista || 'obrador');
+    ponerMusica(MUSICA_DE[pista] || pista || 'obrador');
     ['pantalla-portada', 'pantalla-mapa', 'pantalla-nivel'].forEach(function (p) { $(p).hidden = p !== id; });
     $('app').style.setProperty('--fondo', 'url("' + (fondo || 'assets/suave_portada.jpg') + '")');
   }
@@ -462,6 +475,8 @@
     switch (id) {
       case 'sin_ayuda': return c.sinPistas;
       case 'vaporista': return c.vapor;
+      case 'infinito10': case 'infinito50': return prog.infinito.mejor || 0;
+      case 'diario7': return prog.diario.racha || 0;
       case 'combinador': return c.combos || 0;
       case 'fundidor': return c.fundidos;
       case 'perfeccionista': return NIVELES.filter(function (n) { var p = prog.niveles[n.id]; return p && p.dom && p.ing; }).length;
@@ -491,7 +506,9 @@
         case 'tenaz': ok = !!ctx.tenaz; break;
         case 'region5': ok = NIVELES.some(function (n) { return n.region === 5; }) && NIVELES.filter(function (n) { return n.region === 5; }).every(function (n) { return resuelto(n.id); }); break;
         case 'rango_maestro': ok = prog.rango >= 3; break;
-        case 'leyenda': ok = prog.rango >= RANGOS.length - 1; break;
+        case 'leyenda': ok = prog.rango >= 5; break;
+        case 'region11': ok = resuelto(120); break;
+        case 'eterno': ok = prog.rango >= RANGOS.length - 1; break;
         default: ok = l[6] > 0 && progresoLogro(id) >= l[6];
       }
       if (ok) {
@@ -589,7 +606,8 @@
     var vistas = TX.NOTAS.filter(function (x) { return prog.notas[x[0]]; });
     var notas = vistas.length ? vistas.map(function (x) { return '<div class="nota"><b>' + x[li][0] + '</b><small>' + x[li][1] + '</small></div>'; }).join('')
       : '<p class="vacio">' + T('c_vacio') + '</p>';
-    var mats = ['C', 'M', 'G', 'U', 'V'].map(function (k) {
+    var DESDE = { F: 49, L: 61, B: 73 }; // los sabores nuevos aparecen en el cuaderno al llegar a su región
+    var mats = ['C', 'M', 'G', 'U', 'V', 'F', 'L', 'B'].filter(function (k) { return !DESDE[k] || desbloqueado(DESDE[k]) || (J && JSON.stringify(J.n.vasijas).indexOf('"' + k + '"') >= 0); }).map(function (k) {
       var d = TX.MATERIAS[IDIOMA][k], c = COLOR[k];
       return '<div class="materia"><span class="gota" style="background:linear-gradient(' + c.luz + ',' + c.base + ' 60%,' + c.sombra + ')">' + iconoMateria(k, 24) +
         '</span><div><b>' + d[0] + ' · ' + d[1] + '</b><small>' + d[2] + '</small></div><em>' + T('peso', { n: M.MATERIA[k].peso }) + '</em></div>';
@@ -731,7 +749,7 @@
 
   // ───────────────────────── Portada ─────────────────────────
   function pintarPortada() {
-    pintarVidas();
+    pintarVidas(); pintarModos();
     var s = siguienteNivel();
     $('b-jugar-sub').textContent = s ? T('seguir_nivel', { n: s.id }) : T('todo_completo');
   }
@@ -766,10 +784,27 @@
     var p = NODOS[espejo ? 11 - i : i];
     return { panel: panel, x: espejo ? 100 - p[0] : p[0], y: p[1] };
   }
+  var TONO_PANEL = [null, null, null, null,
+    'hue-rotate(185deg) saturate(1.25)', 'hue-rotate(300deg) saturate(.75) brightness(1.12)', 'hue-rotate(70deg) saturate(1.15) brightness(.92)',
+    'hue-rotate(-28deg) saturate(1.6) brightness(.95)', 'hue-rotate(215deg) saturate(.85) brightness(1.02)', 'hue-rotate(255deg) saturate(1.3) brightness(.8)'];
+  function asegurarPaneles() {
+    var lienzo = $('mapa-lienzo'), hay = lienzo.querySelectorAll('.panel-mapa').length, faltan = Math.ceil(NIVELES[NIVELES.length - 1].id / 12);
+    for (var k = hay; k < faltan; k++) {
+      var espejo = k % 2 === 1, tono = TONO_PANEL[k] || ('hue-rotate(' + (k * 47 % 360) + 'deg)');
+      var pn = document.createElement('div'); pn.className = 'panel-mapa p' + (k + 1);
+      pn.innerHTML = '<img class="capa mapa-gris" src="assets/mapa.jpg" alt="" draggable="false"><img class="capa mapa-color" src="assets/mapa.jpg" alt="" draggable="false"><i class="caramelo-deco" style="left:' + (espejo ? 16.75 : 83.25) + '%;top:30%"></i>';
+      pn.querySelectorAll('img').forEach(function (im) {
+        im.style.transform = espejo ? 'scaleX(-1)' : '';
+        im.style.filter = tono + (im.classList.contains('mapa-gris') ? ' grayscale(.6)' : '');
+      });
+      lienzo.insertBefore(pn, $('avatar-mapa'));
+    }
+  }
   function pintarMapa() {
+    asegurarPaneles();
     var paneles = $('mapa-lienzo').querySelectorAll('.panel-mapa');
     paneles.forEach(function (pn) { pn.querySelectorAll('.nodo').forEach(function (e) { e.remove(); }); });
-    var actual = siguienteNivel(), mascaras = [[], [], [], []];
+    var actual = siguienteNivel(), mascaras = [].map.call(paneles, function () { return []; });
     NIVELES.forEach(function (n) {
       var p = posNodo(n), b = document.createElement('button'), pr = prog.niveles[n.id] || {};
       b.className = 'nodo' + (n.jefe ? ' jefe' : '') + (desbloqueado(n.id) ? '' : ' bloq') + (actual && actual.id === n.id ? ' actual' : '') + (pr.res ? ' hecho' : '');
@@ -839,7 +874,7 @@
     if (r === regionTitulo && $('mapa-titulo').textContent) return;
     regionTitulo = r;
     var t = $('mapa-titulo');
-    t.innerHTML = '<small>' + T('mapa_region', { n: ['I', 'II', 'III', 'IV', 'V'][r - 1] }) + '</small><b>' + regionNombre(r) + '</b>';
+    t.innerHTML = '<small>' + T('mapa_region', { n: romano(r) }) + '</small><b>' + regionNombre(r) + '</b>';
     t.setAttribute('data-region', r);
     if (!reducido) t.animate([{ transform: 'translateY(-8px) scale(.96)', opacity: 0.4 }, { transform: 'none', opacity: 1 }], { duration: 320, easing: 'ease-out' });
   }
@@ -889,7 +924,7 @@
         };
         trabajador.onerror = function (ev) { if (ev && ev.preventDefault) ev.preventDefault(); trabajador = null; respaldo(); };
       }
-      trabajador.postMessage(id);
+      trabajador.postMessage(n.modo ? { nivel: n } : id);
     } catch (e) { trabajador = null; respaldo(); }
   }
 
@@ -897,7 +932,7 @@
   var J = null; // partida en curso
 
   function cargarNivel(id) {
-    var n = NIVELES.filter(function (x) { return x.id === id; })[0];
+    var n = typeof id === 'object' ? id : NIVELES.filter(function (x) { return x.id === id; })[0];
     if (!n.libre && vidas() <= 0) { ventanaSinVidas(function () { cargarNivel(id); }); return; }
     $('guia').hidden = true; enfocar([]); // una guía a medias de otro nivel no debe quedarse en pantalla
     var s0 = M.estadoInicial(n);
@@ -907,7 +942,7 @@
       reinicios: 0, inicio: Date.now(), ultimaAccion: Date.now(), ayudaDada: false, conGuia: false, errores: 0, perdio: false };
     J.max = n.libre ? null : (n.maxMovs || par + Math.max(2, Math.ceil(par * 0.6)));
     (n.grifos || []).forEach(function (g) { J.valv[g.id] = 0; });
-    var ambiente = ['obrador', 'bosque', 'helado', 'ciudad', 'feria'][n.region - 1], suave = 'assets/suave_' + ambiente + '.jpg';
+    var ambiente = n.ambiente || AMBIENTES[(n.region - 1) % AMBIENTES.length], suave = 'assets/suave_' + ambiente + '.jpg';
     mostrar('pantalla-nivel', suave, ambiente);
     $('pantalla-nivel').setAttribute('data-region', n.region);
     $('pantalla-nivel').style.setProperty('--fondo-nivel', 'url("' + suave + '")');
@@ -925,7 +960,7 @@
   }
   function pintarCabecera() {
     var n = J.n, tx = TN(n);
-    $('lazo').innerHTML = T(n.jefe ? 'desafio' : 'nivel') + ' ' + n.id + '<small>' + tx.titulo + '</small>';
+    $('lazo').innerHTML = (n.modo === 'infinito' ? '∞ ' + n.k : n.modo === 'diario' ? T('hoy') : T(n.jefe ? 'desafio' : 'nivel') + ' ' + n.id) + '<small>' + tx.titulo + '</small>';
     $('consejo').textContent = tx.ensena;
     aplicarTextos();
   }
@@ -2198,8 +2233,9 @@
     else if (ig.tipo === 'sinTrasvasar') ing = J.trasvases === 0;
     else if (ig.tipo === 'vacia') ing = s.v[ig.id].length === 0;
     else if (ig.tipo === 'intacto') ing = !J.tocados[ig.id];
-    var antes = prog.niveles[n.id] || {}, primera = !antes.res;
-    prog.niveles[n.id] = { res: 1, dom: antes.dom || (dom ? 1 : 0), ing: antes.ing || (ing ? 1 : 0), mejor: Math.min(antes.mejor || 999, J.movs) };
+    var antes = n.modo ? {} : prog.niveles[n.id] || {}, primera = !antes.res;
+    var reg = { res: 1, dom: antes.dom || (dom ? 1 : 0), ing: antes.ing || (ing ? 1 : 0), mejor: Math.min(antes.mejor || 999, J.movs) };
+    if (!n.modo) prog.niveles[n.id] = reg;
     // Monedas: primera vez, sellos nuevos y un poco por repetir
     var monedas = primera ? (n.jefe ? 40 : 20) : 3;
     if (dom && !antes.dom) monedas += 10;
@@ -2207,18 +2243,22 @@
     // Puntos: más difícil el nivel, más movimientos de sobra, más sellos y sin pistas, más puntos
     var sobra = J.max ? Math.max(0, J.max - J.movs) : Math.max(0, J.limite + 2 - J.movs);
     var sellos = 1 + (dom ? 1 : 0) + (ing ? 1 : 0);
-    var puntos = 50 + 10 * n.id + 15 * sobra + 40 * sellos + (J.pistas === 0 ? 30 : 0);
+    var puntos = 50 + 10 * (n.nivelPuntos || n.id) + 15 * sobra + 40 * sellos + (J.pistas === 0 ? 30 : 0);
     var record = puntos > (antes.pts || 0);
-    prog.niveles[n.id].pts = Math.max(antes.pts || 0, puntos);
+    reg.pts = Math.max(antes.pts || 0, puntos);
+    if (n.modo) terminarModo(n, puntos);
+    if (n.modo === 'diario') monedas += 40;
+    if (n.modo === 'infinito') monedas += Math.min(30, Math.floor(n.k / 5) * 5);
     if (n.objetivos.some(function (o) { return o.pide; })) prog.cont.combos = (prog.cont.combos || 0) + (primera ? 1 : 0);
     var rangosNuevos = subirRango();
+    if (primera && (n.id === 12 || n.id === 48)) setTimeout(function () { toast('<span class="toast-ic">' + (n.id === 48 ? '∞' : '📅') + '</span><span><b>' + T(n.id === 48 ? 'abierto_infinito' : 'abierto_diario') + '</b><small>' + T('abierto_sub') + '</small></span>', SON.logro); }, 6500);
     if (!prog.notas.puntos && n.id >= 4) prog.notas.puntos = Date.now();
     if (PLAT && PLAT.enPlayables && window.ytgame) { try { ytgame.engagement.sendScore({ value: puntosTotales() }).catch(function () {}); } catch (e) { /* opcional */ } }
     var dulce = dulceDeNivel(n.id), dulceNuevo = !!(dulce && !prog.vitrina[dulce[0]]);
     if (dulce) prog.vitrina[dulce[0]] = true;
     prog.cont.sinPistas = J.pistas === 0 ? prog.cont.sinPistas + 1 : 0;
     guardar();
-    var p = prog.niveles[n.id];
+    var p = reg;
     var logrosNuevos = revisarLogros({ silencio: true, tresSellos: p.dom && p.ing, sinDeshacer: J.par >= 4 && J.reinicios === 0 && !J.perdio, rapido: Date.now() - J.inicio < 30000 && !J.conGuia, tenaz: J.perdio });
     var partida = J;
     bajarMusica(true);
@@ -2247,7 +2287,7 @@
   }
   function ventanaVictoria(n, dom, ing, primera, monedas, dulce, dulceNuevo, logrosNuevos, pt) {
     pt = pt || { puntos: 0, record: false, rangos: [] };
-    var sig = NIVELES.filter(function (x) { return x.id === n.id + 1; })[0], tx = TN(n);
+    var sig = n.modo ? (n.modo === 'infinito' ? { id: 'inf' } : null) : NIVELES.filter(function (x) { return x.id === n.id + 1; })[0], tx = TN(n);
     var sello = function (si, letra, titulo, txt, i) {
       return '<div class="sello' + (si ? ' si' : '') + '" style="animation-delay:' + (i * 0.12) + 's"><span class="disco">' + (si ? '★' : letra) + '</span><b>' + titulo + '</b><small>' + txt + '</small></div>';
     };
@@ -2268,7 +2308,7 @@
       (dulce ? '<button class="v-dulce' + (dulceNuevo ? ' nuevo' : '') + '" id="v-dulce"><img src="assets/vitrina/' + dulce[0] + '.png" alt=""><span><small>' + T(dulceNuevo ? 'v_nuevo_dulce' : 'v_dulce') + '</small><b>' + nombreDulce(dulce) + '</b><em>' + T('v_ver_receta') + '</em></span></button>' : '') + '</div>' +
       bloquePuntos + logros +
       '<div class="acciones"><button class="btn sec peq" id="b-v-repetir">' + T('v_repetir') + '</button><button class="btn sec peq" id="b-v-mapa">' + T('v_mapa') + '</button>' +
-      (sig ? '<button class="btn peq" id="b-v-sig">' + T('v_siguiente', { n: sig.id }) + '</button>' : '') + '</div>' +
+      (sig ? '<button class="btn peq" id="b-v-sig">' + (n.modo === 'infinito' ? T('v_siguiente_inf', { n: n.k + 1 }) : T('v_siguiente', { n: sig.id })) + '</button>' : '') + '</div>' +
       '<div class="lamina" id="lamina" hidden></div>', function (m) {
       pintarMonedas();
       // Sellos (sólo los conseguidos), después las monedas y al final, si hay, el logro
@@ -2287,9 +2327,9 @@
       var vd = m.querySelector('#v-dulce'), lam = m.querySelector('#lamina');
       if (vd) vd.addEventListener('click', function () { SON.toque(); lam.innerHTML = '<div class="lamina-in"><img src="assets/vitrina/lamina_' + dulce[0] + '.jpg" alt=""><b>' + nombreDulce(dulce) + '</b><small>' + T('toca_seguir') + '</small></div>'; lam.hidden = false; });
       lam.addEventListener('click', function () { lam.hidden = true; });
-      m.querySelector('#b-v-repetir').addEventListener('click', function () { SON.toque(); cerrarModal(); cargarNivel(n.id); });
+      m.querySelector('#b-v-repetir').addEventListener('click', function () { SON.toque(); cerrarModal(); cargarNivel(n.modo ? n : n.id); });
       m.querySelector('#b-v-mapa').addEventListener('click', function () { SON.toque(); cerrarModal(); abrirMapa(); });
-      var bs = m.querySelector('#b-v-sig'); if (bs) bs.addEventListener('click', function () { SON.toque(); cerrarModal(); cargarNivel(sig.id); });
+      var bs = m.querySelector('#b-v-sig'); if (bs) bs.addEventListener('click', function () { SON.toque(); cerrarModal(); if (n.modo === 'infinito') jugarInfinito(); else cargarNivel(sig.id); });
       var partida = J;
       if (!sig) setTimeout(function () {
         if (J !== partida || $('modal').hidden) return;
@@ -2298,7 +2338,181 @@
     });
   }
 
+  // ───────────────────────── Obrador sin fin y reto del día ─────────────────────────
+  // Los tableros se crean al momento en un trabajador con el mismo generador que hizo los niveles del mapa.
+  // Si no se puede (sin trabajadores o sin candidato a tiempo), se remezcla un nivel del mapa: espejo y sabores cambiados.
+  var trabajadoresInf = {}, esperasInf = {}, listosInf = {};
+  function semillaDe(a, b) { var h = (2166136261 ^ a) >>> 0; h = Math.imul(h ^ b, 16777619); h ^= h >>> 13; h = Math.imul(h, 2246822507); return (h ^ (h >>> 16)) >>> 0; }
+  function generarTablero(clave, t, semilla, cb) {
+    if (listosInf[clave]) return cb(listosInf[clave]);
+    var cola = esperasInf[clave] = esperasInf[clave] || [];
+    cola.push(cb); if (cola.length > 1) return;
+    var hecho = false, terminar = function (res) {
+      if (hecho) return; hecho = true;
+      listosInf[clave] = res; var l = esperasInf[clave] || []; delete esperasInf[clave]; l.forEach(function (f) { f(res); });
+    };
+    var plan = setTimeout(function () { terminar(remezcla(t, semilla)); }, 50000);
+    try {
+      if (typeof Worker === 'undefined') throw new Error('sin trabajadores');
+      // Un trabajador para el Obrador sin fin y otro para el reto del día: no se hacen esperar entre sí
+      var tipo = clave.slice(0, 3), trabInf = trabajadoresInf[tipo];
+      if (!trabInf) {
+        trabInf = trabajadoresInf[tipo] = new Worker('infinito.js');
+        trabInf.onmessage = function (e) { var f = esperasInf['_' + e.data.clave]; if (f) { delete esperasInf['_' + e.data.clave]; f(e.data); } };
+        trabInf.onerror = function (ev) { if (ev && ev.preventDefault) ev.preventDefault(); delete trabajadoresInf[tipo]; Object.keys(esperasInf).forEach(function (k) { if (k.slice(0, 4) === '_' + tipo) { var f = esperasInf[k]; delete esperasInf[k]; f({ ok: false }); } }); };
+      }
+      esperasInf['_' + clave] = function (d) { clearTimeout(plan); terminar(d.ok ? { nivel: d.nivel, minimo: d.sol.length, din: d.din } : remezcla(t, semilla)); };
+      trabInf.postMessage({ clave: clave, t: t, semilla: semilla, segundos: 25 });
+    } catch (e) { clearTimeout(plan); setTimeout(function () { terminar(remezcla(t, semilla)); }, 30); }
+  }
+  // Cuando el jugador espera: como mucho 12 s; si el tablero nuevo no llega, se juega una remezcla al momento
+  function tableroConEspera(clave, t, semilla, cb) {
+    var dado = false, tm = setTimeout(function () { if (!dado) { dado = true; cb(remezcla(t, semilla)); } }, 12000);
+    generarTablero(clave, t, semilla, function (res) { if (!dado) { dado = true; clearTimeout(tm); cb(res); } });
+  }
+  // Remezcla de un nivel del mapa: mismo puzle (mismo mínimo) con otro aspecto
+  function remezcla(t, semilla) {
+    var azar = semilla;
+    var al = function () { azar = semillaDe(azar, 99); return azar / 4294967296; };
+    var cand = NIVELES.filter(function (x) { return x.id >= 25; });
+    var base = cand[Math.min(cand.length - 1, Math.max(0, Math.round((t / 72) * (cand.length - 1) + (al() - 0.5) * 12)))];
+    var n = JSON.parse(JSON.stringify({ vasijas: base.vasijas, grifos: base.grifos, compuertas: base.compuertas || [], objetivos: base.objetivos }));
+    var txt = JSON.stringify(n), fijos = {};
+    if (/alambique|"sellada":true|"chocolate"|turbina/.test(txt)) { fijos.C = 1; fijos.M = 1; }
+    if (/"cristal":true/.test(txt)) fijos.M = 1;
+    if (/regaliz/.test(txt)) fijos.G = 1;
+    var libres = ['C', 'M', 'G', 'F', 'L', 'B'].filter(function (k) { return !fijos[k]; });
+    var usados = libres.filter(function (k) { return txt.indexOf('"' + k + '"') >= 0; });
+    var mezcla = libres.slice().sort(function () { return al() - 0.5; }), cambio = {};
+    usados.forEach(function (k, i) { cambio[k] = mezcla[i]; });
+    var tr = function (k) { return cambio[k] || k; };
+    n.vasijas.forEach(function (v) { v.capas = (v.capas || []).map(tr); });
+    n.objetivos.forEach(function (o) {
+      if (o.pide) { var p = {}; Object.keys(o.pide).forEach(function (k) { p[tr(k)] = o.pide[k]; }); o.pide = p; delete o.materia; delete o.necesita; }
+      else if (o.materia) o.materia = tr(o.materia);
+      // Los dulces cambian de sabor: se vuelven a nombrar (salvo la semilla y el molinillo)
+      if (o.tipo !== 'turbina' && !/Semilla/.test(o.nombre || '')) { delete o.img; delete o.nombre; }
+      else if (/Semilla/.test(o.nombre || '')) o.semilla = true;
+    });
+    if (al() < 0.5) { // espejo
+      var X = function (x) { return 360 - x; };
+      n.vasijas.forEach(function (v) { v.x = X(v.x); });
+      n.objetivos.forEach(function (o) { o.x = X(o.x); });
+      n.grifos.forEach(function (g) { g.sale = g.sale === 'izq' ? 'der' : 'izq'; if (g.valvula) g.valvula = [X(g.valvula[0]), g.valvula[1]]; g.rutas.forEach(function (ru) { ru.via = (ru.via || []).map(function (p) { return [X(p[0]), p[1]]; }); }); });
+    }
+    return { nivel: n, minimo: base.minimo, din: null, ensena: [base.ensena, (EN[base.id] || {}).ensena || base.ensena] };
+  }
+  var IMG_SABOR = { C: 'p15', M: 'p03', G: 'p19', U: 'p10', F: 'p14', L: 'p26', B: 'p08' };
+  var IMG_MEZCLA = ['p21', 'p24', 'p25', 'p27', 'p13', 'p18', 'p17', 'p20', 'p11', 'p28'];
+  // Viste un tablero recién creado: nombres de los dulces, textos en los dos idiomas, ambiente y reto de Ingenio
+  function vestirModo(res, modo, k) {
+    var n = res.nivel, id = modo === 'infinito' ? 1000 + k : 5000, nombresEn = {}, aleat = semillaDe(id, k || 7);
+    var corto = function (m, en) { return TX.MATERIAS[en ? 'en' : 'es'][m][0].split(' ')[0]; };
+    n.objetivos.forEach(function (o) {
+      if (o.tipo === 'turbina') { o.nombre = 'El Molinillo de Merengue'; nombresEn[o.id] = 'The Meringue Pinwheel'; return; }
+      if (o.semilla) { delete o.semilla; o.img = 'dona_matcha'; o.nombre = 'La Semilla de Matcha'; nombresEn[o.id] = 'The Matcha Seed'; return; }
+      if (o.pide) {
+        var ks = Object.keys(o.pide).sort(), h = semillaDe(aleat, ks.join('').charCodeAt(0) + ks.length);
+        o.img = 'vitrina/' + IMG_MEZCLA[h % IMG_MEZCLA.length];
+        o.nombre = 'Tarta de ' + ks.map(function (m) { return corto(m); }).join(' y ');
+        nombresEn[o.id] = ks.map(function (m) { return corto(m, true); }).join(' & ') + ' Cake';
+      } else if (o.materia && !o.img) {
+        o.img = 'vitrina/' + (IMG_SABOR[o.materia] || 'p01');
+        o.nombre = 'Dulce de ' + corto(o.materia); nombresEn[o.id] = corto(o.materia, true) + ' Sweet';
+      } else if (o.nombre && EN) { nombresEn[o.id] = o.nombre; }
+    });
+    n.vasijas.forEach(function (v) { if (v.nombre === 'Reserva') nombresEn[v.id] = 'Reserve'; });
+    var fin = TX.FIN_POOL[(k || 0) % TX.FIN_POOL.length], kf = (k || 0) % TX.FIN_POOL.length;
+    var consejo = res.ensena || (res.din || []).filter(function (d) { return TX.CONSEJOS[d]; }).slice(0, 2).map(function (d) { return TX.CONSEJOS[d]; });
+    var ensES = res.ensena ? res.ensena[0] : consejo.map(function (c) { return c[0]; }).join(' ');
+    var ensEN = res.ensena ? res.ensena[1] : consejo.map(function (c) { return c[1]; }).join(' ');
+    var nivel = { id: id, modo: modo, k: k, region: 6 + ((k || 3) % 6), ambiente: AMBIENTES[(k || 4) % AMBIENTES.length],
+      nivelPuntos: modo === 'infinito' ? 60 + k : 80,
+      titulo: modo === 'infinito' ? 'Obrador sin fin · Nº ' + k : 'Reto del día', minimo: res.minimo, ensena: ensES || T('inf_consejo'),
+      intro: [], guia: [], fin: { q: fin[0], t: fin[1], voz: 'fin_pool_' + kf }, ingenio: { tipo: 'sinPistas', txt: 'Resolver sin pistas' },
+      vasijas: n.vasijas, grifos: n.grifos, compuertas: n.compuertas || [], objetivos: n.objetivos };
+    EN[id] = { titulo: modo === 'infinito' ? 'Endless Bakery · No. ' + k : "Today's Challenge", ensena: ensEN || 'Plan before you move.', intro: [], guia: [], fin: fin[2], ingenio: 'Solve it without hints', nombres: nombresEn };
+    return nivel;
+  }
+  function tInfinito(k) { return k <= 61 ? 11 + k : 48 + (semillaDe(prog.infinito.sal, k) % 25); }
+  function abrirPreparando() {
+    abrirModal('<div class="preparando"><img src="assets/grumble.png" alt=""><h2>' + T('preparando') + '</h2><p class="sub">' + T('preparando_sub') + '</p><i class="girando"></i></div>');
+  }
+  function jugarInfinito() {
+    if (!infinitoAbierto()) { toast('<span class="toast-ic">🔒</span><span><b>' + T('infinito_bloq') + '</b></span>'); return; }
+    if (vidas() <= 0) { ventanaSinVidas(jugarInfinito); return; }
+    var k = prog.infinito.nivel;
+    if (prog.infinito.actual && prog.infinito.actual.k === k) { EN[prog.infinito.actual.id] = prog.infinito.actualEn; cargarNivel(prog.infinito.actual); prepararSiguiente(k + 1); return; }
+    abrirPreparando();
+    tableroConEspera('inf-' + prog.infinito.sal + '-' + k, tInfinito(k), semillaDe(prog.infinito.sal, k), function (res) {
+      var n = vestirModo(res, 'infinito', k);
+      prog.infinito.actual = n; prog.infinito.actualEn = EN[n.id]; guardar();
+      cerrarModal(); cargarNivel(n); prepararSiguiente(k + 1); anotar('infinito');
+    });
+  }
+  function prepararSiguiente(k) { generarTablero('inf-' + prog.infinito.sal + '-' + k, tInfinito(k), semillaDe(prog.infinito.sal, k), function () {}); }
+  function jugarDiario() {
+    if (!diarioAbierto()) { toast('<span class="toast-ic">🔒</span><span><b>' + T('diario_bloq') + '</b></span>'); return; }
+    var d = hoy();
+    if (prog.diario.hecho === d) { toast('<span class="toast-ic">✅</span><span><b>' + T('diario_hecho') + '</b><small>' + T('diario_vuelve') + '</small></span>'); return; }
+    if (vidas() <= 0) { ventanaSinVidas(jugarDiario); return; }
+    if (prog.diario.nivel && prog.diario.fecha === d) { EN[5000] = prog.diario.nivelEn; cargarNivel(prog.diario.nivel); return; }
+    var num = Number(d.replace(/-/g, ''));
+    abrirPreparando();
+    tableroDiario(function (res) {
+      var n = vestirModo(res, 'diario', num % 997);
+      prog.diario.fecha = d; prog.diario.nivel = n; prog.diario.nivelEn = EN[n.id]; guardar();
+      cerrarModal(); cargarNivel(n); anotar('diario');
+    }, true);
+  }
+  function tableroDiario(cb, esperar) { var d = hoy(), num = Number(d.replace(/-/g, '')); (esperar ? tableroConEspera : generarTablero)('dia-' + d, 14 + (num % 7), semillaDe(num, 2026), cb); }
+  function infinitoAbierto() { return resuelto(48); }
+  function diarioAbierto() { return resuelto(12); }
+  // Al ganar en un modo: avanza la serie o marca el reto de hoy
+  function terminarModo(n, puntos) {
+    if (n.modo === 'infinito') {
+      prog.infinito.pts = (prog.infinito.pts || 0) + puntos;
+      prog.infinito.mejor = Math.max(prog.infinito.mejor || 0, n.k);
+      prog.infinito.nivel = n.k + 1; prog.infinito.actual = null; prog.infinito.actualEn = null;
+    } else {
+      var d = hoy(), ayer = hoy(new Date(Date.now() - 864e5));
+      prog.diario.racha = prog.diario.hecho === ayer ? (prog.diario.racha || 0) + 1 : 1;
+      prog.diario.hecho = d; prog.diario.pts = (prog.diario.pts || 0) + puntos;
+    }
+  }
+  function pintarModos() {
+    var bi = $('b-infinito'), bd = $('b-diario'); if (!bi) return;
+    bi.classList.toggle('bloq', !infinitoAbierto()); bd.classList.toggle('bloq', !diarioAbierto());
+    $('b-infinito-sub').textContent = infinitoAbierto() ? T('infinito_sub', { n: prog.infinito.nivel }) : T('infinito_req');
+    $('b-diario-sub').textContent = !diarioAbierto() ? T('diario_req') : prog.diario.hecho === hoy() ? T('diario_hecho_corto') : T('diario_sub');
+    bd.classList.toggle('hecho', prog.diario.hecho === hoy());
+    // Se preparan en segundo plano para no hacer esperar al pulsar
+    setTimeout(function () {
+      if (infinitoAbierto() && !prog.infinito.actual) prepararSiguiente(prog.infinito.nivel);
+      if (diarioAbierto() && prog.diario.hecho !== hoy() && !(prog.diario.nivel && prog.diario.fecha === hoy())) tableroDiario(function () {});
+    }, 1500);
+  }
+
+  // ───────────────────────── Juego sano: aviso de descanso ─────────────────────────
+  // Cuenta sólo el tiempo jugando de verdad (pantalla del nivel visible y con actividad reciente)
+  var sesion = { activo: 0 };
+  setInterval(function () {
+    if (document.hidden || enPausa || !J || $('pantalla-nivel').hidden || Date.now() - (J.ultimaAccion || 0) > 120000) return;
+    sesion.activo += 15000;
+    if (sesion.activo >= 40 * 60000 && $('modal').hidden && !J.ocupado) { sesion.activo = 0; avisoDescanso(); }
+  }, 15000);
+  function avisoDescanso() {
+    frase('descanso');
+    abrirModal('<div class="derrota"><img src="assets/grumble.png" alt=""><div><small>' + T('descanso_sub') + '</small><h2>' + T('descanso_t') + '</h2></div></div>' +
+      '<p class="sub">' + T('descanso') + '</p><div class="acciones"><button class="btn sec peq" id="b-desc-no">' + T('seguir_jugando') + '</button><button class="btn peq" id="b-desc-si">' + T('descanso_si') + '</button></div>', function (m) {
+      m.querySelector('#b-desc-no').addEventListener('click', function () { SON.toque(); cerrarModal(); });
+      m.querySelector('#b-desc-si').addEventListener('click', function () { SON.toque(); cerrarModal(); callarVoz(); pintarPortada(); mostrar('pantalla-portada', null, 'portada'); });
+    });
+  }
+
   // ───────────────────────── Botones ─────────────────────────
+  $('b-infinito').addEventListener('click', function () { audio(); SON.toque(); jugarInfinito(); });
+  $('b-diario').addEventListener('click', function () { audio(); SON.toque(); jugarDiario(); });
   $('b-jugar').addEventListener('click', function () {
     audio(); SON.toque();
     if (!bienvenidaDicha) { bienvenidaDicha = true; frase('bienvenida', true); }
@@ -2369,6 +2583,7 @@
   // Partidas guardadas antes de los puntos: cada nivel ganado recibe una puntuación estimada
   Object.keys(prog.niveles).forEach(function (id) { var p = prog.niveles[id]; if (p.res && !p.pts) p.pts = 50 + 10 * Number(id) + 40 * (1 + (p.dom ? 1 : 0) + (p.ing ? 1 : 0)); });
   if (!prog.cont.combos) prog.cont.combos = 0;
+  if (!prog.infinito.sal) { prog.infinito.sal = 1 + Math.floor(Math.random() * 2e9); guardar(); } // cada jugador tiene su propia serie infinita
   subirRango();
   aplicarTextos(); pintarMonedas(); pintarPortada();
   mostrar('pantalla-portada', null, 'portada');

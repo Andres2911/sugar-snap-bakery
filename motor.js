@@ -10,7 +10,10 @@
     M: { nombre: 'Menta Fluida', prop: 'Flujo', peso: 1, dens: 1 },
     G: { nombre: 'Matcha Vital', prop: 'Vida', peso: 1, dens: 1 },
     U: { nombre: 'Uva Galáctica', prop: 'Gravedad', peso: 2, dens: 0 },
-    V: { nombre: 'Vapor de Azúcar', prop: 'Empuje', peso: 0, dens: 2 }
+    V: { nombre: 'Vapor de Azúcar', prop: 'Empuje', peso: 0, dens: 2 },
+    F: { nombre: 'Fresa Estelar', prop: 'Dulzor', peso: 1, dens: 1 },
+    L: { nombre: 'Limón Solar', prop: 'Chispa', peso: 1, dens: 1 },
+    B: { nombre: 'Arándano Eléctrico', prop: 'Energía', peso: 1, dens: 1 }
   };
 
   function clone(s) {
