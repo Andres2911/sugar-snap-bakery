@@ -416,6 +416,8 @@
     cristal: ['El tubo de cristal sólo deja pasar la Menta.', 'The crystal pipe only lets Mint through.'],
     regaliz: ['Alimenta la Semilla de Matcha y brotará el puente de regaliz.', 'Feed the Matcha Seed and the licorice bridge will sprout.'],
     uva: ['La Uva pesa 2 y se hunde al fondo.', 'Grape weighs 2 and sinks to the bottom.'],
+    red: ['Dos tuberías unen los frascos de arriba: úsalas para reordenar las capas.', 'Two pipes link the top jars: use them to reorder the layers.'],
+    bascula2: ['Dos básculas, dos puentes: cada una abre el suyo.', 'Two scales, two bridges: each one opens its own.'],
     combo: ['Los pedidos combinados quieren varios sabores.', 'Mixed orders want several flavors.']
   };
   var FIN_POOL = [

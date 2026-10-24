@@ -41,6 +41,8 @@ const FIRMAS = new Set();
 
 // ── Plan de dinámicas por nivel: todos distintos, cada vez más ricos ──
 const DINAMICAS = ['valvula', 'reserva', 'bascula', 'subida', 'matraz', 'capsula', 'alambique', 'sello', 'chocolate', 'cristal', 'regaliz', 'uva', 'combo'];
+// Dinámicas de los niveles avanzados: dos básculas con su puente cada una, y una red de dos tuberías entre frascos
+const DINAMICAS_AV = DINAMICAS.concat(['bascula2', 'red']);
 function plan(id, r) {
   const i = id - 13, t = i / 35;
   const nDin = t < 0.15 ? 1 + Math.floor(r() * 2) : t < 0.55 ? 2 : t < 0.8 ? 2 + Math.floor(r() * 2) : 3;
@@ -64,19 +66,26 @@ function planAvanzado(t, r, id) {
   const nDin = t < 12 ? 2 : t < 36 ? 2 + (r() < 0.5 ? 1 : 0) : 3 + (r() < 0.35 ? 1 : 0);
   const din = new Set();
   if (r() < 0.6) din.add('combo');
-  while (din.size < nDin) din.add(elegir(r, DINAMICAS));
-  if (din.has('alambique') && din.has('subida')) din.delete('subida');
+  // Cuanto más difícil, más básculas y más tuberías: más lógica que seguir
+  if (t >= 18 && r() < Math.min(0.55, 0.2 + t / 120)) din.add(t >= 30 && r() < 0.5 ? 'bascula2' : 'bascula');
+  if (t >= 24 && r() < Math.min(0.5, 0.15 + t / 140)) din.add(t >= 36 && r() < 0.5 ? 'red' : 'subida');
+  while (din.size < nDin) din.add(elegir(r, DINAMICAS_AV));
+  if (din.has('bascula2')) din.delete('bascula');
+  if (din.has('red')) din.delete('subida');
+  if (din.has('alambique') && (din.has('subida') || din.has('red'))) { din.delete('subida'); din.delete('red'); }
   if (din.has('capsula') && din.has('matraz') && r() < 0.5) din.delete('matraz');
-  const N = t < 12 ? elegir(r, [3, 4]) : t < 36 ? elegir(r, [3, 4, 4, 5]) : elegir(r, [4, 4, 5, 5]);
-  const K = t < 6 ? elegir(r, [2, 3]) : elegir(r, [2, 3, 3]);
-  const pool = poolSabores(t), nSab = Math.min(4, 3 + Math.floor(t / 20));
+  // Con dos básculas o red de tuberías, la dificultad viene de la lógica: menos frascos y sabores
+  const mecanica = din.has('bascula2') || din.has('red');
+  const N = mecanica ? elegir(r, [3, 3, 4]) : t < 12 ? elegir(r, [3, 4]) : t < 36 ? elegir(r, [3, 4, 4, 5]) : elegir(r, [4, 4, 5, 5]);
+  const K = din.has('bascula2') ? 2 : t < 6 ? elegir(r, [2, 3]) : elegir(r, [2, 3, 3]);
+  const pool = poolSabores(t), nSab = mecanica ? 3 : Math.min(4, 3 + Math.floor(t / 20));
   // El sabor que estrena cada región aparece seguro en sus primeros niveles
   const nuevo = t < 6 ? 'F' : t >= 12 && t < 18 ? 'L' : t >= 24 && t < 30 ? 'B' : null;
   const lo = Math.min(12 + Math.floor(t / 15), 16), hi = lo + 5;
   return { id, t, din: [...din], N, K, lo, hi, pool, nSab, nuevo, maxNecesita: 3, combo3: t >= 30 };
 }
 const XS = { 1: [180], 2: [95, 265], 3: [60, 180, 300], 4: [45, 135, 225, 315], 5: [30, 105, 180, 255, 330] };
-const BAJA = [338, 356, 374], ALTA = [150, 132], AUXL = 432;
+const BAJA = [334, 350, 366, 382], ALTA = [150, 132], AUXL = 432;
 
 // Construye el tablero de un plan (o null si no cabe limpio)
 function construir(p, r) {
@@ -102,7 +111,8 @@ function construir(p, r) {
   const abajo = [];
   for (let k = 0; k < p.K; k++) abajo.push({ tipo: 'obj', id: 'T' + (k + 1) });
   if (din.has('reserva')) abajo.push({ tipo: 'aux', forma: 'frasco', id: p.pool ? 'H' : 'D', nombre: 'Reserva' });
-  if (din.has('bascula')) abajo.push({ tipo: 'aux', forma: elegir(r, ['cuenco', 'cuenco', 'capsula']), id: 'S', bascula: true });
+  if (din.has('bascula') || din.has('bascula2')) abajo.push({ tipo: 'aux', forma: elegir(r, ['cuenco', 'cuenco', 'capsula']), id: 'S', bascula: true });
+  if (din.has('bascula2')) abajo.push({ tipo: 'aux', forma: 'cuenco', id: 'S2', bascula: true });
   if (abajo.length > 4) return null;
   const xsB = barajar(r, XS[abajo.length].slice());
   abajo.forEach((b, k) => { b.x = xsB[k]; });
@@ -129,6 +139,16 @@ function construir(p, r) {
     const f = r() < 0.75 ? orden[0] : elegir(r, orden.slice(0, 2));
     (fuentes[f.id] = fuentes[f.id] || []).push(d);
   });
+  if (din.has('red')) {
+    const usables = principales.filter(v => v.forma !== 'capsula' && v.forma !== 'alambique');
+    if (usables.length < 2) return null;
+    const pares = [];
+    for (let k = 0; k < 2; k++) {
+      const a = elegir(r, usables), b = elegir(r, usables.filter(v => v.id !== a.id && !pares.some(p => p[0] === a.id && p[1] === v.id)));
+      if (!b) return null; pares.push([a.id, b.id]);
+      (fuentes[a.id] = fuentes[a.id] || []).push(b.id);
+    }
+  }
   // Subida: una ruta de un frasco a la boca de otro
   if (din.has('subida')) {
     const a = elegir(r, principales.filter(v => v.forma !== 'capsula')), b = elegir(r, principales.filter(v => v.id !== a.id && v.forma !== 'alambique'));
@@ -209,6 +229,8 @@ function cruces(n) {
   }));
   // Choques con piezas
   const cajas = n.vasijas.map(v => { const G = geom(Object.assign({}, v, { cap: v.y === 300 ? 5 : v.cap })); return { id: v.id, x1: G.izq - 3, x2: G.der + 3, y1: G.top - 4, y2: v.y + 8 }; })
+    // El quemador del alambique es una pieza aparte: ni su propio tubo puede pasar por él
+    .concat(n.vasijas.filter(v => v.forma === 'alambique').map(v => ({ id: 'fuego-' + v.id, x1: v.x - 38, x2: v.x + 38, y1: v.y + 8, y2: v.y + 44 })))
     .concat(n.objetivos.map(o => { const r = radio(o) + 2; return { id: o.id, x1: o.x - r, x2: o.x + r, y1: o.y - r, y2: o.y + r }; }));
   for (const s of segs) for (const c of cajas) {
     if (c.id === s.dest || c.id === s.de) continue;
@@ -235,14 +257,18 @@ function solapa(a1, a2, b1, b2) { return Math.min(Math.max(a1, a2), Math.max(b1,
 
 // Coloca una compuerta en el tramo horizontal más largo de una ruta
 function ponerCompuerta(n, g, i, c) {
+  // Se prueba a lo largo del tubo y se elige el punto más lejos de recipientes, quemadores y dulces
   const pts = puntosRuta(n, g, i), L = largo(pts);
-  let mejor = null, acum = 0;
-  for (let k = 1; k < pts.length; k++) {
-    const d = Math.hypot(pts[k][0] - pts[k - 1][0], pts[k][1] - pts[k - 1][1]);
-    if (pts[k][1] === pts[k - 1][1] && (!mejor || d > mejor.d)) mejor = { d, en: (acum + d / 2) / L };
-    acum += d;
+  const cajas = n.vasijas.map(v => { const G = geom(v); return [G.izq - 4, G.top - 6, G.der + 4, v.y + (v.forma === 'alambique' ? 44 : 10)]; })
+    .concat(n.objetivos.map(o => { const r = radio(o); return [o.x - r, o.y - r, o.x + r, o.y + r + 26]; }));
+  let mejor = null;
+  for (let t = 0.18; t <= 0.86; t += 0.02) {
+    let obj = L * t, x = pts[0][0], y = pts[0][1], hor = false;
+    for (let k = 1; k < pts.length; k++) { const d = Math.hypot(pts[k][0] - pts[k - 1][0], pts[k][1] - pts[k - 1][1]); if (obj <= d) { const f = d ? obj / d : 0; x = pts[k - 1][0] + (pts[k][0] - pts[k - 1][0]) * f; y = pts[k - 1][1] + (pts[k][1] - pts[k - 1][1]) * f; hor = pts[k][1] === pts[k - 1][1]; break; } obj -= d; }
+    let lejos = 1e9; cajas.forEach(b => { const dx = Math.max(b[0] - x, 0, x - b[2]), dy = Math.max(b[1] - y, 0, y - b[3]); lejos = Math.min(lejos, Math.hypot(dx, dy)); });
+    const nota = Math.min(lejos, 40) + (hor ? 6 : 0);
+    if (!mejor || nota > mejor.nota) mejor = { nota, en: t };
   }
-  if (!mejor || mejor.d < 30) mejor = { en: 0.5 };
   n.compuertas.push(Object.assign({ ruta: [g.id, i], en: +mejor.en.toFixed(3) }, c));
 }
 
@@ -257,6 +283,13 @@ function mecanismos(n, p, r) {
     const S = n.vasijas.find(v => v.id === 'S'); const ru = libres.find(([g]) => g.de !== 'S');
     if (!S || !ru) return false; libres.splice(libres.indexOf(ru), 1);
     ponerCompuerta(n, ru[0], ru[1], { id: 'P', tipo: 'puente' }); S.bascula.abre = ['P'];
+  }
+  if (din.has('bascula2')) {
+    const S = n.vasijas.find(v => v.id === 'S'), S2 = n.vasijas.find(v => v.id === 'S2');
+    const ru = libres.find(([g]) => g.de !== 'S' && g.de !== 'S2'); if (!S || !S2 || !ru) return false; libres.splice(libres.indexOf(ru), 1);
+    ponerCompuerta(n, ru[0], ru[1], { id: 'P', tipo: 'puente' }); S.bascula.abre = ['P'];
+    const ru2 = libres.find(([g]) => g.de !== 'S' && g.de !== 'S2'); if (!ru2) return false; libres.splice(libres.indexOf(ru2), 1);
+    ponerCompuerta(n, ru2[0], ru2[1], { id: 'P2', tipo: 'puente' }); S2.bascula.abre = ['P2'];
   }
   const tv = n.objetivos.find(o => o.tipo === 'turbina');
   if (tv) { const ru = tomar(); if (ru) { ponerCompuerta(n, ru[0], ru[1], { id: 'K', tipo: 'compuerta' }); tv.alCompletar = { abre: ['K'] }; } }
@@ -318,12 +351,17 @@ function rellenar(base, p, r) {
   n.objetivos.filter(o => o.tipo === 'turbina').forEach(o => { suma('C', o.necesita / 2); suma('M', o.necesita / 2); });
   n.vasijas.forEach(v => { if (v.sellada) suma('C', 1); });
   (n.compuertas || []).forEach(c => { if (c.tipo === 'chocolate') suma('C', 1); });
+  // Básculas sin grifo: su contrapeso se queda en ellas (es intencionado y se ve), así que se añade aparte
+  n.vasijas.filter(v => v.bascula).forEach(v => {
+    v.bascula.umbral = 1 + Math.floor(r() * (p.pool ? 3 : 4));
+    if (p.pool && !n.grifos.some(g => g.de === v.id)) suma(elegir(r, Object.keys(cuenta).filter(m => m !== 'U').concat(['C']).slice(0, 4)), v.bascula.umbral);
+  });
   if (r() < 0.45) suma(elegir(r, Object.keys(cuenta)), 1); // como mucho una medida de margen
   const bolsa = barajar(r, [].concat(...Object.keys(cuenta).map(m => Array(cuenta[m]).fill(m))));
   // 3) Capacidades y reparto en los recipientes de arriba (los de abajo empiezan vacíos casi siempre)
   const arriba = n.vasijas.filter(v => v.y === 300), abajo = n.vasijas.filter(v => v.y !== 300);
   arriba.forEach(v => { v.cap = v.forma === 'frasco' ? elegir(r, p.pool && p.t >= 24 ? [4, 4, 5, 5] : [3, 4, 4, 5]) : v.forma === 'matraz' ? 3 : v.forma === 'alambique' ? elegir(r, [4, 5]) : elegir(r, [3, 4]); v.capas = []; });
-  abajo.forEach(v => { v.cap = v.forma === 'cuenco' ? elegir(r, [3, 4]) : 3; v.capas = []; if (v.bascula) v.bascula.umbral = 1 + Math.floor(r() * 4); });
+  abajo.forEach(v => { v.cap = v.forma === 'cuenco' ? elegir(r, [3, 4]) : 3; v.capas = []; });
   const huecoTotal = n.vasijas.reduce((t, v) => t + v.cap, 0);
   if (bolsa.length > huecoTotal - 3) return null; // hace falta sitio libre para maniobrar
   const destinos = arriba.filter(v => !(v.forma === 'capsula' && r() < 0.6));
@@ -375,13 +413,18 @@ function usaTodo(n, sol, p) {
   if (n.vasijas.some(v => v.sellada) && !s.sello[n.vasijas.find(v => v.sellada).id]) usadas.add('sello');
   if (n.vasijas.some(v => v.forma === 'capsula' && v.y === 300)) usadas.add('capsula');
   if (n.objetivos.some(o => o.pide)) usadas.add('combo');
+  const puentes = (n.compuertas || []).filter(c => c.tipo === 'puente' && (abiertas.has(c.id) || Motor.compuertaAbierta(n, s, c.id))).length;
+  if (puentes >= 2) usadas.add('bascula2');
+  let subidas = 0; n.grifos.forEach(g => g.rutas.forEach((ru, i) => { const d = n.vasijas.find(v => v.id === ru.a); if (d && d.y === 300 && usadas.has('ruta:' + g.id + ':' + i)) subidas++; }));
+  if (subidas >= 2) usadas.add('red');
   if (JSON.stringify(n).indexOf('"U"') >= 0) usadas.add('uva');
   return p.din.every(d => usadas.has(d) || d === 'uva');
 }
 
 const DINAMICAS_USADAS = new Set(), FIJO = {};
 // Medidas que quedan en los recipientes al acabar la solución
-function sobrante(n, sol) { let s = Motor.estadoInicial(n); sol.forEach(a => { s = Motor.aplicar(n, s, a).estado; }); let t = 0; for (const k in s.v) t += s.v[k].length; return t; }
+// (el contrapeso que queda en una báscula no cuenta: es intencionado y se ve)
+function sobrante(n, sol) { let s = Motor.estadoInicial(n); sol.forEach(a => { s = Motor.aplicar(n, s, a).estado; }); let t = 0; for (const k in s.v) { const v = n.vasijas.find(x => x.id === k); if (!(v && v.bascula)) t += s.v[k].length; } return t; }
 function claveDin(d) { return d.slice().sort().join('+'); }
 function generar(id, segundos, opc) {
   opc = opc || {};
@@ -424,7 +467,7 @@ function generar(id, segundos, opc) {
 }
 
   // Desde fuera: generar un nivel, la firma, y los conjuntos de firmas y dinámicas ya usadas
-  var API = { generar: generar, firma: firma, sobrante: sobrante, claveDin: claveDin, planAvanzado: planAvanzado, plan: plan, rng: rng,
+  var API = { geom: geom, radio: radio, salida: salida, entrada: entrada, puntosRuta: puntosRuta, cruces: cruces, generar: generar, firma: firma, sobrante: sobrante, claveDin: claveDin, planAvanzado: planAvanzado, plan: plan, rng: rng,
     FIRMAS: FIRMAS, DINAMICAS_USADAS: DINAMICAS_USADAS, FIJO: FIJO, DINAMICAS: DINAMICAS };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   else global.Generador = API;

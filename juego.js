@@ -133,6 +133,28 @@
     if (prog.vidas.n >= max) prog.vidas.desde = Date.now();
     prog.vidas.n = Math.max(0, prog.vidas.n - 1); guardar(); pintarVidas();
   }
+  // Iconos de la interfaz (SVG propios: se ven igual en todos los móviles)
+  var BALANZA_D = 'M12 4.5v13 M8 19.5h8 M4.5 7.5h15 M12 4.5a1.4 1.4 0 1 0 .01 0';
+  var PLATOS_D = 'M2.5 13.5a3.5 2 0 0 0 7 0Z M14.5 13.5a3.5 2 0 0 0 7 0Z M4 13.5l2-6 2 6 M16 13.5l2-6 2 6';
+  var IC = {
+    trofeo: '<svg class="ic-ui" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10v5a5 5 0 0 1-10 0z" fill="#ffd34d" stroke="#9a5e0c" stroke-width="1.8" stroke-linejoin="round"/><path d="M7 5H4v1.5A3.5 3.5 0 0 0 7.5 10M17 5h3v1.5a3.5 3.5 0 0 1-3.5 3.5" fill="none" stroke="#9a5e0c" stroke-width="1.8"/><path d="M12 13v4M8 21h8l-1-4H9z" fill="#f2607d" stroke="#9a5e0c" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+    candado: '<svg class="ic-ui" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10.5" rx="2.6" fill="#ffd34d" stroke="#7a4a12" stroke-width="1.8"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="#7a4a12" stroke-width="2.2"/><circle cx="12" cy="15.4" r="1.6" fill="#7a4a12"/></svg>',
+    hecho: '<svg class="ic-ui" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#6cc24a" stroke="#3f7f22" stroke-width="1.8"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    magdalena: '<svg class="ic-ui" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14l-2 9H7z" fill="#f5a524" stroke="#7a4a12" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.5 12.5l.5 8M14.5 12.5l-.5 8M12 12.5v8" stroke="#7a4a12" stroke-width="1.1" opacity=".55"/><path d="M4.6 12.4c-1.4-3 1-5.4 3.4-4.9.1-3 5.4-4.4 6.5-1 2.6-1 5 1.6 3.6 4.5-.3.7-.8 1.2-1.5 1.4z" fill="#ff8fb3" stroke="#a8284a" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12.6" cy="3.7" r="1.8" fill="#e2354f" stroke="#7a1a2a" stroke-width="1.2"/></svg>',
+    calendario: '<svg class="ic-ui" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3" fill="#fff6ea" stroke="#9a5e0c" stroke-width="1.8"/><rect x="3.9" y="5.9" width="16.2" height="3.4" rx="1.6" fill="#f2607d"/><path d="M8 3v4M16 3v4" stroke="#9a5e0c" stroke-width="2" stroke-linecap="round"/><path d="M12 12.2l1.3 2.6 2.9.4-2.1 2 .5 2.9-2.6-1.4-2.6 1.4.5-2.9-2.1-2 2.9-.4Z" fill="#ffd34d" stroke="#9a5e0c" stroke-width="1.1" stroke-linejoin="round"/></svg>',
+    infinito: '<svg class="ic-ui" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c-2-3-4-4.5-6-4.5a4.5 4.5 0 0 0 0 9c2 0 4-1.5 6-4.5s4-4.5 6-4.5a4.5 4.5 0 0 1 0 9c-2 0-4-1.5-6-4.5Z" fill="none" stroke="#7b52d9" stroke-width="3" stroke-linejoin="round"/></svg>',
+    balanza: '<svg class="ic-ui" viewBox="0 0 24 24" aria-hidden="true"><path d="' + 'M12 4.5v13 M8 19.5h8 M4.5 7.5h15' + '" fill="none" stroke="#5a3324" stroke-width="2" stroke-linecap="round"/><path d="' + 'M2.5 13.5a3.5 2 0 0 0 7 0Z M14.5 13.5a3.5 2 0 0 0 7 0Z' + '" fill="#ffd34d" stroke="#5a3324" stroke-width="1.6"/><path d="M4 13.5l2-6 2 6 M16 13.5l2-6 2 6" fill="none" stroke="#5a3324" stroke-width="1.3"/><circle cx="12" cy="4.5" r="1.6" fill="#5a3324"/></svg>'
+  };
+  IC.corazon = null; // se define abajo (CORAZON_SVG)
+  // Balanza dibujada dentro del tablero (SVG): centro (x, y) y escala
+  function balanzaEn(padre, x, y, esc, color) {
+    var g = el('g', { transform: 'translate(' + (x - 12 * esc) + ',' + (y - 12 * esc) + ') scale(' + esc + ')', 'pointer-events': 'none' }, padre);
+    el('path', { d: 'M12 4.5v13 M8 19.5h8 M4.5 7.5h15', fill: 'none', stroke: color || '#5a3324', 'stroke-width': 2, 'stroke-linecap': 'round' }, g);
+    el('path', { d: 'M4 13.5l2-6 2 6 M16 13.5l2-6 2 6', fill: 'none', stroke: color || '#5a3324', 'stroke-width': 1.3 }, g);
+    el('path', { d: 'M2.5 13.5a3.5 2 0 0 0 7 0Z M14.5 13.5a3.5 2 0 0 0 7 0Z', fill: '#fff6ea', stroke: color || '#5a3324', 'stroke-width': 1.6 }, g);
+    el('circle', { cx: 12, cy: 4.5, r: 1.6, fill: color || '#5a3324' }, g);
+    return g;
+  }
   var CORAZON_SVG = '<svg class="corazon-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21C5 16 2 12.5 2 8.6 2 5.5 4.4 3.2 7.3 3.2c1.9 0 3.6 1 4.7 2.6 1.1-1.6 2.8-2.6 4.7-2.6 2.9 0 5.3 2.3 5.3 5.4 0 3.9-3 7.4-10 12.4Z" fill="#f2607d" stroke="#8f2440" stroke-width="2" stroke-linejoin="round"/><path d="M6.5 7.5c.6-1.3 1.7-1.9 3-1.9" stroke="#fff" stroke-width="1.8" stroke-linecap="round" fill="none" opacity=".8"/></svg>';
   function pintarVidas() {
     var n = vidas(), max = maxVidas();
@@ -165,7 +187,7 @@
       if (br && puede) br.addEventListener('click', function () {
         prog.monedas -= PRECIO_VIDAS; prog.vidas.n = maxVidas(); prog.vidas.desde = Date.now(); guardar();
         SON.compra(); pintarMonedas(); pintarVidas(); cerrarModal();
-        toast('<span class="toast-ic">❤️</span><span><b>' + T('vidas_recargadas') + '</b></span>');
+        toast('<span class="toast-ic">' + CORAZON_SVG + '</span><span><b>' + T('vidas_recargadas') + '</b></span>');
         if (alRecargar) alRecargar();
       });
     }
@@ -514,7 +536,7 @@
       if (ok) {
         prog.logros[id] = Date.now(); nuevos.push(l);
         prog.monedas += l[5];
-        if (!ctx.silencio) toast('<span class="toast-ic">🏆</span><span><b>' + T('log_toast', { t: logroDatos(l).t }) + '</b><small>+' + l[5] + ' ' + T('monedas').toLowerCase() + '</small></span>', SON.logro);
+        if (!ctx.silencio) toast('<span class="toast-ic">' + IC.trofeo + '</span><span><b>' + T('log_toast', { t: logroDatos(l).t }) + '</b><small>+' + l[5] + ' ' + T('monedas').toLowerCase() + '</small></span>', SON.logro);
       }
     });
     if (nuevos.length) { guardar(); pintarMonedas(); if (!ctx.silencio) frase('logro'); }
@@ -596,7 +618,7 @@
     grifo: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="#f2607d" stroke="#5a3324" stroke-width="2.5"/><path d="M20 13 C23 17 25 20 25 22 A5 5 0 0 1 15 22 C15 20 17 17 20 13Z" fill="#fff"/></svg>',
     chimenea: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="#b69ad6" stroke="#5a3324" stroke-width="2.5"/><path d="M13 23 A3 3 0 0 1 14 18 A4 4 0 0 1 21 16 A3.5 3.5 0 0 1 26 21 A2.5 2.5 0 0 1 25 24 L15 24 A2 2 0 0 1 13 23Z" fill="#fff"/></svg>',
     valvula: '<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="#e3a83b" stroke="#5a3324" stroke-width="2.5"/><path d="M14 15 L30 20 L14 25Z" fill="#f2607d" stroke="#5a3324" stroke-width="2" stroke-linejoin="round"/><circle cx="20" cy="20" r="3" fill="#5a3324"/></svg>',
-    puente: '<svg viewBox="0 0 48 40"><rect x="3" y="7" width="24" height="24" rx="6" fill="#e3a83b" stroke="#5a3324" stroke-width="2.2"/><text x="15" y="25" text-anchor="middle" font-size="14" fill="#5a3324">⚖</text><circle cx="38" cy="19" r="9" fill="#6cc24a" stroke="#5a3324" stroke-width="2"/><path d="M34 19 L37 22 L42 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    puente: '<svg viewBox="0 0 48 40"><rect x="3" y="7" width="24" height="24" rx="6" fill="#e3a83b" stroke="#5a3324" stroke-width="2.2"/><g transform="translate(6.5 10.5) scale(.71)"><path d="M12 4.5v13 M8 19.5h8 M4.5 7.5h15" fill="none" stroke="#5a3324" stroke-width="2" stroke-linecap="round"/><path d="M4 13.5l2-6 2 6 M16 13.5l2-6 2 6" fill="none" stroke="#5a3324" stroke-width="1.3"/><path d="M2.5 13.5a3.5 2 0 0 0 7 0Z M14.5 13.5a3.5 2 0 0 0 7 0Z" fill="#fff6ea" stroke="#5a3324" stroke-width="1.6"/></g><circle cx="38" cy="19" r="9" fill="#6cc24a" stroke="#5a3324" stroke-width="2"/><path d="M34 19 L37 22 L42 16" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     pide: '<svg viewBox="0 0 48 40"><rect x="2" y="11" width="44" height="18" rx="9" fill="#fff6ea" stroke="#5a3324" stroke-width="2"/><circle cx="12" cy="20" r="5" fill="#f5a524" stroke="#c4670f" stroke-width="2"/><circle cx="24" cy="20" r="5" fill="#fff" stroke="#c4670f" stroke-width="2"/><circle cx="36" cy="20" r="5" fill="#fff" stroke="#c4670f" stroke-width="2"/></svg>'
   };
   function ventanaCuaderno() {
@@ -679,7 +701,7 @@
   function ventanaLogros() {
     var lista = TX.LOGROS.map(function (l) {
       var d = logroDatos(l), hecho = !!prog.logros[l[0]], meta = l[6], prc = meta ? Math.min(meta, progresoLogro(l[0])) : 0;
-      return '<div class="logro' + (hecho ? ' hecho' : '') + '"><span class="logro-ic">' + (hecho ? '🏆' : '🔒') + '</span><div><b>' + d.t + '</b><small>' + d.d + '</small>' +
+      return '<div class="logro' + (hecho ? ' hecho' : '') + '"><span class="logro-ic">' + (hecho ? IC.trofeo : IC.candado) + '</span><div><b>' + d.t + '</b><small>' + d.d + '</small>' +
         (meta && !hecho ? '<span class="barrita"><i style="width:' + Math.round(100 * prc / meta) + '%"></i></span><small class="cuenta">' + prc + '/' + meta + '</small>' : '') +
         '</div><em>' + (hecho ? T('log_hecho') : MONEDA_SVG + l[5]) + '</em></div>';
     }).join('');
@@ -731,7 +753,7 @@
           if (bc) prog.vitrina[id] = true; else { prog.mesas[id] = true; prog.mesa = id; aplicarMesa(); }
           guardar(); confirmar = null; SON.compra(); dibujar(m);
           var cel = m.querySelector('.estante[data-id="' + id + '"]'); if (cel) cel.classList.add('recien');
-          toast('<span class="toast-ic">🧁</span><span><b>' + T('vit_comprado', { t: bc ? nombreDulce(item) : (IDIOMA === 'en' ? item[2] : item[1]) }) + '</b></span>');
+          toast('<span class="toast-ic">' + IC.magdalena + '</span><span><b>' + T('vit_comprado', { t: bc ? nombreDulce(item) : (IDIOMA === 'en' ? item[2] : item[1]) }) + '</b></span>');
           revisarLogros();
           return;
         }
@@ -1210,6 +1232,13 @@
     (n.compuertas || []).forEach(construirCompuerta);
     n.vasijas.forEach(construirVasija);
     (n.grifos || []).forEach(construirGrifo);
+    // Entrada del tablero: las piezas aparecen una tras otra, con un pequeño rebote
+    if (!reducido) {
+      SVG.classList.add('entrada');
+      var orden = 0;
+      SVG.querySelectorAll('.capa-vasijas > .vasija, .capa-objetivos > .objetivo').forEach(function (e) { e.style.animationDelay = (orden++ * 55) + 'ms'; });
+      var sv0 = SVG; setTimeout(function () { sv0.classList.remove('entrada'); sv0.querySelectorAll('.vasija, .objetivo').forEach(function (e) { e.style.animationDelay = ''; }); }, 1500);
+    }
   }
 
   function construirVasija(v) {
@@ -1233,7 +1262,7 @@
       el('rect', { x: G.izq - 6, y: v.y + 2.5, width: G.w + 12, height: 2.2, rx: 1.1, fill: '#fff', opacity: 0.7 }, gr);
       var um = v.bascula.umbral, conPips = um <= 6, anchoB = conPips ? 30 + um * 13 : 64;
       ref.badgeRect = el('rect', { class: 'insignia', x: v.x - anchoB / 2, y: v.y + 19, width: anchoB, height: 22, rx: 11, stroke: '#5a3324', 'stroke-width': 2 }, gr);
-      ref.badgeIc = el('text', { x: v.x - anchoB / 2 + 12, y: v.y + 35, 'text-anchor': 'middle', 'font-size': 13 }, gr); ref.badgeIc.textContent = '⚖';
+      ref.badgeIc = balanzaEn(gr, v.x - anchoB / 2 + 12.5, v.y + 30, 0.62);
       if (conPips) {
         ref.badgePips = [];
         for (var q = 0; q < um; q++) ref.badgePips.push(el('circle', { cx: v.x - anchoB / 2 + 28 + q * 13, cy: v.y + 30, r: 4.6, stroke: '#a8691c', 'stroke-width': 1.8 }, gr));
@@ -1381,7 +1410,7 @@
       el('rect', { x: -14, y: -11, width: 28, height: 28, rx: 8, fill: '#3d1f10', opacity: 0.18 }, cerr);
       el('rect', { x: -14, y: -14, width: 28, height: 28, rx: 8, fill: c.tipo === 'puente' ? 'url(#oroV)' : 'url(#caramelo)', stroke: '#4a2a1c', 'stroke-width': 2.4 }, cerr);
       el('rect', { x: -10, y: -11, width: 12, height: 3, rx: 1.5, fill: '#fff', opacity: 0.75 }, cerr);
-      if (c.tipo === 'puente') el('text', { y: 6, 'text-anchor': 'middle', 'font-size': 15, fill: '#5a3324' }, cerr).textContent = '⚖';
+      if (c.tipo === 'puente') balanzaEn(cerr, 0, 0.5, 0.82);
       else el('path', { d: 'M0,-8 L2.4,-2.6 8,-2.2 3.7,1.5 5,7 0,4 -5,7 -3.7,1.5 -8,-2.2 -2.4,-2.6Z', fill: '#fff' }, cerr);
       el('circle', { r: 12, fill: '#6cc24a', stroke: '#4a2a1c', 'stroke-width': 2.2 }, abie);
       el('ellipse', { rx: 4, ry: 2.2, cx: -3.5, cy: -5, fill: '#fff', opacity: 0.6 }, abie);
@@ -1436,6 +1465,8 @@
 
   // Ajusta el encuadre al contenido del nivel para aprovechar toda la mesa
   function encuadrar() {
+    // Se mide sin la animación de entrada (las piezas aún encogidas darían un encuadre más pequeño)
+    var ent = SVG.classList.contains('entrada'); if (ent) SVG.classList.remove('entrada');
     var b = { x1: 1e9, y1: 1e9, x2: -1e9, y2: -1e9 };
     ['cables', 'tubos', 'objetivos', 'compuertas', 'vasijas', 'grifos'].forEach(function (k) {
       var bb = capas[k].getBBox(); if (!bb.width && !bb.height) return;
@@ -1443,6 +1474,7 @@
     });
     var m = 16, y1 = b.y1 - m - 14;
     SVG.setAttribute('viewBox', [b.x1 - m, y1, b.x2 - b.x1 + 2 * m, b.y2 - y1 + m].join(' '));
+    if (ent) SVG.classList.add('entrada');
   }
 
   // ───────────────────────── Actualización incremental ─────────────────────────
@@ -2251,7 +2283,7 @@
     if (n.modo === 'infinito') monedas += Math.min(30, Math.floor(n.k / 5) * 5);
     if (n.objetivos.some(function (o) { return o.pide; })) prog.cont.combos = (prog.cont.combos || 0) + (primera ? 1 : 0);
     var rangosNuevos = subirRango();
-    if (primera && (n.id === 12 || n.id === 48)) setTimeout(function () { toast('<span class="toast-ic">' + (n.id === 48 ? '∞' : '📅') + '</span><span><b>' + T(n.id === 48 ? 'abierto_infinito' : 'abierto_diario') + '</b><small>' + T('abierto_sub') + '</small></span>', SON.logro); }, 6500);
+    if (primera && (n.id === 12 || n.id === 48)) setTimeout(function () { toast('<span class="toast-ic">' + (n.id === 48 ? IC.infinito : IC.calendario) + '</span><span><b>' + T(n.id === 48 ? 'abierto_infinito' : 'abierto_diario') + '</b><small>' + T('abierto_sub') + '</small></span>', SON.logro); }, 6500);
     if (!prog.notas.puntos && n.id >= 4) prog.notas.puntos = Date.now();
     if (PLAT && PLAT.enPlayables && window.ytgame) { try { ytgame.engagement.sendScore({ value: puntosTotales() }).catch(function () {}); } catch (e) { /* opcional */ } }
     var dulce = dulceDeNivel(n.id), dulceNuevo = !!(dulce && !prog.vitrina[dulce[0]]);
@@ -2292,7 +2324,7 @@
       return '<div class="sello' + (si ? ' si' : '') + '" style="animation-delay:' + (i * 0.12) + 's"><span class="disco">' + (si ? '★' : letra) + '</span><b>' + titulo + '</b><small>' + txt + '</small></div>';
     };
     var frag = n.jefe && n.region <= 4 ? '<div class="fragmento"><img src="assets/ic_tarta.png" alt=""></div><p class="sub"><b>' + T('v_fragmento') + '</b> ' + T('v_fragmento_sub', { n: fragmentos() }) + '</p>' : '';
-    var logros = logrosNuevos.length ? '<div class="v-logros"><b>' + T('v_logros') + '</b>' + logrosNuevos.map(function (l) { return '<span>🏆 ' + logroDatos(l).t + '</span>'; }).join('') + '</div>' : '';
+    var logros = logrosNuevos.length ? '<div class="v-logros"><b>' + T('v_logros') + '</b>' + logrosNuevos.map(function (l) { return '<span>' + IC.trofeo + ' ' + logroDatos(l).t + '</span>'; }).join('') + '</div>' : '';
     var totalP = puntosTotales(), rAct = rangoDe(totalP), rSig = RANGOS[rAct + 1];
     var bloquePuntos = '<div class="v-puntos"><svg class="estrella-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5L2.5 9.3l6.6-.8Z" fill="#ffd34d" stroke="#9a5e0c" stroke-width="1.8" stroke-linejoin="round"/></svg>' +
       '<div><b>' + T('puntos_ganados', { n: formatoPuntos(pt.puntos) }) + (pt.record ? ' <em>' + T('record') + '</em>' : '') + '</b>' +
@@ -2439,7 +2471,7 @@
     abrirModal('<div class="preparando"><img src="assets/grumble.png" alt=""><h2>' + T('preparando') + '</h2><p class="sub">' + T('preparando_sub') + '</p><i class="girando"></i></div>');
   }
   function jugarInfinito() {
-    if (!infinitoAbierto()) { toast('<span class="toast-ic">🔒</span><span><b>' + T('infinito_bloq') + '</b></span>'); return; }
+    if (!infinitoAbierto()) { toast('<span class="toast-ic">' + IC.candado + '</span><span><b>' + T('infinito_bloq') + '</b></span>'); return; }
     if (vidas() <= 0) { ventanaSinVidas(jugarInfinito); return; }
     var k = prog.infinito.nivel;
     if (prog.infinito.actual && prog.infinito.actual.k === k) { EN[prog.infinito.actual.id] = prog.infinito.actualEn; cargarNivel(prog.infinito.actual); prepararSiguiente(k + 1); return; }
@@ -2452,9 +2484,9 @@
   }
   function prepararSiguiente(k) { generarTablero('inf-' + prog.infinito.sal + '-' + k, tInfinito(k), semillaDe(prog.infinito.sal, k), function () {}); }
   function jugarDiario() {
-    if (!diarioAbierto()) { toast('<span class="toast-ic">🔒</span><span><b>' + T('diario_bloq') + '</b></span>'); return; }
+    if (!diarioAbierto()) { toast('<span class="toast-ic">' + IC.candado + '</span><span><b>' + T('diario_bloq') + '</b></span>'); return; }
     var d = hoy();
-    if (prog.diario.hecho === d) { toast('<span class="toast-ic">✅</span><span><b>' + T('diario_hecho') + '</b><small>' + T('diario_vuelve') + '</small></span>'); return; }
+    if (prog.diario.hecho === d) { toast('<span class="toast-ic">' + IC.hecho + '</span><span><b>' + T('diario_hecho') + '</b><small>' + T('diario_vuelve') + '</small></span>'); return; }
     if (vidas() <= 0) { ventanaSinVidas(jugarDiario); return; }
     if (prog.diario.nivel && prog.diario.fecha === d) { EN[5000] = prog.diario.nivelEn; cargarNivel(prog.diario.nivel); return; }
     var num = Number(d.replace(/-/g, ''));
@@ -2520,7 +2552,7 @@
   });
   $('b-vitrina').addEventListener('click', function () { SON.toque(); ventanaVitrina(); });
   document.querySelectorAll('.b-rangos').forEach(function (b) { b.addEventListener('click', function () { SON.toque(); ventanaRangos(); }); });
-  document.querySelectorAll('.chapa-vidas').forEach(function (b) { b.addEventListener('click', function () { SON.toque(); if (vidas() < maxVidas()) ventanaSinVidas(); else toast('<span class="toast-ic">❤️</span><span><b>' + T('vidas_llenas') + '</b><small>' + T('vidas_info', { m: minutosRecarga() }) + '</small></span>'); }); });
+  document.querySelectorAll('.chapa-vidas').forEach(function (b) { b.addEventListener('click', function () { SON.toque(); if (vidas() < maxVidas()) ventanaSinVidas(); else toast('<span class="toast-ic">' + CORAZON_SVG + '</span><span><b>' + T('vidas_llenas') + '</b><small>' + T('vidas_info', { m: minutosRecarga() }) + '</small></span>'); }); });
   // Empezar de cero desde la portada (con confirmación)
   $('b-cero').addEventListener('click', function () {
     SON.toque();
@@ -2530,7 +2562,7 @@
       m.querySelector('#b-cero-si').addEventListener('click', function () {
         var idioma = prog.idioma; prog = BASE(); prog.idioma = idioma; guardar();
         cerrarModal(); J = null; pintarMonedas(); pintarPortada(); mostrar('pantalla-portada', null, 'portada');
-        toast('<span class="toast-ic">🧁</span><span><b>' + T('cero_hecho') + '</b></span>');
+        toast('<span class="toast-ic">' + IC.magdalena + '</span><span><b>' + T('cero_hecho') + '</b></span>');
       });
     });
   });

@@ -632,7 +632,7 @@
     },
     50: {
       "titulo": "Jelly Islands",
-      "ensena": "New flavor: Star Strawberry. A chocolate seal blocks a jar: melt it by pouring Caramel.",
+      "ensena": "A chocolate seal blocks a jar: melt it by pouring Caramel.",
       "intro": [],
       "guia": [],
       "fin": "Every measure in its place. Beautiful.",
@@ -645,7 +645,7 @@
     },
     51: {
       "titulo": "The Wobbly Bay",
-      "ensena": "New flavor: Star Strawberry. Feed the Matcha Seed and the licorice bridge will sprout.",
+      "ensena": "Feed the Matcha Seed and the licorice bridge will sprout.",
       "intro": [],
       "guia": [],
       "fin": "Another sweet wakes up! There's no stopping us.",
@@ -658,7 +658,7 @@
     },
     52: {
       "titulo": "Sweet Currents",
-      "ensena": "New flavor: Star Strawberry. One pipe sends matter back up to another jar: use it to reorder the layers.",
+      "ensena": "One pipe sends matter back up to another jar: use it to reorder the layers. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "Not a drop wasted. You're a true master.",
@@ -671,7 +671,7 @@
     },
     53: {
       "titulo": "The Sugar Reef",
-      "ensena": "New flavor: Star Strawberry. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. Grape weighs 2 and sinks to the bottom.",
       "intro": [],
       "guia": [],
       "fin": "Brilliant mix!",
@@ -684,7 +684,7 @@
     },
     54: {
       "titulo": "High Tide",
-      "ensena": "New flavor: Star Strawberry. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. Feed the Matcha Seed and the licorice bridge will sprout.",
       "intro": [],
       "guia": [],
       "fin": "You thought it through. It shows.",
@@ -729,7 +729,7 @@
       "fin": "One more for the collection!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Matcha Tea Cake",
+        "T2": "The Mint Donut",
         "T1": "The Matcha Tea Cake",
         "TV": "The Meringue Pinwheel"
       }
@@ -792,7 +792,7 @@
     },
     62: {
       "titulo": "The Lemon Trail",
-      "ensena": "New flavor: Sun Lemon. Grape weighs 2 and sinks to the bottom.",
+      "ensena": "Five jars and little free space: plan before you move. Grape weighs 2 and sinks to the bottom.",
       "intro": [],
       "guia": [],
       "fin": "Every measure in its place. Beautiful.",
@@ -805,7 +805,7 @@
     },
     63: {
       "titulo": "Meringue Snow",
-      "ensena": "New flavor: Sun Lemon. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "Five jars and little free space: plan before you move. A chocolate block plugs a pipe: only Caramel melts it.",
       "intro": [],
       "guia": [],
       "fin": "Another sweet wakes up! There's no stopping us.",
@@ -817,7 +817,7 @@
     },
     64: {
       "titulo": "Sweet Blizzard",
-      "ensena": "New flavor: Sun Lemon. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "Not a drop wasted. You're a true master.",
@@ -830,7 +830,7 @@
     },
     65: {
       "titulo": "The Mountain Hut",
-      "ensena": "New flavor: Sun Lemon. Feed the Matcha Seed and the licorice bridge will sprout.",
+      "ensena": "Feed the Matcha Seed and the licorice bridge will sprout. The crystal pipe only lets Mint through.",
       "intro": [],
       "guia": [],
       "fin": "Brilliant mix!",
@@ -843,7 +843,7 @@
     },
     66: {
       "titulo": "Narrow Ledge",
-      "ensena": "New flavor: Sun Lemon. The scale opens its bridge at the marked weight.",
+      "ensena": "The scale opens its bridge at the marked weight. A chocolate seal blocks a jar: melt it by pouring Caramel.",
       "intro": [],
       "guia": [],
       "fin": "You thought it through. It shows.",
@@ -949,7 +949,7 @@
     },
     74: {
       "titulo": "The Chocolate River",
-      "ensena": "New flavor: Electric Blueberry. Feed the Matcha Seed and the licorice bridge will sprout.",
+      "ensena": "Five jars and little free space: plan before you move. Feed the Matcha Seed and the licorice bridge will sprout.",
       "intro": [],
       "guia": [],
       "fin": "Every measure in its place. Beautiful.",
@@ -961,7 +961,7 @@
     },
     75: {
       "titulo": "Mint Leaves",
-      "ensena": "New flavor: Electric Blueberry. The crystal pipe only lets Mint through.",
+      "ensena": "The crystal pipe only lets Mint through. A chocolate seal blocks a jar: melt it by pouring Caramel.",
       "intro": [],
       "guia": [],
       "fin": "Another sweet wakes up! There's no stopping us.",
@@ -974,7 +974,7 @@
     },
     76: {
       "titulo": "The Lost Temple",
-      "ensena": "New flavor: Electric Blueberry. Grape weighs 2 and sinks to the bottom.",
+      "ensena": "Grape weighs 2 and sinks to the bottom. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "Not a drop wasted. You're a true master.",
@@ -987,7 +987,7 @@
     },
     77: {
       "titulo": "Gummy Frogs",
-      "ensena": "New flavor: Electric Blueberry. Grape weighs 2 and sinks to the bottom.",
+      "ensena": "Grape weighs 2 and sinks to the bottom. One pipe sends matter back up to another jar: use it to reorder the layers.",
       "intro": [],
       "guia": [],
       "fin": "Brilliant mix!",
@@ -1000,7 +1000,7 @@
     },
     78: {
       "titulo": "The Rope Bridge",
-      "ensena": "New flavor: Electric Blueberry. Grape weighs 2 and sinks to the bottom.",
+      "ensena": "Grape weighs 2 and sinks to the bottom. The capsule is only filled and emptied through pipes.",
       "intro": [],
       "guia": [],
       "fin": "You thought it through. It shows.",
@@ -1243,7 +1243,7 @@
     },
     97: {
       "titulo": "Sugar Shelves",
-      "ensena": "Five jars and little free space: plan before you move. Grape weighs 2 and sinks to the bottom.",
+      "ensena": "The scale opens its bridge at the marked weight. Feed the Matcha Seed and the licorice bridge will sprout.",
       "intro": [
         "The Recipe Library keeps the hardest mixes in the kingdom."
       ],
@@ -1251,173 +1251,174 @@
       "fin": "It tastes amazing!",
       "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T2": "The Mint Donut",
-        "T1": "The Galaxy Donut"
+        "T2": "The Matcha Seed",
+        "T1": "The Strawberry Donut"
       }
     },
     98: {
       "titulo": "The Forbidden Section",
-      "ensena": "Five jars and little free space: plan before you move. The scale opens its bridge at the marked weight.",
+      "ensena": "The scale opens its bridge at the marked weight. Use the Reserve to set aside what gets in the way.",
       "intro": [],
       "guia": [],
       "fin": "Every measure in its place. Beautiful.",
       "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T2": "The Mint Donut",
-        "T1": "Blueberry & Strawberry Pastry"
+        "T1": "The Mint Donut",
+        "T2": "The Blueberry Donut",
+        "H": "Reserve"
       }
     },
     99: {
       "titulo": "Forgotten Recipes",
-      "ensena": "Five jars and little free space: plan before you move. A chocolate seal blocks a jar: melt it by pouring Caramel.",
+      "ensena": "The scale opens its bridge at the marked weight. Grape weighs 2 and sinks to the bottom.",
       "intro": [],
       "guia": [],
       "fin": "Another sweet wakes up! There's no stopping us.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Galaxy Donut",
-        "T1": "The Strawberry Donut"
+        "T1": "The Galaxy Donut",
+        "T2": "The Strawberry Donut"
       }
     },
     100: {
       "titulo": "The Copper Lectern",
-      "ensena": "The crystal pipe only lets Mint through. The capsule is only filled and emptied through pipes.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. Grape weighs 2 and sinks to the bottom.",
       "intro": [],
       "guia": [],
       "fin": "Not a drop wasted. You're a true master.",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Mint Donut",
-        "T2": "The Matcha Tiramisu"
+        "T3": "The Galaxy Donut",
+        "T2": "The Matcha Tea Cake",
+        "T1": "The Lemon Cake"
       }
     },
     101: {
       "titulo": "Blueberry Ink",
-      "ensena": "Five jars and little free space: plan before you move. The capsule is only filled and emptied through pipes.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. The crystal pipe only lets Mint through.",
       "intro": [],
       "guia": [],
       "fin": "Brilliant mix!",
       "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T2": "The Mint Donut",
-        "T3": "The Mint Caramel Cake",
-        "T1": "Strawberry & Mint Donut"
+        "T1": "The Mint Donut",
+        "T2": "The Blueberry Donut",
+        "T3": "The Matcha Tea Cake"
       }
     },
     102: {
       "titulo": "Sticky Pages",
-      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. Feed the Matcha Seed and the licorice bridge will sprout.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. Feed the Matcha Seed and the licorice bridge will sprout.",
       "intro": [],
       "guia": [],
       "fin": "You thought it through. It shows.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "The Strawberry Donut",
-        "T2": "The Matcha Seed",
-        "T3": "The Blueberry Donut"
+        "T1": "The Matcha Seed",
+        "T2": "Caramel, Lemon & Mint Macaron"
       }
     },
     103: {
       "titulo": "The Secret Index",
-      "ensena": "Five jars and little free space: plan before you move. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "The scale opens its bridge at the marked weight. Two pipes link the top jars: use them to reorder the layers.",
       "intro": [],
       "guia": [],
       "fin": "It smells wonderful!",
-      "ingenio": "Leave the fifth container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Galaxy Donut",
-        "T2": "The Cappuccino Donut"
+        "T1": "The Mint Donut",
+        "T2": "The Strawberry Donut"
       }
     },
     104: {
       "titulo": "The Reading Room",
-      "ensena": "The crystal pipe only lets Mint through. The flask takes and gives one measure at a time.",
+      "ensena": "The scale opens its bridge at the marked weight. The crystal pipe only lets Mint through.",
       "intro": [],
       "guia": [],
       "fin": "Step by step, the kingdom gets its flavor back.",
-      "ingenio": "Leave the third container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "The Mint Donut",
-        "T3": "Blueberry, Matcha & Mint Macaron",
+        "T3": "The Mint Donut",
+        "T1": "The Lemon Cake",
         "T2": "The Blueberry Donut"
       }
     },
     105: {
       "titulo": "Margin Notes",
-      "ensena": "The capsule is only filled and emptied through pipes. The scale opens its bridge at the marked weight.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "One more for the collection!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "Caramel & Lemon Cake",
-        "T1": "Caramel, Lemon & Mint Macaron"
+        "T2": "The Matcha Seed",
+        "T3": "The Mint Donut",
+        "T1": "The Lemon Cake"
       }
     },
     106: {
       "titulo": "The Flavor Archive",
-      "ensena": "The flask takes and gives one measure at a time. The capsule is only filled and emptied through pipes.",
+      "ensena": "The scale opens its bridge at the marked weight. A chocolate block plugs a pipe: only Caramel melts it.",
       "intro": [],
       "guia": [],
       "fin": "Sweet, exact and elegant.",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T3": "The Blueberry Donut",
-        "T2": "Blueberry, Caramel & Lemon Cake",
-        "T1": "The Strawberry Donut"
+        "T2": "The Matcha Tea Cake",
+        "T1": "The Mint Caramel Cake"
       }
     },
     107: {
       "titulo": "The Last Page",
-      "ensena": "Feed the Matcha Seed and the licorice bridge will sprout. Use the Reserve to set aside what gets in the way.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "This deserves a party!",
-      "ingenio": "Leave the fourth container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T2": "Blueberry, Strawberry & Matcha Cake",
-        "T1": "The Matcha Seed",
-        "H": "Reserve"
+        "T3": "Strawberry & Lemon Macaron",
+        "T1": "Strawberry, Matcha & Lemon Cake",
+        "T2": "The Matcha Tea Cake"
       }
     },
     108: {
       "titulo": "The Great Recipe Book",
-      "ensena": "A chocolate seal blocks a jar: melt it by pouring Caramel. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "Five jars and little free space: plan before you move. The scale opens its bridge at the marked weight.",
       "intro": [],
       "guia": [],
       "fin": "The Great Recipe Book is complete!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Recipe Book Cake",
-        "T1": "The Mint Matcha Macaron"
+        "T2": "The Matcha Seed",
+        "T1": "The Matcha Tea Cake",
+        "T3": "The Recipe Book Cake"
       }
     },
     109: {
       "titulo": "The Palace Gates",
-      "ensena": "The capsule is only filled and emptied through pipes. One pipe sends matter back up to another jar: use it to reorder the layers.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. A chocolate seal blocks a jar: melt it by pouring Caramel.",
       "intro": [
         "The Star Palace. The map ends here... but baking never does.",
         "Let's go for the last challenge!"
       ],
       "guia": [],
       "fin": "It tastes amazing!",
-      "ingenio": "Leave the second container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T1": "Strawberry & Matcha Cake",
-        "T2": "Strawberry & Lemon Macaron"
+        "T1": "Blueberry & Caramel Cake",
+        "T2": "Blueberry & Strawberry Pastry"
       }
     },
     110: {
       "titulo": "The Hall of Mirrors",
-      "ensena": "A chocolate block plugs a pipe: only Caramel melts it. The flask takes and gives one measure at a time.",
+      "ensena": "The scale opens its bridge at the marked weight. Grape weighs 2 and sinks to the bottom.",
       "intro": [],
       "guia": [],
       "fin": "Every measure in its place. Beautiful.",
-      "ingenio": "Leave the third container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T1": "Blueberry, Caramel & Grape Macaron",
-        "T2": "The Blueberry Donut",
-        "T3": "The Galaxy Donut"
+        "T2": "Blueberry & Lemon Macaron",
+        "T1": "Matcha & Lemon Cake"
       }
     },
     111: {
@@ -1434,40 +1435,40 @@
     },
     112: {
       "titulo": "The Star Garden",
-      "ensena": "Five jars and little free space: plan before you move. Feed the Matcha Seed and the licorice bridge will sprout.",
+      "ensena": "The scale opens its bridge at the marked weight. Two pipes link the top jars: use them to reorder the layers.",
       "intro": [],
       "guia": [],
       "fin": "Not a drop wasted. You're a true master.",
-      "ingenio": "Leave the first container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T2": "The Matcha Seed",
-        "T3": "Blueberry, Strawberry & Lemon Macaron",
-        "T1": "The Cappuccino Donut"
+        "T1": "The Strawberry Donut",
+        "T2": "The Matcha Tea Cake"
       }
     },
     113: {
       "titulo": "The Royal Kitchen",
-      "ensena": "The capsule is only filled and emptied through pipes. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "Brilliant mix!",
-      "ingenio": "Leave the fourth container on top empty",
+      "ingenio": "Leave the third container on top empty",
       "nombres": {
-        "T1": "The Mint Matcha Macaron",
-        "T2": "Matcha, Lemon & Mint Macaron"
+        "T1": "The Lemon Cake",
+        "T2": "The Strawberry Donut",
+        "T3": "The Blueberry Donut"
       }
     },
     114: {
       "titulo": "The Flavor Ball",
-      "ensena": "The crystal pipe only lets Mint through. The flask takes and gives one measure at a time.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. A chocolate block plugs a pipe: only Caramel melts it.",
       "intro": [],
       "guia": [],
       "fin": "You thought it through. It shows.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T2": "The Mint Donut",
-        "T1": "The Mint Donut",
-        "T3": "The Matcha Tea Cake"
+        "T3": "The Mint Donut",
+        "T2": "The Blueberry Donut",
+        "T1": "The Mint Donut"
       }
     },
     115: {
@@ -1484,41 +1485,39 @@
     },
     116: {
       "titulo": "The Chocolate Throne",
-      "ensena": "Five jars and little free space: plan before you move. Grape weighs 2 and sinks to the bottom.",
+      "ensena": "Two pipes link the top jars: use them to reorder the layers. The crystal pipe only lets Mint through.",
       "intro": [],
       "guia": [],
       "fin": "Step by step, the kingdom gets its flavor back.",
       "ingenio": "Leave the first container on top empty",
       "nombres": {
-        "T2": "The Mint Donut",
-        "T1": "The Galaxy Donut",
-        "H": "Reserve"
+        "T3": "The Mint Donut",
+        "T1": "The Matcha Tea Cake",
+        "T2": "The Cappuccino Donut"
       }
     },
     117: {
       "titulo": "The Cake Gallery",
-      "ensena": "Grape weighs 2 and sinks to the bottom. The flask takes and gives one measure at a time.",
+      "ensena": "The scale opens its bridge at the marked weight. Feed the Matcha Seed and the licorice bridge will sprout.",
       "intro": [],
       "guia": [],
       "fin": "One more for the collection!",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T3": "The Galaxy Donut",
-        "T2": "Caramel, Matcha & Lemon Macaron",
-        "T1": "The Cappuccino Donut"
+        "T1": "The Matcha Seed",
+        "T2": "Strawberry & Lemon Macaron"
       }
     },
     118: {
       "titulo": "The Observatory",
-      "ensena": "Five jars and little free space: plan before you move. One pipe sends matter back up to another jar: use it to reorder the layers.",
+      "ensena": "The scale opens its bridge at the marked weight. The flask takes and gives one measure at a time.",
       "intro": [],
       "guia": [],
       "fin": "Sweet, exact and elegant.",
-      "ingenio": "Leave the third container on top empty",
+      "ingenio": "Leave the second container on top empty",
       "nombres": {
-        "T2": "Lemon & Mint Cake",
-        "T3": "The Matcha Seed",
-        "T1": "The Mint Matcha Macaron"
+        "T1": "The Matcha Tea Cake",
+        "T2": "The Cappuccino Donut"
       }
     },
     119: {
@@ -1536,14 +1535,14 @@
     },
     120: {
       "titulo": "The Sugar Crown",
-      "ensena": "A chocolate seal blocks a jar: melt it by pouring Caramel. A chocolate block plugs a pipe: only Caramel melts it.",
+      "ensena": "The scale opens its bridge at the marked weight. The crystal pipe only lets Mint through.",
       "intro": [],
       "guia": [],
       "fin": "The Sugar Crown shines! You are a legend now, and the Endless Bakery awaits you.",
       "ingenio": "Solve it without hints",
       "nombres": {
-        "T1": "Blueberry & Lemon Macaron",
-        "T2": "The Sugar Crown"
+        "T2": "The Mint Donut",
+        "T1": "The Sugar Crown"
       }
     }
     // ── GENERADOS: FIN ──
